@@ -49,16 +49,15 @@ export const GalaxySection = () => {
                     </p>
                 </motion.div>
 
-                {/* The Galaxy Map */}
-                <div className="relative w-full h-[600px] md:h-[800px] flex items-center justify-center">
-
+                {/* The Galaxy Map - Optimized with GPU hooks */}
+                <div className="relative w-full h-[600px] md:h-[800px] flex items-center justify-center gpu-accelerated force-3d">
                     {/* CENTER CORE */}
                     <motion.div
                         animate={{
                             boxShadow: ["0 0 20px rgba(0,196,255,0.2)", "0 0 60px rgba(0,196,255,0.4)", "0 0 20px rgba(0,196,255,0.2)"]
                         }}
                         transition={{ duration: 4, repeat: Infinity }}
-                        className="relative z-50 w-24 h-24 md:w-32 md:h-32 rounded-full bg-black border-2 border-primary-DEFAULT/50 flex items-center justify-center shadow-2xl"
+                        className="relative z-50 w-24 h-24 md:w-32 md:h-32 rounded-full bg-black border-2 border-primary-DEFAULT/50 flex items-center justify-center shadow-2xl gpu-accelerated"
                     >
                         <div className="absolute inset-2 rounded-full border border-primary-light/20 animate-spin-slow" />
                         <img
@@ -78,7 +77,7 @@ export const GalaxySection = () => {
                                 key={orbit.category}
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: i * 0.2, duration: 1 }}
+                                transition={{ delay: i * 0.1, duration: 1 }}
                                 className="absolute border border-white/5 rounded-full"
                                 style={{
                                     width: orbit.radius * 2,
@@ -88,14 +87,14 @@ export const GalaxySection = () => {
                         ))}
                     </div>
 
-                    {/* APP NODES */}
+                    {/* APP NODES - CSS Optimize */}
                     <div className="absolute inset-0 flex items-center justify-center">
                         {orbits.map((orbit) => (
                             <motion.div
                                 key={`${orbit.category}-apps`}
                                 animate={{ rotate: 360 }}
                                 transition={{ duration: orbit.speed, repeat: Infinity, ease: "linear" }}
-                                className="absolute"
+                                className="absolute force-3d"
                                 style={{ width: orbit.radius * 2, height: orbit.radius * 2 }}
                             >
                                 {orbit.apps.map((app) => (
@@ -113,7 +112,7 @@ export const GalaxySection = () => {
                                             onMouseLeave={() => setHoveredApp(null)}
                                             onClick={() => window.open(app.url, '_blank')}
                                             animate={hoveredApp?.name === app.name ? { scale: 1.5, zIndex: 100 } : { scale: 1 }}
-                                            className="relative cursor-pointer"
+                                            className="relative cursor-pointer gpu-accelerated"
                                         >
                                             {/* Line to core on hover */}
                                             <AnimatePresence>

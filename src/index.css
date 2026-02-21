@@ -202,12 +202,16 @@ html.lenis body {
   pointer-events: none;
 }
 
-/* Antigravity Performance Utilities */
+/* Antigravity Performance Utilities - Optimized for Memory */
 @utility gpu-accelerated {
-  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000px;
-  transform: translate3d(0, 0, 0);
+  /* limit will-change to only when needed to save GPU memory */
+}
+
+.animating {
+  will-change: transform, opacity;
 }
 
 @utility force-3d {

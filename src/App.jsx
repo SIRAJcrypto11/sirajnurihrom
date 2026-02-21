@@ -27,14 +27,14 @@ function App() {
   const [isLaunchpadOpen, setIsLaunchpadOpen] = useState(false);
 
   useEffect(() => {
-    // Initialize Lenis
+    // Initialize Lenis with "Snappy-Smooth" tuning
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 0.8, // Reduced from 1.2 for faster response
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1,
+      wheelMultiplier: 1.1, // Slight boost to feeling "light"
       smoothTouch: false,
       touchMultiplier: 2,
       infinite: false,

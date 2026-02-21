@@ -97,18 +97,21 @@ export const ParticleBackground = () => {
         };
 
         const drawConstellations = () => {
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
+            // Optimization: Skip pairs to reduce O(n^2) pressure
+            // Every second particle only checks every second neighbor
+            for (let i = 0; i < particles.length; i += 2) {
+                for (let j = i + 2; j < particles.length; j += 2) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    const distanceSquared = dx * dx + dy * dy; // Use squared distance for perf
 
-                    if (distance < CONNECTION_DISTANCE) {
+                    if (distanceSquared < CONNECTION_DISTANCE * CONNECTION_DISTANCE) {
+                        const distance = Math.sqrt(distanceSquared);
                         // Opacity based on distance
                         const opacity = 1 - (distance / CONNECTION_DISTANCE);
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(0, 196, 255, ${opacity * 0.15})`;
-                        ctx.lineWidth = 1;
+                        ctx.strokeStyle = `rgba(0, 196, 255, ${opacity * 0.12})`;
+                        ctx.lineWidth = 0.8;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
                         ctx.stroke();
