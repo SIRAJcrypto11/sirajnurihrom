@@ -1,0 +1,55 @@
+[36mvite v7.3.1 [32mbuilding client environment for production...[36m[39m
+transforming...
+[32m✓[39m 23 modules transformed.
+
+[31m✗[39m Build failed in 793ms
+[31merror during build:
+[31m[vite:esbuild] Transform failed with 4 errors:
+C:/Users/Siraj Nur Ihrom/Documents/SNISHOP.ID/PORTOFOLIO SIRAJ NUR IHROM/react-portfolio/src/components/sections/ProjectsSection.jsx:7:9: ERROR: The symbol "motion" has already been declared
+C:/Users/Siraj Nur Ihrom/Documents/SNISHOP.ID/PORTOFOLIO SIRAJ NUR IHROM/react-portfolio/src/components/sections/ProjectsSection.jsx:8:9: ERROR: The symbol "Card" has already been declared
+C:/Users/Siraj Nur Ihrom/Documents/SNISHOP.ID/PORTOFOLIO SIRAJ NUR IHROM/react-portfolio/src/components/sections/ProjectsSection.jsx:9:9: ERROR: The symbol "Badge" has already been declared
+C:/Users/Siraj Nur Ihrom/Documents/SNISHOP.ID/PORTOFOLIO SIRAJ NUR IHROM/react-portfolio/src/components/sections/ProjectsSection.jsx:10:9: ERROR: The symbol "ExternalLink" has already been declared[31m
+file: [36mC:/Users/Siraj Nur Ihrom/Documents/SNISHOP.ID/PORTOFOLIO SIRAJ NUR IHROM/react-portfolio/src/components/sections/ProjectsSection.jsx:7:9[31m
+[33m
+[33mThe symbol "motion" has already been declared[33m
+5  |  import { ExternalLink, MousePointerClick, ChevronRight } from 'lucide-react';
+6  |  
+7  |  import { motion } from 'framer-motion';
+   |           ^
+8  |  import { Card } from '../ui/Card';
+9  |  import { Badge } from '../ui/Badge';
+
+[33mThe symbol "Card" has already been declared[33m
+6  |  
+7  |  import { motion } from 'framer-motion';
+8  |  import { Card } from '../ui/Card';
+   |           ^
+9  |  import { Badge } from '../ui/Badge';
+10 |  import { ExternalLink, LayoutGrid, ArrowRight } from 'lucide-react';
+
+[33mThe symbol "Badge" has already been declared[33m
+7  |  import { motion } from 'framer-motion';
+8  |  import { Card } from '../ui/Card';
+9  |  import { Badge } from '../ui/Badge';
+   |           ^
+10 |  import { ExternalLink, LayoutGrid, ArrowRight } from 'lucide-react';
+11 |  
+
+[33mThe symbol "ExternalLink" has already been declared[33m
+8  |  import { Card } from '../ui/Card';
+9  |  import { Badge } from '../ui/Badge';
+10 |  import { ExternalLink, LayoutGrid, ArrowRight } from 'lucide-react';
+   |           ^
+11 |  
+12 |  export const ProjectsSection = ({ onOpenLaunchpad }) => {
+[31m
+    at failureErrorWithLog (C:\Users\Siraj Nur Ihrom\Documents\SNISHOP.ID\PORTOFOLIO SIRAJ NUR IHROM\react-portfolio\node_modules\esbuild\lib\main.js:1467:15)
+    at C:\Users\Siraj Nur Ihrom\Documents\SNISHOP.ID\PORTOFOLIO SIRAJ NUR IHROM\react-portfolio\node_modules\esbuild\lib\main.js:736:50
+    at responseCallbacks.<computed> (C:\Users\Siraj Nur Ihrom\Documents\SNISHOP.ID\PORTOFOLIO SIRAJ NUR IHROM\react-portfolio\node_modules\esbuild\lib\main.js:603:9)
+    at handleIncomingPacket (C:\Users\Siraj Nur Ihrom\Documents\SNISHOP.ID\PORTOFOLIO SIRAJ NUR IHROM\react-portfolio\node_modules\esbuild\lib\main.js:658:12)
+    at Socket.readFromStdout (C:\Users\Siraj Nur Ihrom\Documents\SNISHOP.ID\PORTOFOLIO SIRAJ NUR IHROM\react-portfolio\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)[39m

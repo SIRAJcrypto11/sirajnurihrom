@@ -1,0 +1,120 @@
+﻿
+> react-portfolio@0.0.0 build
+> vite build
+
+[36mvite v7.3.1 [32mbuilding client environment for production...[36m[39m
+transforming...
+[32mΓ£ô[39m 21 modules transformed.
+node.exe : [31mΓ£ù[39m 
+Build failed in 169ms
+At C:\Program 
+Files\nodejs\npm.ps1:29 
+char:3
++   & $NODE_EXE 
+$NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo       
+       : NotSpecifi    
+ed: ([31mΓ£ù[39m     
+Build failed in 1    
+69ms:String) [], R    
+emoteException
+    + FullyQualifiedEr   
+ rorId : NativeComm    
+andError
+ 
+[31merror during build:
+[31m[vite]: Rollup 
+failed to resolve import 
+"lucide-react" from 
+"C:/Users/Siraj Nur Ihrom
+/Documents/SNISHOP.ID/POR
+TOFOLIO SIRAJ NUR IHROM/r
+eact-portfolio/src/compon
+ents/layout/Navbar.jsx".
+This is most likely 
+unintended because it 
+can break your 
+application at runtime.
+If you do want to 
+externalize this module 
+explicitly add it to
+`build.rollupOptions.exte
+rnal`[31m
+    at viteLog (file:///C
+:/Users/Siraj%20Nur%20Ihr
+om/Documents/SNISHOP.ID/P
+ORTOFOLIO%20SIRAJ%20NUR%2
+0IHROM/react-portfolio/no
+de_modules/vite/dist/node
+/chunks/config.js:33635:5
+7)
+    at file:///C:/Users/S
+iraj%20Nur%20Ihrom/Docume
+nts/SNISHOP.ID/PORTOFOLIO
+%20SIRAJ%20NUR%20IHROM/re
+act-portfolio/node_module
+s/vite/dist/node/chunks/c
+onfig.js:33669:73
+    at onwarn (file:///C:
+/Users/Siraj%20Nur%20Ihro
+m/Documents/SNISHOP.ID/PO
+RTOFOLIO%20SIRAJ%20NUR%20
+IHROM/react-portfolio/nod
+e_modules/@vitejs/plugin-
+react/dist/index.js:76:7)
+    at file:///C:/Users/S
+iraj%20Nur%20Ihrom/Docume
+nts/SNISHOP.ID/PORTOFOLIO
+%20SIRAJ%20NUR%20IHROM/re
+act-portfolio/node_module
+s/vite/dist/node/chunks/c
+onfig.js:33669:28
+    at onRollupLog (file:
+///C:/Users/Siraj%20Nur%2
+0Ihrom/Documents/SNISHOP.
+ID/PORTOFOLIO%20SIRAJ%20N
+UR%20IHROM/react-portfoli
+o/node_modules/vite/dist/
+node/chunks/config.js:336
+64:63)
+    at onLog (file:///C:/
+Users/Siraj%20Nur%20Ihrom
+/Documents/SNISHOP.ID/POR
+TOFOLIO%20SIRAJ%20NUR%20I
+HROM/react-portfolio/node
+_modules/vite/dist/node/c
+hunks/config.js:33467:4)
+    at file:///C:/Users/S
+iraj%20Nur%20Ihrom/Docume
+nts/SNISHOP.ID/PORTOFOLIO
+%20SIRAJ%20NUR%20IHROM/re
+act-portfolio/node_module
+s/rollup/dist/es/shared/n
+ode-entry.js:20958:32
+    at Object.logger [as 
+onLog] (file:///C:/Users/
+Siraj%20Nur%20Ihrom/Docum
+ents/SNISHOP.ID/PORTOFOLI
+O%20SIRAJ%20NUR%20IHROM/r
+eact-portfolio/node_modul
+es/rollup/dist/es/shared/
+node-entry.js:22945:9)
+    at ModuleLoader.handl
+eInvalidResolvedId (file:
+///C:/Users/Siraj%20Nur%2
+0Ihrom/Documents/SNISHOP.
+ID/PORTOFOLIO%20SIRAJ%20N
+UR%20IHROM/react-portfoli
+o/node_modules/rollup/dis
+t/es/shared/node-entry.js
+:21689:26)
+    at file:///C:/Users/S
+iraj%20Nur%20Ihrom/Docume
+nts/SNISHOP.ID/PORTOFOLIO
+%20SIRAJ%20NUR%20IHROM/re
+act-portfolio/node_module
+s/rollup/dist/es/shared/n
+ode-entry.js:21647:26[39
+m

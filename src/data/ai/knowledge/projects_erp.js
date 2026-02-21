@@ -1,0 +1,12 @@
+export const projectsErpKnowledge = [
+    {
+        intent: 'project_erp',
+        keywords: { 'erp': 6, 'snishop erp': 8, 'enterprise': 5, 'resource': 4, 'planning': 4, 'bisnis': 4, 'business': 4, 'management': 4, 'sistem': 3, 'kasir': 3, 'pos': 3, 'manajemen': 4, 'toko': 3, 'keuangan': 3, 'karyawan': 3 },
+        response: `Penjelasan Lengkap: SNISHOP ERP (Enterprise Resource Planning)\n\nSNISHOP ERP adalah mahakarya dari seluruh ekosistem Siraj Nur Ihrom. Ini bukan sekadar aplikasi, melainkan Operating System lengkap untuk bisnis.\n\nKenapa ERP ini Dibuat?\nBanyak UMKM yang kesulitan karena pembukuan yang berantakan, dan software ERP standar terlalu mahal serta rumit dipelajari. Siraj membangun SNISHOP ERP sebagai solusi kuat namun memiliki antarmuka yang elegan dan mudah digunakan.\n\nModul & Fungsionalitas Inti:\n1. Smart POS: Aplikasi kasir tangguh yang dapat memproses transaksi secara luring dan sinkronisasi otomatis saat koneksi pulih.\n2. Inventory Logic: Melacak pergerakan barang antar gudang secara real-time dan memberi peringatan otomatis untuk restock barang.\n3. CRM: Menganalisis perilaku belanja pelanggan untuk strategi pemasaran yang ditargetkan.\n4. HR & Payroll Automation: Manajemen absensi dengan pelacakan lokasi, lembur otomatis, dan penggajian dinamis.\n5. Absolute Finance: Pembukuan akuntansi standar global yang menghasilkan laporan neraca, laba/rugi, dan arus kas dalam satu klik.\n\nDibangun dengan arsitektur microservices, ERP ini siap menahan ribuan transaksi per detik tanpa hambatan. Anda dapat mengakses prototipenya di erp.snishop.com.`
+    },
+    {
+        intent: 'project_invoice_taskday',
+        keywords: { 'invoice': 5, 'autoinvoice': 6, 'taskday': 6, 'tagihan': 4, 'task': 4, 'proyek': 3, 'project': 3, 'manage': 3, 'billing': 4, 'bayar': 3 },
+        response: `Ekspansi Enterprise: AutoInvoice & TaskDay\n\nSelain ERP utama, Siraj memisahkan fungsi-fungsi krusial ke dalam aplikasi independen agar lebih cepat dan ringan:\n\n1. AutoInvoice (invoice.snishop.com): Mesin penagihan otomatis. Jika klien belum membayar, sistem akan mengirim pengingat secara otomatis melalui pesan atau email sebelum hingga pada hari jatuh tempo. Ini mengeliminasi kesalahan manusia dalam pengelolaan piutang.\n2. TaskDay (taskday.snishop.com): Papan manajemen proyek berstandar tinggi. TaskDay dilengkapi penghitung performa tim, alokasi sumber daya, dan terintegrasi langsung dengan komponen jam kerja karyawan di dalam ERP.`
+    }
+];
