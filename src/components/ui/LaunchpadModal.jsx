@@ -6,17 +6,18 @@ import { useEffect } from 'react';
 
 export const LaunchpadModal = ({ isOpen, onClose }) => {
 
-    // Lock body scroll when modal is open
+    // Lock body scroll and sync with Lenis when modal is open
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
-            // Also hide the global custom cursor if it exists on mobile/desktop to prevent conflict with the scroll in modal if necessary,
-            // but the cursor is z-[9999] so it should overlay fine.
+            window.lenis?.stop();
         } else {
             document.body.style.overflow = 'auto';
+            window.lenis?.start();
         }
         return () => {
             document.body.style.overflow = 'auto';
+            window.lenis?.start();
         };
     }, [isOpen]);
 
@@ -34,7 +35,10 @@ export const LaunchpadModal = ({ isOpen, onClose }) => {
                     <div className="absolute inset-0 bg-neutral-900/80" onClick={onClose} />
 
                     {/* Content Container (Scrollable) */}
-                    <div className="relative z-10 w-full h-full overflow-y-auto px-6 py-12 md:py-24 custom-scrollbar">
+                    <div 
+                        className="relative z-10 w-full h-full overflow-y-auto px-6 py-12 md:py-24 custom-scrollbar"
+                        data-lenis-prevent
+                    >
                         <div className="container mx-auto max-w-7xl">
 
                             {/* Header & Close Button */}

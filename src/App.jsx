@@ -45,6 +45,8 @@ function App() {
       requestAnimationFrame(raf);
     }
 
+    // Expose lenis to window for global control (e.g. by modals)
+    window.lenis = lenis;
     requestAnimationFrame(raf);
 
     // Mencegah browser melakukan auto-scroll ke posisi terakhir saat direfresh
