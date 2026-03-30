@@ -18,6 +18,7 @@ import { AboutSection } from './components/sections/AboutSection';
 import { MetricsSection } from './components/sections/MetricsSection';
 import { ExperienceSection } from './components/sections/ExperienceSection';
 import { ProjectsSection } from './components/sections/ProjectsSection';
+import { CustomerShowcaseSection } from './components/sections/CustomerShowcaseSection';
 import { GalaxySection } from './components/sections/GalaxySection';
 import { SkillsSection } from './components/sections/SkillsSection';
 import { ContactSection } from './components/sections/ContactSection';
@@ -83,6 +84,7 @@ function App() {
         <MetricsSection />
         <ExperienceSection />
         <ProjectsSection onOpenLaunchpad={() => setIsLaunchpadOpen(true)} />
+        <CustomerShowcaseSection />
         <GalaxySection />
         <SkillsSection />
         <ContactSection />

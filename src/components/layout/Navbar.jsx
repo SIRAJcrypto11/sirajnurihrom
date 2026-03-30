@@ -42,6 +42,7 @@ export const Navbar = () => {
             href: '#projects',
             subItems: [
                 { name: 'Ecosystem', href: '#projects', desc: 'The interconnected suite of apps.' },
+                { name: 'Customer Showcase', href: '#customer-showcase', desc: 'Premium client solutions and case studies.' },
                 { name: 'Prototypes', href: '#projects', desc: 'Experimental builds and R&D.' }
             ]
         },
