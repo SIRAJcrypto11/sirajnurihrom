@@ -51,6 +51,19 @@ export const ecosystemCategories = [
             { name: "TopUp Game", url: "https://topup.snishop.com", desc: "Instant game voucher and top-up center.", logo: <Gamepad2 className="w-6 h-6" />, image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800&h=500" },
             { name: "Sninonton", url: "https://nonton.snishop.com", desc: "Curated entertainment streaming aggregator.", logo: <Play className="w-6 h-6" />, image: "https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&q=80&w=800&h=500" }
         ]
+    },
+    {
+        category: "Customer Showcase",
+        icon: <LayoutTemplate className="w-5 h-5 text-emerald-500" />,
+        apps: [
+            { 
+                name: "DW Store Mebel", 
+                url: "https://dwstore.vercel.app/", 
+                desc: "Premium interior artisan and custom furniture provider in Bengkulu.", 
+                logo: <LayoutTemplate className="w-6 h-6" />, 
+                image: "/projects/dwstore.png" 
+            }
+        ]
     }
 ];
 
