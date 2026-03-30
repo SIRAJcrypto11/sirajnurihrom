@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#050510" />
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js');
+      });
+    }
+  </script>
+
+  <!-- Primary Meta Tags -->
+  <title>Siraj Nur Ihrom | System Architect & Tech Entrepreneur</title>
+  <meta name="title" content="Siraj Nur Ihrom | System Architect & Tech Entrepreneur" />
+  <meta name="description"
+    content="Official portfolio of Siraj Nur Ihrom, founder of SNISHOP.COM ecosystem. Expert in System Architecture, AI, and Enterprise Solutions." />
+  <meta name="keywords"
+    content="Siraj Nur Ihrom, SNISHOP, System Architect, Full Stack Developer, AI Developer, ERP Developer, Software Engineering" />
+  <meta name="author" content="Siraj Nur Ihrom" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sirajnurihrom.com/" />
+  <meta property="og:title" content="Siraj Nur Ihrom | System Architect & Tech Entrepreneur" />
+  <meta property="og:description"
+    content="Explore the massive ecosystem of 20+ apps built by Siraj Nur Ihrom, from AI-driven finance to Enterprise ERP systems." />
+  <meta property="og:image" content="/og-image.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://sirajnurihrom.com/" />
+  <meta property="twitter:title" content="Siraj Nur Ihrom | System Architect & Tech Entrepreneur" />
+  <meta property="twitter:description"
+    content="Explore the massive ecosystem of 20+ apps built by Siraj Nur Ihrom, from AI-driven finance to Enterprise ERP systems." />
+  <meta property="twitter:image" content="/og-image.png" />
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>
