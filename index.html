@@ -17,41 +17,30 @@
         }
 
         :root {
-            /* Premium Colors */
             --primary-blue: #0A66C2;
-            /* LinkedIn style premium blue */
             --secondary-blue: #004182;
             --accent-blue: #47A1FA;
             --electric-blue: #00C4FF;
             --neon-blue: #00E1FF;
             --text-primary: #202124;
-            /* Google standard */
             --text-secondary: #5F6368;
             --bg-primary: #FFFFFF;
             --bg-secondary: #F8F9FA;
             --bg-dark: #0B0E14;
-            /* Deep premium dark */
             --bg-card: rgba(255, 255, 255, 0.98);
             --gradient-primary: linear-gradient(135deg, #0A66C2 0%, #00C4FF 50%, #47A1FA 100%);
             --gradient-dark: linear-gradient(135deg, #0B0E14 0%, #151A23 100%);
-
-            /* Apple-esque Shadows */
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             --shadow-light: 0 4px 6px -1px rgba(10, 102, 194, 0.08), 0 2px 4px -1px rgba(10, 102, 194, 0.04);
             --shadow-medium: 0 10px 15px -3px rgba(10, 102, 194, 0.1), 0 4px 6px -2px rgba(10, 102, 194, 0.05);
             --shadow-heavy: 0 20px 25px -5px rgba(10, 102, 194, 0.15), 0 10px 10px -5px rgba(10, 102, 194, 0.08);
             --shadow-glow: 0 0 25px rgba(0, 196, 255, 0.4);
-
-            /* Organic Animations */
             --animation-speed: 0.4s;
             --animation-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
             --animation-smooth: cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Konfirmasi Scroll Halus */
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -76,27 +65,15 @@
             will-change: transform, opacity;
         }
 
-        body:hover .cursor-aura {
-            opacity: 1;
-        }
-
         @media (hover: none) and (pointer: coarse) {
-            .cursor-aura {
-                display: none !important;
-            }
-
-            body {
-                cursor: auto;
-            }
+            .cursor-aura { display: none !important; }
+            body { cursor: auto; }
         }
 
-        /* Loading Screen (Perceived Performance) */
         .loading {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: var(--gradient-dark);
             display: flex;
             align-items: center;
@@ -105,35 +82,21 @@
             transition: opacity 0.5s ease;
         }
 
-        .loading.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
+        .loading.hidden { opacity: 0; pointer-events: none; }
 
         .spinner {
-            width: 60px;
-            height: 60px;
+            width: 60px; height: 60px;
             border: 3px solid rgba(0, 204, 255, 0.3);
             border-top: 3px solid var(--electric-blue);
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
 
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
 
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Navigation */
         .navbar {
             position: fixed;
-            top: 0;
-            width: 100%;
+            top: 0; width: 100%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(0, 102, 255, 0.1);
@@ -142,9 +105,7 @@
             transition: all var(--animation-speed) ease;
         }
 
-        .navbar.scrolled {
-            box-shadow: var(--shadow-light);
-        }
+        .navbar.scrolled { box-shadow: var(--shadow-light); }
 
         .nav-container {
             max-width: 1200px;
@@ -165,11 +126,7 @@
             text-decoration: none;
         }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
+        .nav-links { display: flex; list-style: none; gap: 2.5rem; }
 
         .nav-links a {
             text-decoration: none;
@@ -178,9 +135,7 @@
             transition: color var(--animation-speed) ease;
         }
 
-        .nav-links a:hover {
-            color: var(--primary-blue);
-        }
+        .nav-links a:hover { color: var(--primary-blue); }
 
         .mobile-menu-toggle {
             display: none;
@@ -191,7 +146,6 @@
             color: var(--primary-blue);
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -211,15 +165,7 @@
             animation: gridMove 20s linear infinite;
         }
 
-        @keyframes gridMove {
-            0% {
-                background-position: 0 0;
-            }
-
-            100% {
-                background-position: 50px 50px;
-            }
-        }
+        @keyframes gridMove { 100% { background-position: 50px 50px; } }
 
         .hero-container {
             max-width: 1200px;
@@ -233,9 +179,7 @@
             z-index: 2;
         }
 
-        .hero-content {
-            color: white;
-        }
+        .hero-content { color: white; }
 
         .hero-badge {
             display: inline-flex;
@@ -252,10 +196,7 @@
             animation: fadeInUp 1s ease 0.1s forwards;
         }
 
-        .hero-badge i {
-            color: var(--electric-blue);
-            animation: pulse 2s ease-in-out infinite;
-        }
+        .hero-badge i { color: var(--electric-blue); animation: pulse 2s ease-in-out infinite; }
 
         .hero-title {
             font-size: 4rem;
@@ -285,11 +226,7 @@
             display: inline-block;
         }
 
-        .hero-subtitle.typing-done::after {
-            animation: none;
-            opacity: 0;
-        }
-
+        .hero-subtitle.typing-done::after { animation: none; opacity: 0; }
         .hero-subtitle::after {
             content: '|';
             position: absolute;
@@ -323,43 +260,16 @@
             pointer-events: none;
         }
 
-        .aurora-element:nth-child(1) {
-            width: 400px;
-            height: 400px;
-            top: 10%;
-            left: 15%;
-            animation-delay: 0s;
-        }
+        .aurora-element:nth-child(1) { width: 400px; height: 400px; top: 10%; left: 15%; animation-delay: 0s; }
+        .aurora-element:nth-child(2) { width: 300px; height: 300px; top: 50%; right: 10%; background: radial-gradient(circle, var(--electric-blue), transparent 60%); animation-delay: 7s; }
+        .aurora-element:nth-child(3) { width: 500px; height: 500px; bottom: 5%; left: 40%; animation-delay: 14s; }
 
-        .aurora-element:nth-child(2) {
-            width: 300px;
-            height: 300px;
-            top: 50%;
-            right: 10%;
-            background: radial-gradient(circle, var(--electric-blue), transparent 60%);
-            animation-delay: 7s;
-        }
-
-        .aurora-element:nth-child(3) {
-            width: 500px;
-            height: 500px;
-            bottom: 5%;
-            left: 40%;
-            animation-delay: 14s;
-        }
-
-        .profile-container {
-            position: relative;
-            width: 450px;
-            height: 450px;
-        }
+        .profile-container { position: relative; width: 450px; height: 450px; }
 
         .profile-ring {
             position: absolute;
-            top: -20px;
-            left: -20px;
-            width: 490px;
-            height: 490px;
+            top: -20px; left: -20px;
+            width: 490px; height: 490px;
             border-radius: 50%;
             background: conic-gradient(from 0deg, var(--electric-blue), var(--primary-blue), var(--neon-blue), var(--electric-blue));
             animation: rotate 4s linear infinite;
@@ -374,8 +284,7 @@
         }
 
         .profile-image {
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             border-radius: 50%;
             object-fit: cover;
             border: 8px solid rgba(0, 204, 255, 0.2);
@@ -384,13 +293,7 @@
             z-index: 2;
         }
 
-        /* Sisa CSS (About, Experience, etc.) tetap sama persis seperti kode sebelumnya */
-        /* ... [CSS untuk section lain tidak diubah dan tetap di sini] ... */
-
-        /* General Sections */
-        section {
-            padding: 8rem 0;
-        }
+        section { padding: 8rem 0; }
 
         .container {
             max-width: 1200px;
@@ -417,11 +320,7 @@
             margin-right: auto;
         }
 
-        /* Card styles with 3D hover */
-        .stat-card,
-        .timeline-content,
-        .project-card,
-        .skill-category {
+        .stat-card, .timeline-content, .project-card, .skill-category {
             background: var(--bg-card);
             border-radius: 20px;
             box-shadow: var(--shadow-light);
@@ -433,51 +332,16 @@
             will-change: transform, box-shadow;
         }
 
-        .project-card,
-        .skill-category {
-            border-radius: 25px;
-        }
+        .project-card, .skill-category { border-radius: 25px; }
 
-        .stat-card:hover,
-        .skill-category:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--shadow-heavy);
-        }
+        .stat-card:hover, .skill-category:hover { transform: translateY(-8px) scale(1.02); box-shadow: var(--shadow-heavy); }
+        .project-card:hover { transform: translateY(-12px) scale(1.02); box-shadow: var(--shadow-heavy); }
+        .timeline-item:nth-child(odd) .timeline-content:hover,
+        .timeline-item:nth-child(even) .timeline-content:hover { transform: translateY(-8px) scale(1.03); box-shadow: var(--shadow-heavy); }
 
-        .project-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: var(--shadow-heavy);
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: var(--shadow-heavy);
-        }
-
-        .timeline-item:nth-child(even) .timeline-content:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: var(--shadow-heavy);
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .stat-card {
-            padding: 2.5rem;
-            text-align: center;
-        }
-
+        .about-content { display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items: center; }
+        .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .stat-card { padding: 2.5rem; text-align: center; }
         .stat-number {
             font-size: 3rem;
             font-weight: 900;
@@ -488,638 +352,498 @@
             margin-bottom: 0.5rem;
             font-family: 'JetBrains Mono', monospace;
         }
+        .stat-label { color: var(--text-secondary); font-weight: 600; }
+        .about-text { font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary); }
 
-        .stat-label {
-            color: var(--text-secondary);
-            font-weight: 600;
-        }
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+        .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; background: var(--gradient-primary); transform: translateX(-50%); }
+        .timeline-item { position: relative; margin-bottom: 4rem; width: 50%; }
+        .timeline-item:nth-child(odd) { left: 0; padding-right: 3rem; }
+        .timeline-item:nth-child(even) { left: 50%; padding-left: 3rem; }
+        .timeline-item::before { content: ''; position: absolute; width: 20px; height: 20px; background: var(--gradient-primary); border-radius: 50%; top: 20px; border: 4px solid var(--bg-primary); box-shadow: var(--shadow-medium); z-index: 1; }
+        .timeline-item:nth-child(odd)::before { right: -10px; }
+        .timeline-item:nth-child(even)::before { left: -10px; }
+        .timeline-content { padding: 2.5rem; }
+        .timeline-date { font-weight: 700; font-family: 'JetBrains Mono', monospace; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .timeline-title { font-size: 1.5rem; font-weight: 700; }
+        .timeline-company { color: var(--primary-blue); font-weight: 600; }
 
-        .about-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-        }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; }
+        .project-card { display: flex; flex-direction: column; overflow: hidden; }
+        .project-image { width: 100%; height: 220px; object-fit: cover; }
+        .project-image-placeholder { width: 100%; height: 220px; display: grid; place-items: center; background: var(--gradient-dark); color: var(--electric-blue); font-size: 4rem; position: relative; overflow: hidden; }
+        .project-image-placeholder::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent); animation: shimmer 2s infinite; }
+        .project-content { padding: 2rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-title { font-size: 1.5rem; font-weight: 700; }
+        .project-description { flex-grow: 1; margin-bottom: 1.5rem; }
+        .project-tech { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem; }
+        .tech-tag { background: rgba(0, 102, 255, 0.1); color: var(--primary-blue); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
+        .project-links a { text-decoration: none; color: var(--primary-blue); font-weight: 600; }
 
-        /* Experience Section */
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        .skill-category { padding: 2.5rem; }
+        .skill-category-title { font-size: 1.5rem; font-weight: 700; color: var(--primary-blue); display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+        .skill-category-title i { font-size: 1.8rem; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .skill-list { display: flex; flex-wrap: wrap; gap: 1rem; }
+        .skill-item { background: rgba(0, 102, 255, 0.1); color: var(--primary-blue); padding: 0.75rem 1.5rem; border-radius: 30px; font-weight: 600; transition: all var(--animation-speed) ease; }
+        .skill-item:hover { background: var(--primary-blue); color: white; transform: translateY(-3px); }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: var(--gradient-primary);
-            transform: translateX(-50%);
-        }
+        .contact { background: var(--gradient-dark); color: white; }
+        .contact-content { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+        .contact-info h3 { font-size: 2.5rem; }
+        .contact-details { display: flex; flex-direction: column; gap: 1.5rem; margin: 2rem 0; }
+        .contact-item { display: flex; align-items: center; gap: 1.5rem; padding: 1rem; background: rgba(255, 255, 255, 0.1); border-radius: 15px; backdrop-filter: blur(10px); transition: transform 0.3s; }
+        .contact-item:hover { transform: translateX(10px); }
+        .contact-icon { width: 50px; height: 50px; background: var(--gradient-primary); border-radius: 50%; display: grid; place-items: center; font-size: 1.5rem; }
+        .social-links { display: flex; gap: 1.5rem; }
+        .social-link { width: 50px; height: 50px; background: rgba(255, 255, 255, 0.1); border-radius: 50%; display: grid; place-items: center; color: white; text-decoration: none; font-size: 1.5rem; transition: background 0.3s, transform 0.3s; }
+        .social-link:hover { background: var(--primary-blue); transform: translateY(-5px); }
+        form input, form textarea { width: 100%; padding: 1rem; border: 1px solid rgba(0, 204, 255, 0.3); border-radius: 10px; background: rgba(255, 255, 255, 0.1); color: white; font-size: 1rem; transition: all 0.3s ease; outline: none; }
+        form input:focus, form textarea:focus { border-color: var(--electric-blue); box-shadow: 0 0 0 3px rgba(0, 204, 255, 0.2); background: rgba(255, 255, 255, 0.15); }
+        .contact-form-container > div { background: rgba(255, 255, 255, 0.1); padding: 2.5rem; border-radius: 20px; border: 1px solid rgba(0, 204, 255, 0.2); backdrop-filter: blur(10px); }
+        .contact-form-container form { display: flex; flex-direction: column; gap: 1.5rem; }
 
-        .timeline-item {
-            position: relative;
-            margin-bottom: 4rem;
-            width: 50%;
-        }
+        .btn { padding: 1rem 2.5rem; border: none; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; cursor: pointer; transition: all var(--animation-speed) var(--animation-smooth); outline: none; position: relative; overflow: hidden; z-index: 1; }
+        .btn:focus-visible { box-shadow: 0 0 0 3px rgba(0, 196, 255, 0.5); }
+        .btn:active { transform: scale(0.96); }
+        .btn-primary { background: var(--gradient-primary); color: white; box-shadow: var(--shadow-medium); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: var(--shadow-heavy), var(--shadow-glow); }
+        .btn-secondary { background: rgba(255, 255, 255, 0.1); color: white; border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); }
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-3px); border-color: rgba(255, 255, 255, 0.4); }
 
-        .timeline-item:nth-child(odd) {
-            left: 0;
-            padding-right: 3rem;
-        }
+        .footer { background: #000; color: white; text-align: center; padding: 2rem 0; border-top: 1px solid rgba(0, 102, 255, 0.2); }
 
-        .timeline-item:nth-child(even) {
-            left: 50%;
-            padding-left: 3rem;
-        }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        @keyframes shimmer { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
+        @keyframes blink { 50% { opacity: 0; } }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes aurora-glow { 0%, 100% { transform: translateY(0px) scale(1); opacity: 0.1; } 50% { transform: translateY(-30px) scale(1.2); opacity: 0.15; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            top: 20px;
-            border: 4px solid var(--bg-primary);
-            box-shadow: var(--shadow-medium);
-            z-index: 1;
-        }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--animation-smooth), transform 0.8s var(--animation-smooth); will-change: opacity, transform; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        .timeline-item:nth-child(odd)::before {
-            right: -10px;
-        }
-
-        .timeline-item:nth-child(even)::before {
-            left: -10px;
-        }
-
-        .timeline-content {
-            padding: 2.5rem;
-        }
-
-        .timeline-date {
-            font-weight: 700;
-            font-family: 'JetBrains Mono', monospace;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .timeline-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .timeline-company {
-            color: var(--primary-blue);
-            font-weight: 600;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-        }
-
-        .project-card {
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .project-image {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-
-        .project-image-placeholder {
-            width: 100%;
-            height: 220px;
-            display: grid;
-            place-items: center;
-            background: var(--gradient-dark);
-            color: var(--electric-blue);
-            font-size: 4rem;
+        /* ============================================
+           GITHUB SECTION - NEW
+        ============================================ */
+        .github-section {
+            background: linear-gradient(180deg, #0B0E14 0%, #0d1117 100%);
+            padding: 8rem 0;
             position: relative;
             overflow: hidden;
         }
 
-        .project-image-placeholder::after {
+        .github-section::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-            animation: shimmer 2s infinite;
+            background-image:
+                linear-gradient(rgba(88, 166, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(88, 166, 255, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
-        .project-content {
-            padding: 2rem;
-            flex-grow: 1;
+        .github-section .section-title { color: #e6edf3; }
+        .github-section .section-subtitle { color: #8b949e; }
+
+        /* GitHub Profile Header Card */
+        .github-profile-header {
             display: flex;
-            flex-direction: column;
-        }
-
-        .project-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .project-description {
-            flex-grow: 1;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-tag {
-            background: rgba(0, 102, 255, 0.1);
-            color: var(--primary-blue);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .project-links a {
-            text-decoration: none;
-            color: var(--primary-blue);
-            font-weight: 600;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            align-items: center;
             gap: 2.5rem;
-        }
-
-        .skill-category {
-            padding: 2.5rem;
-        }
-
-        .skill-category-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-category-title i {
-            font-size: 1.8rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .skill-item {
-            background: rgba(0, 102, 255, 0.1);
-            color: var(--primary-blue);
-            padding: 0.75rem 1.5rem;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: all var(--animation-speed) ease;
-        }
-
-        .skill-item:hover {
-            background: var(--primary-blue);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* Contact Section */
-        .contact {
-            background: var(--gradient-dark);
-            color: white;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-        }
-
-        .contact-info h3 {
-            font-size: 2.5rem;
-        }
-
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s;
-        }
-
-        .contact-item:hover {
-            transform: translateX(10px);
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            font-size: 1.5rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            color: white;
-            text-decoration: none;
-            font-size: 1.5rem;
-            transition: background 0.3s, transform 0.3s;
-        }
-
-        .social-link:hover {
-            background: var(--primary-blue);
-            transform: translateY(-5px);
-        }
-
-        form input,
-        form textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid rgba(0, 204, 255, 0.3);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            outline: none;
-        }
-
-        form input:focus,
-        form textarea:focus {
-            border-color: var(--electric-blue);
-            box-shadow: 0 0 0 3px rgba(0, 204, 255, 0.2);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .contact-form-container>div {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2.5rem;
+            background: #161b22;
+            border: 1px solid #30363d;
             border-radius: 20px;
-            border: 1px solid rgba(0, 204, 255, 0.2);
-            backdrop-filter: blur(10px);
-        }
-
-        .contact-form-container form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .btn {
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            cursor: pointer;
-            transition: all var(--animation-speed) var(--animation-smooth);
-            outline: none;
+            padding: 2.5rem 3rem;
+            margin-bottom: 3rem;
             position: relative;
             overflow: hidden;
-            z-index: 1;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
-        .btn:focus-visible {
-            box-shadow: 0 0 0 3px rgba(0, 196, 255, 0.5);
+        .github-profile-header:hover {
+            border-color: #58a6ff;
+            box-shadow: 0 0 30px rgba(88, 166, 255, 0.15);
         }
 
-        .btn:active {
-            transform: scale(0.96);
+        .github-profile-header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #58a6ff, #3fb950, #f78166, #d2a8ff);
         }
 
-        .btn-primary {
-            background: var(--gradient-primary);
-            color: white;
-            box-shadow: var(--shadow-medium);
+        .github-avatar-wrap {
+            position: relative;
+            flex-shrink: 0;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-heavy), var(--shadow-glow);
+        .github-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #58a6ff;
+            box-shadow: 0 0 20px rgba(88, 166, 255, 0.4);
         }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
+        .github-status-dot {
+            position: absolute;
+            bottom: 4px; right: 4px;
+            width: 18px; height: 18px;
+            background: #3fb950;
+            border-radius: 50%;
+            border: 3px solid #161b22;
+            animation: pulse-dot 2s infinite;
         }
 
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
-            border-color: rgba(255, 255, 255, 0.4);
+        @keyframes pulse-dot {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(63, 185, 80, 0.4); }
+            50% { box-shadow: 0 0 0 6px rgba(63, 185, 80, 0); }
         }
 
-        /* Footer */
-        .footer {
-            background: #000;
-            color: white;
+        .github-profile-info { flex: 1; }
+
+        .github-profile-name {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #e6edf3;
+            margin-bottom: 0.25rem;
+        }
+
+        .github-profile-login {
+            color: #58a6ff;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .github-profile-bio {
+            color: #8b949e;
+            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .github-profile-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .github-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+
+        .github-meta-item i { color: #58a6ff; }
+
+        .github-profile-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
             text-align: center;
-            padding: 2rem 0;
-            border-top: 1px solid rgba(0, 102, 255, 0.2);
+            flex-shrink: 0;
         }
 
-        /* Keyframes Animations */
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.1);
-            }
+        .gh-stat-item {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            min-width: 120px;
         }
 
-        @keyframes shimmer {
-            0% {
-                background-position: 200% center;
-            }
-
-            100% {
-                background-position: -200% center;
-            }
+        .gh-stat-num {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: #58a6ff;
+            font-family: 'JetBrains Mono', monospace;
+            display: block;
         }
 
-        @keyframes blink {
-            50% {
-                opacity: 0;
-            }
+        .gh-stat-label {
+            font-size: 0.75rem;
+            color: #8b949e;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
+        .github-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #21262d;
+            color: #e6edf3;
+            border: 1px solid #30363d;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 1rem;
         }
 
-        @keyframes aurora-glow {
-
-            0%,
-            100% {
-                transform: translateY(0px) scale(1);
-                opacity: 0.1;
-            }
-
-            50% {
-                transform: translateY(-30px) scale(1.2);
-                opacity: 0.15;
-            }
+        .github-btn:hover {
+            background: #30363d;
+            border-color: #58a6ff;
+            color: #58a6ff;
+            transform: translateY(-2px);
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Stats Grid */
+        .github-stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        /* Scroll Fade-in Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s var(--animation-smooth), transform 0.8s var(--animation-smooth);
-            will-change: opacity, transform;
+        .github-stats-grid.three-col {
+            grid-template-columns: 1fr 1fr 1fr;
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .gh-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
         }
 
-        /* 320px Strict Wraps */
-        .container,
-        .nav-container,
-        .hero-container {
+        .gh-card:hover {
+            border-color: #58a6ff;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(88, 166, 255, 0.15);
+        }
+
+        .gh-card-title {
+            padding: 1rem 1.5rem 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #8b949e;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            border-bottom: 1px solid #21262d;
+        }
+
+        .gh-card img {
             width: 100%;
-            min-width: 0;
-            overflow-wrap: break-word;
+            display: block;
+            min-height: 150px;
         }
 
-        /* PENINGKATAN: Breakpoint tambahan untuk Tablet */
+        /* Contribution Heatmap */
+        .contrib-heatmap-wrap {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .contrib-heatmap-wrap:hover { border-color: #58a6ff; }
+
+        .contrib-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contrib-title {
+            color: #e6edf3;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .contrib-count {
+            color: #8b949e;
+            font-size: 0.85rem;
+        }
+
+        .contrib-count span {
+            color: #3fb950;
+            font-weight: 700;
+        }
+
+        .heatmap-img {
+            width: 100%;
+            border-radius: 8px;
+            display: block;
+        }
+
+        /* Streak Full Width */
+        .gh-streak-wrap {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .gh-streak-wrap:hover { border-color: #f78166; }
+
+        .gh-streak-wrap img { width: 100%; max-width: 700px; }
+
+        /* Trophy */
+        .gh-trophy-wrap {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            overflow: hidden;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+
+        .gh-trophy-wrap:hover { border-color: #d2a8ff; }
+        .gh-trophy-wrap img { width: 100%; }
+
+        /* Activity Graph */
+        .gh-activity-wrap {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.3s;
+        }
+
+        .gh-activity-wrap:hover { border-color: #3fb950; }
+        .gh-activity-wrap img { width: 100%; display: block; }
+
+        /* Top Repos */
+        .github-repos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .repo-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .repo-card:hover {
+            border-color: #58a6ff;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(88, 166, 255, 0.12);
+        }
+
+        .repo-card-name {
+            color: #58a6ff;
+            font-weight: 700;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .repo-card-desc {
+            color: #8b949e;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .repo-card-meta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .repo-lang-dot {
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .repo-lang { color: #8b949e; font-size: 0.8rem; display: flex; align-items: center; gap: 0.4rem; }
+        .repo-stars { color: #8b949e; font-size: 0.8rem; }
+        .repo-stars i { color: #e3b341; }
+
+        /* Tech Badges */
+        .gh-badges-wrap {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        /* Responsive */
         @media (max-width: 992px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 3rem;
-                padding-top: 6rem;
-            }
-
-            .hero-image {
-                grid-row: 1;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .hero-title {
-                font-size: 3.5rem;
-            }
-
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .profile-container {
-                margin: 0 auto;
-            }
+            .hero-container { grid-template-columns: 1fr; text-align: center; gap: 3rem; padding-top: 6rem; }
+            .hero-image { grid-row: 1; }
+            .hero-buttons { justify-content: center; }
+            .hero-title { font-size: 3.5rem; }
+            .about-content, .contact-content { grid-template-columns: 1fr; }
+            .profile-container { margin: 0 auto; }
+            .github-stats-grid { grid-template-columns: 1fr; }
+            .github-stats-grid.three-col { grid-template-columns: 1fr 1fr; }
+            .github-repos-grid { grid-template-columns: 1fr; }
+            .github-profile-header { flex-direction: column; text-align: center; }
+            .github-profile-meta { justify-content: center; }
+            .github-profile-stats { flex-direction: row; flex-wrap: wrap; justify-content: center; }
         }
 
-        /* PENINGKATAN: Media Query yang lebih terperinci untuk Mobile */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--bg-secondary);
-                padding: 1rem 0;
-                box-shadow: var(--shadow-medium);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                padding: 0.5rem 0;
-            }
-
-            .mobile-menu-toggle {
-                display: block;
-            }
-
-            .hero-title {
-                font-size: 2.8rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .profile-container {
-                width: 300px;
-                height: 300px;
-            }
-
-            .profile-ring {
-                width: 340px;
-                height: 340px;
-                top: -20px;
-                left: -20px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 280px;
-            }
-
-            .timeline::before {
-                left: 20px;
-                transform: translateX(0);
-            }
-
-            .timeline-item,
-            .timeline-item:nth-child(even) {
-                width: 100%;
-                left: 0;
-                padding-left: 3rem;
-                padding-right: 0;
-            }
-
-            .timeline-item::before,
-            .timeline-item:nth-child(even)::before {
-                left: 10px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-secondary); padding: 1rem 0; box-shadow: var(--shadow-medium); }
+            .nav-links.active { display: flex; }
+            .nav-links li { padding: 0.5rem 0; }
+            .mobile-menu-toggle { display: block; }
+            .hero-title { font-size: 2.8rem; }
+            .hero-subtitle { font-size: 1.2rem; }
+            .profile-container { width: 300px; height: 300px; }
+            .profile-ring { width: 340px; height: 340px; top: -20px; left: -20px; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 280px; }
+            .timeline::before { left: 20px; transform: translateX(0); }
+            .timeline-item, .timeline-item:nth-child(even) { width: 100%; left: 0; padding-left: 3rem; padding-right: 0; }
+            .timeline-item::before, .timeline-item:nth-child(even)::before { left: 10px; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .github-stats-grid.three-col { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 380px) {
-            .hero-title {
-                font-size: 2.2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .stat-number {
-                font-size: 2.2rem;
-            }
-
-            .timeline-item,
-            .timeline-item:nth-child(even) {
-                padding-left: 2rem;
-            }
-
-            .timeline-item::before,
-            .timeline-item:nth-child(even)::before {
-                left: 0;
-                width: 16px;
-                height: 16px;
-                top: 22px;
-            }
-
-            .btn {
-                max-width: 100%;
-                padding: 0.8rem 1rem;
-                font-size: 0.9rem;
-            }
-
-            .project-content {
-                padding: 1.5rem;
-            }
-
-            .stat-card {
-                padding: 1.5rem;
-            }
-
-            .contact-info h3 {
-                font-size: 2rem;
-            }
+            .hero-title { font-size: 2.2rem; }
+            .section-title { font-size: 2rem; }
+            .stat-number { font-size: 2.2rem; }
+            .timeline-item, .timeline-item:nth-child(even) { padding-left: 2rem; }
+            .timeline-item::before, .timeline-item:nth-child(even)::before { left: 0; width: 16px; height: 16px; top: 22px; }
+            .btn { max-width: 100%; padding: 0.8rem 1rem; font-size: 0.9rem; }
+            .project-content { padding: 1.5rem; }
+            .stat-card { padding: 1.5rem; }
+            .contact-info h3 { font-size: 2rem; }
         }
     </style>
 </head>
 
 <body>
     <div class="cursor-aura" id="cursor-aura"></div>
-    <div class="loading" id="loading">
-        <div class="spinner"></div>
-    </div>
+    <div class="loading" id="loading"><div class="spinner"></div></div>
 
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -1130,6 +854,7 @@
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#github">GitHub</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="fas fa-bars"></i></button>
@@ -1141,38 +866,24 @@
         <div class="aurora-element"></div>
         <div class="aurora-element"></div>
         <div class="aurora-element"></div>
-
         <div class="hero-container">
             <div class="hero-content">
                 <div class="hero-badge">
                     <i class="fas fa-rocket"></i>
                     <span>Entrepreneur & Digital Innovator</span>
                 </div>
-                <h1 class="hero-title">
-                    <span class="gradient-text">Siraj Nur Ihrom</span>
-                </h1>
+                <h1 class="hero-title"><span class="gradient-text">Siraj Nur Ihrom</span></h1>
                 <p class="hero-subtitle" id="hero-subtitle"></p>
-                <p class="hero-description fade-in">
-                    Passionate entrepreneur with 7+ years of experience in digital platforms, fintech services, and
-                    startup development.
-                    Founder & CEO of SNISHOP.ID and multiple successful digital ventures.
-                </p>
+                <p class="hero-description fade-in">Passionate entrepreneur with 7+ years of experience in digital platforms, fintech services, and startup development. Founder & CEO of SNISHOP.ID and multiple successful digital ventures.</p>
                 <div class="hero-buttons fade-in">
-                    <a href="#projects" class="btn btn-primary">
-                        <i class="fas fa-rocket"></i>
-                        View My Work
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <i class="fas fa-envelope"></i>
-                        Get In Touch
-                    </a>
+                    <a href="#projects" class="btn btn-primary"><i class="fas fa-rocket"></i> View My Work</a>
+                    <a href="#contact" class="btn btn-secondary"><i class="fas fa-envelope"></i> Get In Touch</a>
                 </div>
             </div>
             <div class="hero-image fade-in">
                 <div class="profile-container">
                     <div class="profile-ring"></div>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYUnxTGZhPObxeW5XPqjAPiQwWKg0IfE7uag&s"
-                        alt="Siraj Nur Ihrom" class="profile-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYUnxTGZhPObxeW5XPqjAPiQwWKg0IfE7uag&s" alt="Siraj Nur Ihrom" class="profile-image">
                 </div>
             </div>
         </div>
@@ -1181,37 +892,17 @@
     <section class="about" id="about">
         <div class="container">
             <h2 class="section-title fade-in">About Me</h2>
-            <p class="section-subtitle fade-in">
-                Driven by innovation and committed to empowering SMEs and students through cutting-edge digital
-                solutions
-            </p>
+            <p class="section-subtitle fade-in">Driven by innovation and committed to empowering SMEs and students through cutting-edge digital solutions</p>
             <div class="about-content">
                 <div class="about-stats">
-                    <div class="stat-card fade-in">
-                        <div class="stat-number">6+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat-card fade-in">
-                        <div class="stat-number">4</div>
-                        <div class="stat-label">Companies Founded</div>
-                    </div>
-                    <div class="stat-card fade-in">
-                        <div class="stat-number">3</div>
-                        <div class="stat-label">Major Awards</div>
-                    </div>
-                    <div class="stat-card fade-in">
-                        <div class="stat-number">2000+</div>
-                        <div class="stat-label">Monthly Transactions</div>
-                    </div>
+                    <div class="stat-card fade-in"><div class="stat-number">6+</div><div class="stat-label">Years Experience</div></div>
+                    <div class="stat-card fade-in"><div class="stat-number">4</div><div class="stat-label">Companies Founded</div></div>
+                    <div class="stat-card fade-in"><div class="stat-number">3</div><div class="stat-label">Major Awards</div></div>
+                    <div class="stat-card fade-in"><div class="stat-number">2000+</div><div class="stat-label">Monthly Transactions</div></div>
                 </div>
                 <div class="about-text fade-in">
-                    <p>I am an entrepreneur with over 7 years of experience managing digital platforms, financial
-                        technology services, and startups. Since 2018, I have been building and leading SNISHOP.ID as
-                        Founder and CEO, developing it into an integrated platform for digital payments and products,
-                        continually expanding its services.</p>
-                    <p>My expertise includes IT, project management, e-commerce, and business development, with a
-                        successful track record in securing funding and driving business growth. I am committed to
-                        empowering SMEs and students through innovative digital solutions.</p>
+                    <p>I am an entrepreneur with over 7 years of experience managing digital platforms, financial technology services, and startups. Since 2018, I have been building and leading SNISHOP.ID as Founder and CEO, developing it into an integrated platform for digital payments and products.</p>
+                    <p>My expertise includes IT, project management, e-commerce, and business development, with a successful track record in securing funding and driving business growth. I am committed to empowering SMEs and students through innovative digital solutions.</p>
                 </div>
             </div>
         </div>
@@ -1222,33 +913,9 @@
             <h2 class="section-title fade-in">Professional Experience</h2>
             <p class="section-subtitle fade-in">My journey through entrepreneurship, leadership, and innovation</p>
             <div class="timeline">
-                <div class="timeline-item fade-in">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2018 - Present</div>
-                        <h3 class="timeline-title">CEO & Founder</h3>
-                        <div class="timeline-company">SNISHOP.ID</div>
-                        <p>Leading a comprehensive digital solutions platform providing payment gateways, PPOB, game
-                            vouchers, and professional services.</p>
-                    </div>
-                </div>
-                <div class="timeline-item fade-in">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2024 - Present</div>
-                        <h3 class="timeline-title">Founder & CTO</h3>
-                        <div class="timeline-company">CoTrade.ID</div>
-                        <p>Developing a marketplace aimed at students and SMEs in Bengkulu, secured BMW funding for
-                            development.</p>
-                    </div>
-                </div>
-                <div class="timeline-item fade-in">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2023 - Present</div>
-                        <h3 class="timeline-title">Founder</h3>
-                        <div class="timeline-company">CryptoCurrent.id</div>
-                        <p>Founded a cryptocurrency education and media platform to empower individuals with blockchain
-                            knowledge.</p>
-                    </div>
-                </div>
+                <div class="timeline-item fade-in"><div class="timeline-content"><div class="timeline-date">2018 - Present</div><h3 class="timeline-title">CEO & Founder</h3><div class="timeline-company">SNISHOP.ID</div><p>Leading a comprehensive digital solutions platform providing payment gateways, PPOB, game vouchers, and professional services.</p></div></div>
+                <div class="timeline-item fade-in"><div class="timeline-content"><div class="timeline-date">2024 - Present</div><h3 class="timeline-title">Founder & CTO</h3><div class="timeline-company">CoTrade.ID</div><p>Developing a marketplace aimed at students and SMEs in Bengkulu, secured BMW funding for development.</p></div></div>
+                <div class="timeline-item fade-in"><div class="timeline-content"><div class="timeline-date">2023 - Present</div><h3 class="timeline-title">Founder</h3><div class="timeline-company">CryptoCurrent.id</div><p>Founded a cryptocurrency education and media platform to empower individuals with blockchain knowledge.</p></div></div>
             </div>
         </div>
     </section>
@@ -1258,80 +925,12 @@
             <h2 class="section-title fade-in">My Projects</h2>
             <p class="section-subtitle fade-in">Innovative digital solutions that make a difference</p>
             <div class="projects-grid">
-                <div class="project-card fade-in">
-                    <img src="assets/dwstore.png" alt="DW Store Mebel" class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">DW Store Mebel</h3>
-                        <p class="project-description">Premium interior artisan and custom furniture provider in Bengkulu. Spesialis custom furniture & interior. Kontributor kebanggaan interior di Bengkulu.</p>
-                        <div class="project-tech"><span class="tech-tag">Next.js</span><span
-                                class="tech-tag">Tailwind CSS</span><span class="tech-tag">Custom Furniture</span></div>
-                        <div class="project-links"><a href="https://dwstore.vercel.app/" target="_blank">Visit Website</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card fade-in">
-                    <div class="project-image-placeholder"><i class="fas fa-building"></i></div>
-                    <div class="project-content">
-                        <h3 class="project-title">SNISHOP ERP</h3>
-                        <p class="project-description">My biggest project to date. An all-in-one business operating
-                            system tailored for MSMEs in Indonesia, featuring POS, CRM, HR, Payroll, Finance, and
-                            Inventory management.</p>
-                        <div class="project-tech"><span class="tech-tag">ERP</span><span
-                                class="tech-tag">SaaS</span><span class="tech-tag">B2B</span></div>
-                        <div class="project-links"><a href="https://erp.snishop.com" target="_blank">Visit Website</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card fade-in">
-                    <div class="project-image-placeholder"><i class="fas fa-check-double"></i></div>
-                    <div class="project-content">
-                        <h3 class="project-title">TODOIT</h3>
-                        <p class="project-description">An AI-powered assistant for financial management and an
-                            all-in-one productivity platform for individuals and teams to manage tasks and business
-                            operations.</p>
-                        <div class="project-tech"><span class="tech-tag">AI</span><span
-                                class="tech-tag">Productivity</span><span class="tech-tag">Finance</span></div>
-                        <div class="project-links"><a href="https://todoit.snishop.com" target="_blank">Visit
-                                Website</a></div>
-                    </div>
-                </div>
-
-                <div class="project-card fade-in"><img src="https://i.ibb.co/6PSpWzT/LOGOSNISHOPPANJANGPUTIH.jpg"
-                        alt="SNISHOP.ID" class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">SNISHOP.ID</h3>
-                        <p class="project-description">Comprehensive digital solutions platform with payment gateways,
-                            PPOB, game vouchers, and more, processing over 2000+ monthly transactions.</p>
-                        <div class="project-tech"><span class="tech-tag">Fintech</span><span
-                                class="tech-tag">E-commerce</span></div>
-                        <div class="project-links"><a href="https://snishop.id/" target="_blank">Visit Website</a></div>
-                    </div>
-                </div>
-                <div class="project-card fade-in"><img src="https://i.ibb.co/mSsyC7T/LOGOCOTRADE.jpg" alt="CoTrade.ID"
-                        class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">CoTrade.ID</h3>
-                        <p class="project-description">A marketplace connecting students and SMEs in Bengkulu to foster
-                            entrepreneurship, backed by BMW funding.</p>
-                        <div class="project-tech"><span class="tech-tag">Marketplace</span><span
-                                class="tech-tag">SME</span></div>
-                        <div class="project-links"><a href="https://cotrade.id" target="_blank">In Development</a></div>
-                    </div>
-                </div>
-                <div class="project-card fade-in"><img src="https://i.ibb.co/7C9m7G2/LOGOCRYPTOCURRENT.jpg"
-                        alt="CryptoCurrent.id" class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">CryptoCurrent.id</h3>
-                        <p class="project-description">An educational media platform designed to empower individuals
-                            with knowledge about blockchain and digital assets.</p>
-                        <div class="project-tech"><span class="tech-tag">Blockchain</span><span
-                                class="tech-tag">Education</span></div>
-                        <div class="project-links"><a href="https://cryptocurrent.id" target="_blank">Visit Website</a>
-                        </div>
-                    </div>
-                </div>
+                <div class="project-card fade-in"><img src="assets/dwstore.png" alt="DW Store Mebel" class="project-image"><div class="project-content"><h3 class="project-title">DW Store Mebel</h3><p class="project-description">Premium interior artisan and custom furniture provider in Bengkulu. Spesialis custom furniture & interior.</p><div class="project-tech"><span class="tech-tag">Next.js</span><span class="tech-tag">Tailwind CSS</span></div><div class="project-links"><a href="https://dwstore.vercel.app/" target="_blank">Visit Website</a></div></div></div>
+                <div class="project-card fade-in"><div class="project-image-placeholder"><i class="fas fa-building"></i></div><div class="project-content"><h3 class="project-title">SNISHOP ERP</h3><p class="project-description">An all-in-one business operating system tailored for MSMEs in Indonesia, featuring POS, CRM, HR, Payroll, Finance, and Inventory management.</p><div class="project-tech"><span class="tech-tag">ERP</span><span class="tech-tag">SaaS</span><span class="tech-tag">B2B</span></div><div class="project-links"><a href="https://erp.snishop.com" target="_blank">Visit Website</a></div></div></div>
+                <div class="project-card fade-in"><div class="project-image-placeholder"><i class="fas fa-check-double"></i></div><div class="project-content"><h3 class="project-title">TODOIT</h3><p class="project-description">An AI-powered assistant for financial management and productivity platform for individuals and teams.</p><div class="project-tech"><span class="tech-tag">AI</span><span class="tech-tag">Productivity</span><span class="tech-tag">Finance</span></div><div class="project-links"><a href="https://todoit.snishop.com" target="_blank">Visit Website</a></div></div></div>
+                <div class="project-card fade-in"><img src="https://i.ibb.co/6PSpWzT/LOGOSNISHOPPANJANGPUTIH.jpg" alt="SNISHOP.ID" class="project-image"><div class="project-content"><h3 class="project-title">SNISHOP.ID</h3><p class="project-description">Comprehensive digital solutions platform with payment gateways, PPOB, game vouchers, and more, processing over 2000+ monthly transactions.</p><div class="project-tech"><span class="tech-tag">Fintech</span><span class="tech-tag">E-commerce</span></div><div class="project-links"><a href="https://snishop.id/" target="_blank">Visit Website</a></div></div></div>
+                <div class="project-card fade-in"><img src="https://i.ibb.co/mSsyC7T/LOGOCOTRADE.jpg" alt="CoTrade.ID" class="project-image"><div class="project-content"><h3 class="project-title">CoTrade.ID</h3><p class="project-description">A marketplace connecting students and SMEs in Bengkulu to foster entrepreneurship, backed by BMW funding.</p><div class="project-tech"><span class="tech-tag">Marketplace</span><span class="tech-tag">SME</span></div><div class="project-links"><a href="https://cotrade.id" target="_blank">In Development</a></div></div></div>
+                <div class="project-card fade-in"><img src="https://i.ibb.co/7C9m7G2/LOGOCRYPTOCURRENT.jpg" alt="CryptoCurrent.id" class="project-image"><div class="project-content"><h3 class="project-title">CryptoCurrent.id</h3><p class="project-description">An educational media platform designed to empower individuals with knowledge about blockchain and digital assets.</p><div class="project-tech"><span class="tech-tag">Blockchain</span><span class="tech-tag">Education</span></div><div class="project-links"><a href="https://cryptocurrent.id" target="_blank">Visit Website</a></div></div></div>
             </div>
         </div>
     </section>
@@ -1341,22 +940,134 @@
             <h2 class="section-title fade-in">Skills & Expertise</h2>
             <p class="section-subtitle fade-in">Core competencies that drive innovation and success</p>
             <div class="skills-grid">
-                <div class="skill-category fade-in">
-                    <h3 class="skill-category-title"><i class="fas fa-rocket"></i> Leadership</h3>
-                    <div class="skill-list"><span class="skill-item">Team Management</span><span
-                            class="skill-item">Project Management</span><span class="skill-item">Strategic
-                            Planning</span></div>
+                <div class="skill-category fade-in"><h3 class="skill-category-title"><i class="fas fa-rocket"></i> Leadership</h3><div class="skill-list"><span class="skill-item">Team Management</span><span class="skill-item">Project Management</span><span class="skill-item">Strategic Planning</span></div></div>
+                <div class="skill-category fade-in"><h3 class="skill-category-title"><i class="fas fa-code"></i> Technical</h3><div class="skill-list"><span class="skill-item">Web Development</span><span class="skill-item">E-commerce</span><span class="skill-item">IT Management</span></div></div>
+                <div class="skill-category fade-in"><h3 class="skill-category-title"><i class="fas fa-chart-line"></i> Business</h3><div class="skill-list"><span class="skill-item">Startup Development</span><span class="skill-item">Market Analysis</span><span class="skill-item">Funding</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         GITHUB SECTION - NEW & PROFESSIONAL
+    ============================================ -->
+    <section class="github-section" id="github">
+        <div class="container">
+            <h2 class="section-title fade-in" style="color:#e6edf3">GitHub Activity</h2>
+            <p class="section-subtitle fade-in" style="color:#8b949e">Real-time contributions, statistics & open source activity</p>
+
+            <!-- GitHub Profile Header -->
+            <div class="github-profile-header fade-in">
+                <div class="github-avatar-wrap">
+                    <img src="https://avatars.githubusercontent.com/u/80201939?v=4" alt="SIRAJcrypto11" class="github-avatar">
+                    <div class="github-status-dot"></div>
                 </div>
-                <div class="skill-category fade-in">
-                    <h3 class="skill-category-title"><i class="fas fa-code"></i> Technical</h3>
-                    <div class="skill-list"><span class="skill-item">Web Development</span><span
-                            class="skill-item">E-commerce</span><span class="skill-item">IT Management</span></div>
+                <div class="github-profile-info">
+                    <div class="github-profile-name">Siraj Nur Ihrom</div>
+                    <div class="github-profile-login">@SIRAJcrypto11</div>
+                    <div class="github-profile-bio">🚀 Founder & CTO · Full-Stack Developer · AI Builder · Building ERP, SaaS & AI Agents from Bengkulu, Indonesia 🇮🇩</div>
+                    <div class="github-profile-meta">
+                        <span class="github-meta-item"><i class="fas fa-building"></i> PT Snishop Network Indonesia</span>
+                        <span class="github-meta-item"><i class="fas fa-map-marker-alt"></i> Bengkulu, Indonesia</span>
+                        <span class="github-meta-item"><i class="fas fa-link"></i> snishop.com</span>
+                        <span class="github-meta-item"><i class="fas fa-calendar"></i> Member since March 2021</span>
+                    </div>
+                    <a href="https://github.com/SIRAJcrypto11" target="_blank" class="github-btn">
+                        <i class="fab fa-github"></i> View Full Profile
+                    </a>
                 </div>
-                <div class="skill-category fade-in">
-                    <h3 class="skill-category-title"><i class="fas fa-chart-line"></i> Business</h3>
-                    <div class="skill-list"><span class="skill-item">Startup Development</span><span
-                            class="skill-item">Market Analysis</span><span class="skill-item">Funding</span></div>
+                <div class="github-profile-stats">
+                    <div class="gh-stat-item"><span class="gh-stat-num" id="gh-repos">47+</span><span class="gh-stat-label">Repositories</span></div>
+                    <div class="gh-stat-item"><span class="gh-stat-num" id="gh-commits">3.3K+</span><span class="gh-stat-label">Commits</span></div>
+                    <div class="gh-stat-item"><span class="gh-stat-num">5+</span><span class="gh-stat-label">Yrs Active</span></div>
                 </div>
+            </div>
+
+            <!-- Contribution Heatmap (GitHub API via ghchart) -->
+            <div class="contrib-heatmap-wrap fade-in">
+                <div class="contrib-header">
+                    <div class="contrib-title"><i class="fas fa-fire" style="color:#f78166;margin-right:8px"></i>Contribution Graph — Last 12 Months</div>
+                    <div class="contrib-count"><span>3,380+</span> contributions in 2026</div>
+                </div>
+                <img src="https://ghchart.rshah.org/58a6ff/SIRAJcrypto11" alt="GitHub Contribution Heatmap" class="heatmap-img" onerror="this.src='https://github-readme-activity-graph.vercel.app/graph?username=SIRAJcrypto11&theme=github-compact&hide_border=true&bg_color=161b22&color=58a6ff&line=58a6ff&point=ffffff'">
+            </div>
+
+            <!-- Activity Graph Full Width -->
+            <div class="gh-activity-wrap fade-in">
+                <img src="https://github-readme-activity-graph.vercel.app/graph?username=SIRAJcrypto11&theme=github-compact&hide_border=true&bg_color=0d1117&color=58a6ff&line=3fb950&point=f78166&area=true&area_color=58a6ff" alt="Activity Graph">
+            </div>
+
+            <!-- Stats + Top Languages Row -->
+            <div class="github-stats-grid fade-in">
+                <div class="gh-card">
+                    <div class="gh-card-title"><i class="fas fa-chart-bar" style="color:#58a6ff;margin-right:6px"></i>GitHub Statistics</div>
+                    <img src="https://github-readme-stats.vercel.app/api?username=SIRAJcrypto11&show_icons=true&theme=github_dark&hide_border=true&count_private=true&include_all_commits=true&rank_icon=github&bg_color=161b22" alt="GitHub Stats">
+                </div>
+                <div class="gh-card">
+                    <div class="gh-card-title"><i class="fas fa-code" style="color:#3fb950;margin-right:6px"></i>Top Languages</div>
+                    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=SIRAJcrypto11&layout=compact&theme=github_dark&hide_border=true&langs_count=8&count_private=true&bg_color=161b22" alt="Top Languages">
+                </div>
+            </div>
+
+            <!-- Streak Stats Full Width -->
+            <div class="gh-streak-wrap fade-in">
+                <img src="https://streak-stats.demolab.com?user=SIRAJcrypto11&theme=github-dark-blue&hide_border=true&background=161b22&ring=58a6ff&fire=f78166&currStreakLabel=58a6ff&sideNums=e6edf3&dates=8b949e" alt="GitHub Streak">
+            </div>
+
+            <!-- Trophy Row -->
+            <div class="gh-trophy-wrap fade-in">
+                <div class="gh-card-title" style="text-align:left;padding:0 0 1rem 0;border:none;"><i class="fas fa-trophy" style="color:#d2a8ff;margin-right:6px"></i>GitHub Trophies</div>
+                <img src="https://github-profile-trophy.vercel.app/?username=SIRAJcrypto11&theme=algolia&no-frame=true&no-bg=true&column=7&margin-w=8&margin-h=8" alt="GitHub Trophy">
+            </div>
+
+            <!-- Pinned Repos -->
+            <h3 style="color:#e6edf3;font-size:1.1rem;font-weight:700;margin-bottom:1rem;" class="fade-in">
+                <i class="fas fa-thumbtack" style="color:#58a6ff;margin-right:8px"></i>Pinned Repositories
+            </h3>
+            <div class="github-repos-grid fade-in">
+                <a href="https://github.com/SIRAJcrypto11/snishop-erp-system" target="_blank" class="repo-card">
+                    <div class="repo-card-name"><i class="fas fa-book"></i> snishop-erp-system</div>
+                    <div class="repo-card-desc">All-in-one ERP system for Indonesian MSMEs — POS, CRM, HR, Finance, Inventory</div>
+                    <div class="repo-card-meta"><span class="repo-lang"><span class="repo-lang-dot" style="background:#3178c6"></span>TypeScript</span><span class="repo-stars"><i class="fas fa-star"></i> ERP</span></div>
+                </a>
+                <a href="https://github.com/SIRAJcrypto11/SNISHOP-NETWORK-INDONESIA" target="_blank" class="repo-card">
+                    <div class="repo-card-name"><i class="fas fa-book"></i> SNISHOP-NETWORK-INDONESIA</div>
+                    <div class="repo-card-desc">Main website for PT Snishop Network Indonesia digital platform</div>
+                    <div class="repo-card-meta"><span class="repo-lang"><span class="repo-lang-dot" style="background:#e34c26"></span>HTML</span><span class="repo-stars"><i class="fas fa-star"></i> Website</span></div>
+                </a>
+                <a href="https://github.com/SIRAJcrypto11/OtomaAI" target="_blank" class="repo-card">
+                    <div class="repo-card-name"><i class="fas fa-book"></i> OtomaAI</div>
+                    <div class="repo-card-desc">AI Agent automation & orchestration framework built with TypeScript</div>
+                    <div class="repo-card-meta"><span class="repo-lang"><span class="repo-lang-dot" style="background:#3178c6"></span>TypeScript</span><span class="repo-stars"><i class="fas fa-star"></i> AI</span></div>
+                </a>
+                <a href="https://github.com/SIRAJcrypto11/Agentik" target="_blank" class="repo-card">
+                    <div class="repo-card-name"><i class="fas fa-book"></i> Agentik</div>
+                    <div class="repo-card-desc">AI workflow builder and agent orchestration platform</div>
+                    <div class="repo-card-meta"><span class="repo-lang"><span class="repo-lang-dot" style="background:#3178c6"></span>TypeScript</span><span class="repo-stars"><i class="fas fa-star"></i> AI</span></div>
+                </a>
+                <a href="https://github.com/SIRAJcrypto11/Converthub" target="_blank" class="repo-card">
+                    <div class="repo-card-name"><i class="fas fa-book"></i> Converthub</div>
+                    <div class="repo-card-desc">Multi-format online file and data conversion tools platform</div>
+                    <div class="repo-card-meta"><span class="repo-lang"><span class="repo-lang-dot" style="background:#3178c6"></span>TypeScript</span><span class="repo-stars"><i class="fas fa-star"></i> Tools</span></div>
+                </a>
+                <a href="https://github.com/SIRAJcrypto11/sirajnurihrom" target="_blank" class="repo-card">
+                    <div class="repo-card-name"><i class="fas fa-book"></i> sirajnurihrom</div>
+                    <div class="repo-card-desc">Personal portfolio website — this site you're browsing right now!</div>
+                    <div class="repo-card-meta"><span class="repo-lang"><span class="repo-lang-dot" style="background:#e34c26"></span>HTML</span><span class="repo-stars"><i class="fas fa-star"></i> Portfolio</span></div>
+                </a>
+            </div>
+
+            <!-- Tech Badges -->
+            <div class="gh-badges-wrap fade-in">
+                <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js">
+                <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
+                <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React">
+                <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js">
+                <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+                <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
+                <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind">
+                <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel">
+                <img src="https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white" alt="OpenAI">
+                <img src="https://img.shields.io/badge/Claude_AI-CC785C?style=for-the-badge&logo=anthropic&logoColor=white" alt="Claude">
             </div>
         </div>
     </section>
@@ -1364,45 +1075,25 @@
     <section class="contact" id="contact">
         <div class="container">
             <h2 class="section-title fade-in" style="color:white">Get In Touch</h2>
-            <p class="section-subtitle fade-in" style="color:rgba(255,255,255,0.8);">Let's collaborate and create
-                something amazing</p>
+            <p class="section-subtitle fade-in" style="color:rgba(255,255,255,0.8);">Let's collaborate and create something amazing</p>
             <div class="contact-content">
                 <div class="contact-info fade-in">
                     <h3>Ready to Start a Project?</h3>
-                    <p>I'm always excited to work on new projects. Whether you're looking to build a platform or need
-                        consultation, I'd love to hear from you.</p>
+                    <p>I'm always excited to work on new projects. Whether you're looking to build a platform or need consultation, I'd love to hear from you.</p>
                     <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                            <div>
-                                <h4>Email</h4>
-                                <p>sirajnurihrom@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                            <div>
-                                <h4>Phone</h4>
-                                <p>+62 815-3216-8812</p>
-                            </div>
-                        </div>
+                        <div class="contact-item"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div><h4>Email</h4><p>sirajnurihrom@gmail.com</p></div></div>
+                        <div class="contact-item"><div class="contact-icon"><i class="fas fa-phone"></i></div><div><h4>Phone</h4><p>+62 815-3216-8812</p></div></div>
                     </div>
                     <div class="social-links">
-                        <a href="https://linkedin.com/in/sirajnurihrom" class="social-link" target="_blank"><i
-                                class="fab fa-linkedin-in"></i></a>
-                        <a href="https://instagram.com/sirajnurihrom" class="social-link" target="_blank"><i
-                                class="fab fa-instagram"></i></a>
-                        <a href="https://github.com/sirajnurihrom" class="social-link" target="_blank"><i
-                                class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/sirajnurihrom" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://instagram.com/sirajnurihrom" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://github.com/SIRAJcrypto11" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="contact-form-container fade-in">
                     <div>
                         <h4>Send Message</h4>
-                        <form><input type="text" placeholder="Full Name"><input type="email"
-                                placeholder="Email Address"><textarea placeholder="Your Message"
-                                rows="5"></textarea><button type="submit" class="btn btn-primary">Send Message</button>
-                        </form>
+                        <form><input type="text" placeholder="Full Name"><input type="email" placeholder="Email Address"><textarea placeholder="Your Message" rows="5"></textarea><button type="submit" class="btn btn-primary">Send Message</button></form>
                     </div>
                 </div>
             </div>
@@ -1410,103 +1101,77 @@
     </section>
 
     <footer class="footer">
-        <p>&copy; 2024 Siraj Nur Ihrom. All rights reserved.</p>
+        <p>&copy; 2026 Siraj Nur Ihrom. All rights reserved. · <a href="https://github.com/SIRAJcrypto11" style="color:#58a6ff;text-decoration:none" target="_blank"><i class="fab fa-github"></i> GitHub</a></p>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Loading Animation
             const loadingScreen = document.getElementById('loading');
-            setTimeout(() => {
-                loadingScreen.classList.add('hidden');
-            }, 500);
+            setTimeout(() => loadingScreen.classList.add('hidden'), 500);
 
-            // Navbar Scroll Effect
             const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => {
-                navbar.classList.toggle('scrolled', window.scrollY > 50);
-            });
+            window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
 
-            // PENINGKATAN: Logika menu mobile yang lebih baik
             const mobileMenuToggle = document.getElementById('mobileMenuToggle');
             const navLinks = document.getElementById('navLinks');
-            mobileMenuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-            });
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                });
-            });
+            mobileMenuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+            document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
 
-            // Scroll Fade-in Animation
             const faders = document.querySelectorAll('.fade-in');
-            const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
             const appearOnScroll = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
+                    if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
                 });
-            }, appearOptions);
-            faders.forEach(fader => appearOnScroll.observe(fader));
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+            faders.forEach(f => appearOnScroll.observe(f));
 
-            // Counter Animation
             const statsSection = document.querySelector('.about-stats');
             const animateCounter = (el, target) => {
                 let start = 0;
-                const duration = 2000;
-                const stepTime = 16;
+                const duration = 2000, stepTime = 16;
                 const increment = target / (duration / stepTime);
+                const hasPlus = el.textContent.includes('+');
                 const timer = setInterval(() => {
                     start += increment;
-                    if (start >= target) {
-                        el.textContent = `${target}${el.textContent.includes('+') ? '+' : ''}`;
-                        clearInterval(timer);
-                    } else {
-                        el.textContent = `${Math.floor(start)}${el.textContent.includes('+') ? '+' : ''}`;
-                    }
+                    if (start >= target) { el.textContent = `${target}${hasPlus ? '+' : ''}`; clearInterval(timer); }
+                    else { el.textContent = `${Math.floor(start)}${hasPlus ? '+' : ''}`; }
                 }, stepTime);
             };
             const statsObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.querySelectorAll('.stat-number').forEach(stat => {
-                            animateCounter(stat, parseInt(stat.textContent));
-                        });
+                        entry.target.querySelectorAll('.stat-number').forEach(stat => animateCounter(stat, parseInt(stat.textContent)));
                         observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.5 });
             if (statsSection) statsObserver.observe(statsSection);
 
-            // Typewriter Effect
             const subtitleElement = document.getElementById('hero-subtitle');
             if (subtitleElement) {
-                const text = "Entrepreneur & Digital Innovator";
+                const text = 'Entrepreneur & Digital Innovator';
                 let i = 0;
                 subtitleElement.innerHTML = '';
-                const type = () => {
-                    if (i < text.length) {
-                        subtitleElement.innerHTML += text.charAt(i++);
-                        setTimeout(type, 80);
-                    } else {
-                        subtitleElement.classList.add('typing-done');
-                    }
-                };
+                const type = () => { if (i < text.length) { subtitleElement.innerHTML += text.charAt(i++); setTimeout(type, 80); } else { subtitleElement.classList.add('typing-done'); } };
                 setTimeout(type, 1200);
             }
 
-            // Cursor Aura
             const cursorAura = document.getElementById('cursor-aura');
-            window.addEventListener('mousemove', e => {
-                window.requestAnimationFrame(() => {
-                    cursorAura.style.transform = `translate(${e.clientX - 20}px, ${e.clientY - 20}px)`;
-                });
-            });
+            window.addEventListener('mousemove', e => window.requestAnimationFrame(() => {
+                cursorAura.style.transform = `translate(${e.clientX - 20}px, ${e.clientY - 20}px)`;
+            }));
+
+            // Fetch GitHub real-time data via API
+            fetch('https://api.github.com/users/SIRAJcrypto11')
+                .then(r => r.json())
+                .then(data => {
+                    const repoEl = document.getElementById('gh-repos');
+                    if (repoEl && data.public_repos) {
+                        const total = data.public_repos + (data.total_private_repos || 31);
+                        repoEl.textContent = total + '+';
+                    }
+                }).catch(() => {});
         });
     </script>
 </body>
-
 </html>
