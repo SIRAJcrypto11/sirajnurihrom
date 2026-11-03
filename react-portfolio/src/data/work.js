@@ -5,14 +5,15 @@
  * site's own title, meta description, or visible headline. Do not add
  * traffic, revenue, uptime, or other results the page does not state.
  *
- * `confirmed: false` keeps an entry in this file and out of the public
- * index, case studies, and sitemap. The owner/client relationship for those
- * four hosts was not verified.
+ * `confirmed: false` keeps an entry out of the public index, case studies,
+ * and sitemap. Nothing is flagged that way right now.
  *
- * Aliases, redirects, parked hosts, error pages, nacreative.snishop.com,
- * and ditaayusafitri.snishop.com are omitted on purpose.
+ * Aliases, redirects, parked or default host pages, error pages,
+ * nacreative.snishop.com, and ditaayusafitri.snishop.com are omitted.
+ * Kopma UNIB and CV. Taksi Abang Group were removed after the owner said
+ * they are not part of this catalog.
  *
- * kind: "product" | "client" | "unconfirmed"
+ * kind: "product" | "client"
  */
 
 export const workGroups = [
@@ -141,6 +142,25 @@ export const work = [
       "The live page presents an SMM panel for social media management, from the snishop.com team. The working address is smmpedia.snishop.com.",
   }),
   entry({
+    slug: "tangani",
+    title: "Tangani",
+    url: "https://tangani.snishop.com",
+    kind: "product",
+    summary: "Digital business transformation for businesses in Bengkulu.",
+    built:
+      "The page describes a combined offer for distributors and wholesale, healthcare, education, palm-oil and coffee plantations, and fleet logistics.",
+  }),
+  entry({
+    slug: "rupiahin",
+    title: "RupiahIN",
+    url: "https://rupiahin.snishop.com",
+    kind: "product",
+    summary:
+      "A competition-prep second brain that turns documents into modules and quizzes.",
+    built:
+      "The site calls RupiahIN an intelligent second brain for competition prep. It turns documents, photos, and links into interactive modules, quizzes, and structured notes.",
+  }),
+  entry({
     slug: "learnjoin",
     title: "LearnJoin",
     url: "https://learnjoin.com",
@@ -206,50 +226,6 @@ export const work = [
     summary: "Custom kitchen sets and interiors in Bengkulu Tengah.",
     built:
       "DW Store Mebel (Halim Mebel Puri), in Bengkulu Tengah, specialises in custom kitchen sets, wardrobes, and premium interiors, with more than 10 years of experience and anti-termite material.",
-  }),
-
-  // Owner or client status was not verified. Hidden until `confirmed` is set true
-  // and `kind` is changed to "product" or "client".
-  entry({
-    slug: "tangani",
-    title: "Tangani",
-    url: "https://tangani.snishop.com",
-    kind: "unconfirmed",
-    confirmed: false,
-    summary:
-      "Digital business transformation aimed at Bengkulu Province.",
-    built:
-      "The page describes services for distributors and wholesale, healthcare, education, palm-oil and coffee plantations, and fleet logistics.",
-  }),
-  entry({
-    slug: "rupiahin",
-    title: "RupiahIN",
-    url: "https://rupiahin.snishop.com",
-    kind: "unconfirmed",
-    confirmed: false,
-    summary: "A study tool that turns source material into modules and quizzes.",
-    built:
-      "The site calls RupiahIN an intelligent second brain for competition prep, turning documents, photos, and links into interactive modules, quizzes, and structured notes.",
-  }),
-  entry({
-    slug: "kopma-unib",
-    title: "Kopma UNIB",
-    url: "https://kopmaunib.snishop.com",
-    kind: "unconfirmed",
-    confirmed: false,
-    summary: "Site for the student cooperative of Universitas Bengkulu.",
-    built:
-      "The page titles itself Kopma UNIB, Koperasi Mahasiswa Universitas Bengkulu, and says it has worked toward students’ economic independence since 1984.",
-  }),
-  entry({
-    slug: "taksi-abang",
-    title: "CV. Taksi Abang Group",
-    url: "https://taksiabang.snishop.com",
-    kind: "unconfirmed",
-    confirmed: false,
-    summary: "Goods transport based in Bengkulu.",
-    built:
-      "The page describes goods transport in Bengkulu, within the city and onward across Sumatra and Java.",
   }),
 ];
 
