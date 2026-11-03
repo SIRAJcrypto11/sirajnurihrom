@@ -1,8 +1,11 @@
 {
-    "rewrites": [
-        {
-            "source": "/(.*)",
-            "destination": "/index.html"
-        }
-    ]
+  "rewrites": [
+    { "source": "/id/:path*", "destination": "/id/index.html" },
+    { "source": "/english/:path*", "destination": "/english/index.html" },
+    { "source": "/arabic/:path*", "destination": "/arabic/index.html" },
+    { "source": "/chinese/:path*", "destination": "/chinese/index.html" },
+    { "source": "/japanese/:path*", "destination": "/japanese/index.html" },
+    { "source": "/malay/:path*", "destination": "/malay/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }

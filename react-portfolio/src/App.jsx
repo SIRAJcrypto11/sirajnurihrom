@@ -6,6 +6,8 @@ const MotionDiv = motion.div;
 import Lenis from "lenis";
 import { Footer } from "./components/layout/Footer";
 import { Header } from "./components/layout/Header";
+import { I18nProvider, LocaleHead } from "./i18n/context";
+import { findLocale, splitPath } from "./i18n/config";
 import { HomePage } from "./pages/HomePage";
 import { NotFound } from "./pages/NotFound";
 import { WorkPage } from "./pages/WorkPage";
@@ -67,24 +69,37 @@ function ScrollProgress() {
   );
 }
 
+function Shell() {
+  const { pathname } = useLocation();
+  const locale = findLocale(pathname);
+  const { subpath } = splitPath(pathname);
+  const slug = subpath.match(/^\/work\/([^/]+)$/)?.[1];
+  const missing = Boolean(subpath) && !slug;
+
+  return (
+    <I18nProvider locale={locale}>
+      <LocaleHead />
+      <a className="skip-link" href="#content">
+        Skip to content
+      </a>
+      <Header />
+      <main id="content" className="flex-1">
+        {missing ? <NotFound /> : slug ? <WorkPage /> : <HomePage />}
+      </main>
+      <Footer />
+    </I18nProvider>
+  );
+}
+
 export default function App() {
   return (
     <div className="flex min-h-screen flex-col bg-paper text-ink">
       <SmoothScroll />
       <ScrollProgress />
       <ScrollManager />
-      <a className="skip-link" href="#content">
-        Skip to content
-      </a>
-      <Header />
-      <main id="content" className="flex-1">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/work/:slug" element={<WorkPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </main>
-      <Footer />
+      <Routes>
+        <Route path="/*" element={<Shell />} />
+      </Routes>
     </div>
   );
 }

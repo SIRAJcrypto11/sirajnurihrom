@@ -3,8 +3,19 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Real files (assets, images, prerendered index.html reached as a file).
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # Prerendered directories: /english/ and /english/work/slug/
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Language client routes fall back to that language's prerendered page.
+  RewriteRule ^(id|english|arabic|chinese|japanese|malay)(/.*)?$ /$1/index.html [L]
+
+  # Indonesian routes at the root, including /work/slug when no file exists.
   RewriteRule ^ index.html [L]
 </IfModule>
 

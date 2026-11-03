@@ -1,37 +1,30 @@
-import { Link, useParams } from "react-router-dom";
-import { usePageMeta } from "../components/usePageMeta";
+import { Link, useLocation } from "react-router-dom";
+import { getWork, isListed } from "../data/work";
+import { splitPath } from "../i18n/config";
+import { useI18n } from "../i18n/useI18n";
 import { CaseStudy } from "../components/work/CaseStudy";
-import { getWork, hasNarrative, isListed } from "../data/work";
 import { NotFound } from "./NotFound";
 
 export function WorkPage() {
-  const { slug } = useParams();
-  const found = getWork(slug);
+  const { pathname } = useLocation();
+  const { subpath } = splitPath(pathname);
+  const slug = subpath.match(/^\/work\/([^/]+)$/)?.[1];
+  const found = slug ? getWork(slug) : undefined;
   const entry = found && isListed(found) ? found : undefined;
-
-  usePageMeta({
-    title: entry ? `${entry.title} | Siraj Nur Ihrom` : "Page not found | Siraj Nur Ihrom",
-    description: entry?.summary || entry?.problem || "Work by Siraj Nur Ihrom.",
-    path: entry ? `/work/${entry.slug}` : "/404",
-  });
+  const { href, m } = useI18n();
 
   if (!entry) return <NotFound />;
 
   return (
     <div className="wrap py-16 md:py-24">
       <p>
-        <Link className="text-link text-sm" to="/#work">
-          All work
+        <Link className="text-sm font-semibold text-blue-deep underline decoration-blue/30 underline-offset-4" to={`${href()}#work`}>
+          {m.nav.work}
         </Link>
       </p>
       <div className="mt-6">
         <CaseStudy entry={entry} headingLevel="h1" />
       </div>
-      {!entry.summary?.trim() && !hasNarrative(entry) && (
-        <p className="max-w-xl text-muted">
-          A full case note for {entry.title} is not published on this page yet. The live site is linked above.
-        </p>
-      )}
     </div>
   );
 }

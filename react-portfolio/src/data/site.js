@@ -19,7 +19,7 @@
  */
 
 export const siteUrl = (
-  import.meta.env.VITE_SITE_URL || "https://sirajnurihrom.com"
+  import.meta.env.VITE_SITE_URL || "https://sirajnurihrom.snishop.com"
 ).replace(/\/$/, "");
 
 export const profile = {
@@ -50,53 +50,15 @@ export const about = {
   ],
 };
 
-export const experience = [
-  {
-    period: "2018 — Present",
-    role: "CEO, Founder & Lead Engineer",
-    company: "SNISHOP",
-    url: "https://snishop.com",
-    summary:
-      "Leading SNISHOP as a single company across enterprise software, AI products, productivity tools, and digital services.",
-  },
-  {
-    period: "2023 — Present",
-    role: "Founder & Software Architect",
-    company: "ERP SNISHOP",
-    url: "https://erp.snishop.com",
-    summary:
-      "A smart business operating system: an all-in-one platform for productivity and digital business management.",
-  },
-  {
-    period: "2023 — Present",
-    role: "Founder & Developer",
-    company: "TODOIT & TODOIT AI",
-    url: "https://todoit.snishop.com",
-    summary:
-      "One AI-assisted app for tasks, notes, and collaboration.",
-  },
-  {
-    period: "2023 — Present",
-    role: "Founder & Product Engineer",
-    company: "Budgy AI",
-    summary:
-      "Budget tracking and financial forecasting for personal finance, using generative AI.",
-  },
-  {
-    period: "2024 — Present",
-    role: "Founder & CTO",
-    company: "CoTrade.ID",
-    summary:
-      "A marketplace for students and SMEs in Bengkulu. Built the core platform and secured BMW funding for infrastructure.",
-  },
-  {
-    period: "2023 — Present",
-    role: "Founder & Technical Lead",
-    company: "CryptoCurrent.id",
-    summary:
-      "A cryptocurrency education and media platform. The publishing system was built with search performance in mind.",
-  },
-];
+export const experienceLinks = {
+  snishop: "https://snishop.com",
+  erp: "https://erp.snishop.com",
+  todoit: "https://todoit.snishop.com",
+};
+
+export const experienceIds = ["snishop", "erp", "todoit"];
+
+export const archiveIds = ["budgy", "cotrade", "cryptocurrent"];
 
 export const skills = [
   {
