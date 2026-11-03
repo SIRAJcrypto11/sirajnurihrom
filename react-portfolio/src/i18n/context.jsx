@@ -5,6 +5,8 @@ import { getWork } from "../data/work";
 import { hrefFor, PUBLIC_LOCALES, splitPath } from "./config";
 import { MESSAGES } from "./messages";
 import { I18nContext, useI18n } from "./useI18n";
+import { achievementContent } from "./achievements";
+import { achievements } from "../data/achievements";
 import { workCopy } from "./workCopy";
 
 export function I18nProvider({ locale, children }) {
@@ -91,6 +93,21 @@ export function LocaleHead() {
             url: "https://snishop.com",
           },
           sameAs: profile.links.map((link) => link.href),
+          award: ["kmi"].map((id) => {
+            const text = achievementContent(locale.code).items[id];
+            const year = achievements.find((item) => item.id === id)?.year;
+            return `${text.title} (${year})`;
+          }),
+          hasCredential: {
+            "@type": "EducationalOccupationalCredential",
+            name: achievementContent(locale.code).items.unib.title,
+            description: achievementContent(locale.code).items.unib.detail,
+          },
+          memberOf: ["kopma", "tda"].map((id) => ({
+            "@type": "Organization",
+            name: achievementContent(locale.code).items[id].title,
+            description: achievementContent(locale.code).items[id].detail,
+          })),
         },
         {
           "@type": "Organization",

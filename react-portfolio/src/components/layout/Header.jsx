@@ -7,6 +7,7 @@ import { useI18n } from "../../i18n/useI18n";
 const sections = [
   { hash: "#about", key: "practice" },
   { hash: "#record", key: "record" },
+  { hash: "#prestasi", key: "prestasi" },
   { hash: "#work", key: "work" },
   { hash: "#contact", key: "contact" },
 ];
@@ -85,7 +86,7 @@ export function Header() {
         <Link to={hrefFor(locale)} className="font-display text-lg font-bold tracking-tight text-ink">
           {profile.name}
         </Link>
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-4 xl:gap-6 lg:flex" aria-label="Primary">
           {sections.map((link) => (
             <a key={link.hash} href={link.hash} className="text-sm font-medium text-ink hover:text-blue-deep">
               {m.nav[link.key]}
