@@ -101,9 +101,11 @@ export const work = [
     title: "BangunWeb",
     url: "https://bangunweb.snishop.com",
     kind: "product",
-    summary: "Website building for businesses and UMKM.",
+    image: "/work/bangunweb.webp",
+    imageMobile: "/work/bangunweb-mobile.webp",
+    summary: "BangunWeb by SNISHOP. Websites for businesses and UMKM, starting with a consultation.",
     built:
-      "A professional website service for businesses and UMKM, with responsive layout, fast loading, free SSL, and mobile-friendly pages.",
+      "Builds company-profile, online-store, school, and custom websites. Cost and schedule are set after the consultation.",
   }),
   entry({
     slug: "sninonton",
