@@ -107,12 +107,14 @@ export const work = [
   }),
   entry({
     slug: "sninonton",
-    title: "sninonton",
+    title: "SNINonton",
     url: "https://sninonton.snishop.com",
     kind: "product",
-    summary: "Netflix as pay-as-you-go.",
+    image: "/work/sninonton.webp",
+    imageMobile: "/work/sninonton-mobile.webp",
+    summary: "SNINonton by SNISHOP. Netflix Premium subscription, Rp89.000 a month.",
     built:
-      "Netflix on a pay-as-you-go basis: pay for the time used, rather than a full monthly subscription.",
+      "Order Netflix Premium for 1 month on app.snishop.com. A SNISHOP admin sends the access details on WhatsApp.",
   }),
   entry({
     slug: "snidesain",
