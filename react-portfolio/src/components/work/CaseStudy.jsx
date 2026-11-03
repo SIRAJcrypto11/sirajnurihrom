@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { displayHost, hasNarrative, kindLabel } from "../../data/work";
+import { Shot } from "../Shot";
 
 const fields = [
   ["problem", "Problem"],
@@ -13,76 +14,49 @@ export function CaseStudy({ entry, headingLevel = "h3" }) {
   const details = fields.filter(([key]) => entry[key]?.trim());
 
   return (
-    <article className="border-t border-rule py-10 md:py-14">
-      <div className="grid gap-8 md:grid-cols-12">
-        <div className="md:col-span-4">
+    <article className="border-t border-line py-10 md:py-14">
+      <div className="grid gap-8 lg:grid-cols-12">
+        <div className="lg:col-span-5">
           <p className="kicker">
             {kindLabel(entry.kind)}
             {entry.year ? ` · ${entry.year}` : ""}
           </p>
-          <Heading className="mt-3 font-serif text-4xl leading-none tracking-tight md:text-5xl">
+          <Heading className="font-display mt-3 text-4xl leading-none font-bold tracking-tight md:text-6xl">
             {entry.title}
           </Heading>
-          {entry.tags?.length > 0 && (
-            <ul className="mt-4 flex flex-wrap gap-x-3 gap-y-1 text-sm text-muted">
-              {entry.tags.map((tag) => (
-                <li key={tag}>{tag}</li>
-              ))}
-            </ul>
-          )}
-        </div>
-
-        <div className="md:col-span-8">
-          {entry.image ? (
-            <figure className="mb-6">
-              <img
-                src={entry.image}
-                alt={entry.imageAlt || ""}
-                className="w-full border border-rule"
-              />
-            </figure>
-          ) : null}
-
-          {entry.summary && (
-            <p className="font-serif text-2xl leading-snug text-ink">{entry.summary}</p>
-          )}
-
-          {details.length > 0 && (
-            <dl className="mt-8 grid gap-6">
-              {details.map(([key, label]) => (
-                <div key={key} className="grid gap-1 md:grid-cols-12">
-                  <dt className="text-sm font-semibold tracking-[0.14em] text-accent uppercase md:col-span-3">
-                    {label}
-                  </dt>
-                  <dd className="text-ink md:col-span-9">{entry[key]}</dd>
-                </div>
-              ))}
-            </dl>
-          )}
-
-          <p className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
-            <a className="text-link" href={entry.url} target="_blank" rel="noreferrer">
-              Visit {displayHost(entry.url)}
+          {entry.summary && <p className="mt-5 text-xl leading-snug">{entry.summary}</p>}
+          <p className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
+            <a className="text-blue-deep underline decoration-blue/30 underline-offset-4" href={entry.url} target="_blank" rel="noreferrer">
+              {displayHost(entry.url)}
               <span className="sr-only"> (opens in a new tab)</span>
             </a>
             {entry.also?.map((link) => (
-              <a
-                key={link.url}
-                className="text-link"
-                href={link.url}
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a key={link.url} className="text-blue-deep underline decoration-blue/30 underline-offset-4" href={link.url} target="_blank" rel="noreferrer">
                 {link.label}
                 <span className="sr-only"> (opens in a new tab)</span>
               </a>
             ))}
             {headingLevel === "h3" && hasNarrative(entry) && (
-              <Link className="text-link" to={`/work/${entry.slug}`}>
-                Open the case note
+              <Link className="text-blue-deep underline decoration-blue/30 underline-offset-4" to={`/work/${entry.slug}`}>
+                Case note
               </Link>
             )}
           </p>
+        </div>
+        <div className="lg:col-span-7">
+          <div className="overflow-hidden border border-line">
+            <Shot entry={entry} />
+          </div>
+          {details.length > 0 && (
+            <dl className="mt-8 grid gap-5">
+              {details.map(([key, label]) => (
+                <div key={key}>
+                  <dt className="text-xs font-semibold tracking-[0.16em] text-blue-deep uppercase">{label}</dt>
+                  <dd className="mt-2 text-ink">{entry[key]}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
         </div>
       </div>
     </article>

@@ -1,24 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: "Fraunces", "Iowan Old Style", Palatino, "Palatino Linotype", serif;
-  --font-sans: "Schibsted Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  --font-display: "Syne", "Geist", "Avenir Next", sans-serif;
+  --font-sans: "Geist", "Avenir Next", "Segoe UI", sans-serif;
 
-  --color-paper: #f3efe6;
-  --color-paper-deep: #e7e1d4;
-  --color-ink: #1c1915;
-  --color-muted: #4e4941;
-  --color-rule: #d2c8b8;
-  --color-accent: #7c2a22;
-  --color-accent-deep: #5c1e18;
-  --color-blush: #f0c2bb;
-  --color-paper-faint: #f7f4ee;
+  --color-paper: #f4f7fb;
+  --color-white: #ffffff;
+  --color-ink: #0c1b33;
+  --color-muted: #4d5d78;
+  --color-line: #d5deeb;
+  --color-blue: #3b5bff;
+  --color-blue-deep: #1239c7;
+  --color-navy: #07152c;
 }
 
 @layer base {
   html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 5.5rem;
+    scroll-padding-top: 5.25rem;
   }
 
   body {
@@ -27,7 +25,7 @@
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: 1.0625rem;
-    line-height: 1.6;
+    line-height: 1.55;
     text-rendering: optimizeLegibility;
   }
 
@@ -42,8 +40,13 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-blue);
     outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--color-blue);
+    color: white;
   }
 
   a {
@@ -58,100 +61,84 @@
     border: 0;
   }
 
-  ::selection {
-    background: var(--color-accent);
-    color: var(--color-paper);
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
 
 @utility wrap {
-  width: min(72rem, calc(100% - 2.5rem));
+  width: min(76rem, calc(100% - 2.5rem));
   margin-inline: auto;
 }
 
 @utility kicker {
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-blue-deep);
 }
 
 .skip-link {
   position: absolute;
   left: 1rem;
   top: 0;
-  transform: translateY(-120%);
+  transform: translateY(-140%);
   z-index: 80;
   background: var(--color-ink);
-  color: var(--color-paper);
-  padding: 0.75rem 1rem;
+  color: white;
+  padding: 0.7rem 1rem;
   font-weight: 600;
 }
 
 .skip-link:focus {
-  transform: translateY(1rem);
+  transform: translateY(0.8rem);
 }
 
-.nav-link {
-  color: var(--color-ink);
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
+.grid-field {
+  background-image: linear-gradient(to right, rgba(12, 27, 51, 0.06) 1px, transparent 1px);
+  background-size: 12.5% 100%;
 }
 
-.nav-link:hover {
-  color: var(--color-accent);
+.shot {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+  background: var(--color-navy);
 }
 
-.text-link {
-  color: var(--color-accent-deep);
-  font-weight: 600;
-  text-decoration-line: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.22em;
+.shot.shot-limit {
+  height: min(46vh, 420px);
+  aspect-ratio: auto;
 }
 
-.text-link:hover {
-  color: var(--color-accent);
-}
-
-.rule-list > * + * {
-  border-top: 1px solid var(--color-rule);
+.film-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-blue) transparent;
 }
 
 .contact-form input,
 .contact-form textarea {
   width: 100%;
   border: 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--color-paper) 35%, transparent);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
   background: transparent;
-  color: var(--color-paper);
+  color: white;
   font: inherit;
-  padding: 0.85rem 0;
+  padding: 0.8rem 0;
   border-radius: 0;
 }
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-  color: color-mix(in srgb, var(--color-paper) 55%, transparent);
+  color: rgba(255, 255, 255, 0.45);
 }
 
 .contact-form textarea {
-  min-height: 8rem;
+  min-height: 7.5rem;
   resize: vertical;
-}
-
-.search-field {
-  width: 100%;
-  border: 1px solid var(--color-rule);
-  background: var(--color-paper);
-  color: var(--color-ink);
-  font: inherit;
-  padding: 0.55rem 0.75rem;
-}
-
-.search-field::placeholder {
-  color: var(--color-muted);
 }
