@@ -116,12 +116,14 @@ export const work = [
   }),
   entry({
     slug: "snidesain",
-    title: "snidesain",
+    title: "SNIDesain",
     url: "https://snidesain.snishop.com",
     kind: "product",
-    summary: "Canva Pro as pay-as-you-go.",
+    image: "/work/snidesain.webp",
+    imageMobile: "/work/snidesain-mobile.webp",
+    summary: "SNIDesain by SNISHOP. Canva Pro for your own account, from Rp25.500 a month.",
     built:
-      "Canva Pro pay-as-you-go from SNISHOP, without a monthly subscription.",
+      "Turns on Canva Pro for the email of your own Canva account. Designs stay in your account. Choose 1 month or 1 year.",
   }),
   entry({
     slug: "snijadwalin",
