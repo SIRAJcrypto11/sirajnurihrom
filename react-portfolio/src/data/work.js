@@ -206,15 +206,6 @@ export const work = [
       "Jamu, spa, and herbal wellness. Your TRULY Solutions for Health & Wellness.",
   }),
   entry({
-    slug: "jamu-kito",
-    title: "Jamu Kito",
-    url: "https://jamukito.snishop.com",
-    kind: "client",
-    summary: "Herbal remedies and traditional massage in Bengkulu.",
-    built:
-      "Warisan Alam & Sentuhan Tradisi. Certified, fully natural herbal remedies from Bengkulu, and professional traditional massage with herbal oils.",
-  }),
-  entry({
     slug: "quinn-of-spicy",
     title: "Quinn of Spicy",
     url: "https://quinnsambal.com",
