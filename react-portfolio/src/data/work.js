@@ -53,7 +53,7 @@ export const work = [
     summary:
       "Company site for autonomous SaaS and industry-standard enterprise customization.",
     built:
-      "The live page titles itself SNISHOP Network Indonesia. Its line is “Solusi SaaS otonom & kustomisasi enterprise berstandar industri.”",
+      "SNISHOP Network Indonesia. Autonomous SaaS and industry-standard enterprise customization: solusi SaaS otonom & kustomisasi enterprise berstandar industri.",
   }),
   entry({
     slug: "snishop-store",
@@ -64,7 +64,7 @@ export const work = [
     summary:
       "A digital product store for UMKM: ebooks, AI prompts, templates, Turnitin checks, and Canva Pro and Zoom Pro.",
     built:
-      "The store’s headline is “Cek Turnitin, ebook UMKM, dan akun premium. Belanja di satu toko.” It sells UMKM digital-marketing ebooks, AI prompts, and social and WhatsApp templates from Rp10,000, plus Turnitin checks, Canva Pro, and Zoom Pro. The page says payment is by QRIS, with instant download, and that the catalog includes 70+ UMKM digital-marketing ebooks.",
+      "One shop for Turnitin checks, UMKM ebooks, and premium accounts. Digital-marketing ebooks, AI prompts, and social and WhatsApp templates from Rp10,000, plus Turnitin checks, Canva Pro, and Zoom Pro. Payment is by QRIS, with instant download. The catalog includes 70+ UMKM digital-marketing ebooks.",
   }),
   entry({
     slug: "snishop-erp",
@@ -72,9 +72,9 @@ export const work = [
     url: "https://erp.snishop.com",
     kind: "product",
     featured: true,
-    summary: "SNISHOP ERP, a smart business operating system.",
+    summary: "A smart business operating system.",
     built:
-      "The site calls it a modern, all-in-one ERP platform for productivity and digital business management, for companies and individuals.",
+      "An all-in-one ERP for productivity and digital business management, for companies and individuals.",
   }),
   entry({
     slug: "todoit",
@@ -83,7 +83,7 @@ export const work = [
     kind: "product",
     summary: "A productivity platform for tasks, notes, and collaboration.",
     built:
-      "The page calls TODOIT a next-generation productivity platform. It says the app combines tasks, notes, and collaboration in one AI-powered product, with an assistant for creating tasks, summarizing notes, and suggesting ideas, plus real-time collaboration in one workspace.",
+      "A next-generation productivity platform. Tasks, notes, and collaboration in one AI-powered app, with an assistant for creating tasks, summarizing notes, and suggesting ideas, and real-time collaboration in one workspace.",
   }),
   entry({
     slug: "keepitup",
@@ -103,7 +103,7 @@ export const work = [
     kind: "product",
     summary: "Website building for businesses and UMKM.",
     built:
-      "BangunWeb by snishop.com describes a professional website service for businesses and UMKM. The page lists responsive layout, fast loading, free SSL, and mobile-friendly pages.",
+      "A professional website service for businesses and UMKM, with responsive layout, fast loading, free SSL, and mobile-friendly pages.",
   }),
   entry({
     slug: "sninonton",
@@ -112,7 +112,7 @@ export const work = [
     kind: "product",
     summary: "Netflix as pay-as-you-go.",
     built:
-      "sninonton offers Netflix on a pay-as-you-go basis: pay for the time used, rather than a full monthly subscription. The page presents it as a service from sninonton.snishop.com.",
+      "Netflix on a pay-as-you-go basis: pay for the time used, rather than a full monthly subscription.",
   }),
   entry({
     slug: "snidesain",
@@ -121,7 +121,7 @@ export const work = [
     kind: "product",
     summary: "Canva Pro as pay-as-you-go.",
     built:
-      "snidesain, from snishop.com, offers Canva Pro pay-as-you-go so it can be used without a monthly subscription.",
+      "Canva Pro pay-as-you-go from SNISHOP, without a monthly subscription.",
   }),
   entry({
     slug: "snijadwalin",
@@ -139,7 +139,7 @@ export const work = [
     kind: "product",
     summary: "An Indonesian social media marketing panel.",
     built:
-      "The live page presents an SMM panel for social media management, from the snishop.com team. The working address is smmpedia.snishop.com.",
+      "A social media marketing panel from the SNISHOP team.",
   }),
   entry({
     slug: "tangani",
@@ -148,7 +148,7 @@ export const work = [
     kind: "product",
     summary: "Digital business transformation for businesses in Bengkulu.",
     built:
-      "The page describes a combined offer for distributors and wholesale, healthcare, education, palm-oil and coffee plantations, and fleet logistics.",
+      "For distributors and wholesale, healthcare, education, palm-oil and coffee plantations, and fleet logistics.",
   }),
   entry({
     slug: "rupiahin",
@@ -158,7 +158,7 @@ export const work = [
     summary:
       "A competition-prep second brain that turns documents into modules and quizzes.",
     built:
-      "The site calls RupiahIN an intelligent second brain for competition prep. It turns documents, photos, and links into interactive modules, quizzes, and structured notes.",
+      "Turns documents, photos, and links into interactive modules, quizzes, and structured notes.",
   }),
   entry({
     slug: "learnjoin",
@@ -169,7 +169,7 @@ export const work = [
     summary:
       "A learning ecosystem of tutoring and progress tracking. An Arabic version is at ar.learnjoin.com.",
     built:
-      "LearnJoin describes an integrated ecosystem of tutoring and cognitive intelligence, combining real-time instruction with progress tracking. Both learnjoin.com and the Arabic site ar.learnjoin.com open on the login page.",
+      "An integrated ecosystem of tutoring and cognitive intelligence, with real-time instruction and progress tracking. learnjoin.com and the Arabic site open on the login page.",
     also: [{ label: "Arabic", url: "https://ar.learnjoin.com" }],
   }),
   entry({
@@ -181,7 +181,7 @@ export const work = [
     summary:
       "Live and on-demand classes, plus a digital product marketplace.",
     built:
-      "Belangua describes a learning platform that combines live and on-demand classes with a digital-product marketplace, AI for teachers and learners, and multi-tier membership.",
+      "A learning platform with live and on-demand classes, a digital-product marketplace, AI for teachers and learners, and multi-tier membership.",
   }),
   entry({
     slug: "jamu-kito-internasional",
@@ -190,7 +190,7 @@ export const work = [
     kind: "client",
     summary: "Jamu, spa, and herbal wellness.",
     built:
-      "The site titles itself Jamu Kito Internasional. Its lines are “Jamu, Spa & Herbal Wellness” and “Your TRULY Solutions for Health & Wellness.”",
+      "Jamu, spa, and herbal wellness. Your TRULY Solutions for Health & Wellness.",
   }),
   entry({
     slug: "jamu-kito",
@@ -199,7 +199,7 @@ export const work = [
     kind: "client",
     summary: "Herbal remedies and traditional massage in Bengkulu.",
     built:
-      "The page headline is “Warisan Alam & Sentuhan Tradisi.” It describes certified, fully natural herbal remedies from Bengkulu and professional traditional massage with herbal oils.",
+      "Warisan Alam & Sentuhan Tradisi. Certified, fully natural herbal remedies from Bengkulu, and professional traditional massage with herbal oils.",
   }),
   entry({
     slug: "quinn-of-spicy",
@@ -207,7 +207,7 @@ export const work = [
     url: "https://quinnsambal.com",
     kind: "client",
     featured: true,
-    summary: "Quinn of Spicy, a sambal brand.",
+    summary: "A sambal brand.",
     built: "",
   }),
   entry({
@@ -215,7 +215,7 @@ export const work = [
     title: "Hi Ameerah",
     url: "https://hiameerah.id",
     kind: "client",
-    summary: "Hi Ameerah. “Enhance Your Beauty.”",
+    summary: "Enhance Your Beauty.",
     built: "",
   }),
   entry({
@@ -225,7 +225,7 @@ export const work = [
     kind: "client",
     summary: "Custom kitchen sets and interiors in Bengkulu Tengah.",
     built:
-      "DW Store Mebel (Halim Mebel Puri), in Bengkulu Tengah, specialises in custom kitchen sets, wardrobes, and premium interiors, with more than 10 years of experience and anti-termite material.",
+      "Halim Mebel Puri in Bengkulu Tengah. Custom kitchen sets, wardrobes, and premium interiors, with more than 10 years of experience and anti-termite material.",
   }),
 ];
 
