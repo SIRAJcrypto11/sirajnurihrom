@@ -144,12 +144,15 @@ export const work = [
   }),
   entry({
     slug: "smm-pedia",
-    title: "SMM Pedia",
+    title: "SMMPedia",
     url: "https://smmpedia.snishop.com",
     kind: "product",
-    summary: "An Indonesian social media marketing panel.",
+    image: "/work/smmpedia.webp",
+    imageMobile: "/work/smmpedia-mobile.webp",
+    summary:
+      "Social media marketing learning for UMKM through PDF ebooks. A 6-ebook package for Rp99.000.",
     built:
-      "A social media marketing panel from the SNISHOP team.",
+      "SMMPedia by SNISHOP teaches social media marketing for UMKM through Indonesian-language PDF ebooks on Instagram, Reels, TikTok Shop, TikTok Ads, Facebook Ads, and YouTube. The Paket Sosial Media Marketing has 6 ebooks, 343 pages in total, 10 chapters each. Promo price Rp99.000, down from Rp249.000. Payment is at app.snishop.com by QRIS, e-wallet, or transfer/VA, and the download link is emailed. It is not an SMM panel and does not sell followers.",
   }),
   entry({
     slug: "tangani",
