@@ -81,9 +81,11 @@ export const work = [
     title: "TODOIT",
     url: "https://todoit.snishop.com",
     kind: "product",
-    summary: "A productivity platform for tasks, notes, and collaboration.",
+    image: "/work/todoit.webp",
+    imageMobile: "/work/todoit-mobile.webp",
+    summary: "TODOIT by SNISHOP. Tasks, notes, and finances in one app.",
     built:
-      "A next-generation productivity platform. Tasks, notes, and collaboration in one AI-powered app, with an assistant for creating tasks, summarizing notes, and suggesting ideas, and real-time collaboration in one workspace.",
+      "Brings together a task list, notes, finance tracking, and a workspace, with an AI assistant beside them. Access is given through a SNISHOP admin.",
   }),
   entry({
     slug: "keepitup",
