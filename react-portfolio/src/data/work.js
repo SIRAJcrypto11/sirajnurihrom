@@ -128,9 +128,11 @@ export const work = [
     title: "SNIJadwalin",
     url: "https://snijadwalin.snishop.com",
     kind: "product",
-    summary: "Zoom Meeting rental, pay-as-you-go.",
+    image: "/work/snijadwalin.webp",
+    imageMobile: "/work/snijadwalin-mobile.webp",
+    summary: "SNIJadwalin by SNISHOP. Premium Zoom rental, paid by duration.",
     built:
-      "SNIJadwalin rents Zoom Meeting on a pay-as-you-go basis for meetings, webinars, and online classes.",
+      "Rents Zoom Pro for meetings, online classes, and webinars, with no 40-minute limit and no monthly subscription.",
   }),
   entry({
     slug: "smm-pedia",

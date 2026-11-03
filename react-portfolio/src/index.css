@@ -148,6 +148,12 @@ html[data-theme="dark"] .grid-field {
   background: var(--color-navy);
 }
 
+@media (max-width: 767px) {
+  .shot.shot-has-mobile {
+    aspect-ratio: 9 / 16;
+  }
+}
+
 .shot.shot-limit {
   height: min(46vh, 420px);
   aspect-ratio: auto;
