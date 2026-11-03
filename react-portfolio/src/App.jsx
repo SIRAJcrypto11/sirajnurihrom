@@ -1,99 +1,45 @@
-import { useState, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
-import Lenis from 'lenis';
-import { Navbar } from './components/layout/Navbar';
-import { Footer } from './components/layout/Footer';
-import { CustomCursor } from './components/ui/CustomCursor';
-import { ParticleBackground } from './components/ui/ParticleBackground';
-import { PreLoader } from './components/ui/PreLoader';
-import { EcosystemDock } from './components/ui/EcosystemDock';
-import { LaunchpadModal } from './components/ui/LaunchpadModal';
-import { FloatingAIAssistant } from './components/ui/FloatingAIAssistant';
-import { SystemStatusTicker } from './components/ui/SystemStatusTicker';
-import { CommandPalette } from './components/ui/CommandPalette';
-import { EasterEggHandler } from './components/ui/EasterEggHandler';
+import { useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { Footer } from "./components/layout/Footer";
+import { Header } from "./components/layout/Header";
+import { HomePage } from "./pages/HomePage";
+import { NotFound } from "./pages/NotFound";
+import { WorkPage } from "./pages/WorkPage";
 
-import { HeroSection } from './components/sections/HeroSection';
-import { AboutSection } from './components/sections/AboutSection';
-import { MetricsSection } from './components/sections/MetricsSection';
-import { ExperienceSection } from './components/sections/ExperienceSection';
-import { ProjectsSection } from './components/sections/ProjectsSection';
-import { CustomerShowcaseSection } from './components/sections/CustomerShowcaseSection';
-import { GalaxySection } from './components/sections/GalaxySection';
-import { SkillsSection } from './components/sections/SkillsSection';
-import { ContactSection } from './components/sections/ContactSection';
-
-function App() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isLaunchpadOpen, setIsLaunchpadOpen] = useState(false);
+function ScrollManager() {
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    // Initialize Lenis with "Snappy-Smooth" tuning
-    const lenis = new Lenis({
-      duration: 0.8, // Reduced from 1.2 for faster response
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1.1, // Slight boost to feeling "light"
-      smoothTouch: false,
-      touchMultiplier: 2,
-      infinite: false,
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
+    if (hash) {
+      const target = document.getElementById(hash.slice(1));
+      if (target) {
+        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+        return;
+      }
     }
-
-    // Expose lenis to window for global control (e.g. by modals)
-    window.lenis = lenis;
-    requestAnimationFrame(raf);
-
-    // Mencegah browser melakukan auto-scroll ke posisi terakhir saat direfresh
-    if ('scrollRestoration' in window.history) {
-      window.history.scrollRestoration = 'manual';
-    }
-    // Pastikan selalu mulai dari pixel paling atas
     window.scrollTo(0, 0);
+  }, [pathname, hash]);
 
-    return () => {
-      lenis.destroy();
-    };
-  }, []);
+  return null;
+}
 
+export default function App() {
   return (
-    <div className="flex flex-col min-h-screen relative bg-neutral-900 text-text-primary">
-      <AnimatePresence mode="wait">
-        {isLoading && <PreLoader onComplete={() => setIsLoading(false)} />}
-      </AnimatePresence>
-
-      <CustomCursor />
-      <ParticleBackground />
-      <Navbar />
-      <CommandPalette />
-      <EasterEggHandler />
-
-      <LaunchpadModal isOpen={isLaunchpadOpen} onClose={() => setIsLaunchpadOpen(false)} />
-      <EcosystemDock onOpenLaunchpad={() => setIsLaunchpadOpen(true)} />
-      <FloatingAIAssistant />
-
-      <main className="flex-grow">
-        <HeroSection />
-        <AboutSection />
-        <MetricsSection />
-        <ExperienceSection />
-        <ProjectsSection onOpenLaunchpad={() => setIsLaunchpadOpen(true)} />
-        <CustomerShowcaseSection />
-        <GalaxySection />
-        <SkillsSection />
-        <ContactSection />
+    <div className="flex min-h-screen flex-col bg-paper text-ink">
+      <ScrollManager />
+      <a className="skip-link" href="#content">
+        Skip to content
+      </a>
+      <Header />
+      <main id="content" className="flex-1">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/work/:slug" element={<WorkPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </main>
-
-      <SystemStatusTicker />
       <Footer />
     </div>
   );
 }
-
-export default App;

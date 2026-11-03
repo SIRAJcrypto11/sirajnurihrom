@@ -6,39 +6,78 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="manifest" href="/manifest.json" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#050510" />
+  <meta name="theme-color" content="#f3efe6" />
+  <meta name="color-scheme" content="light" />
+
+  <!--
+    Retires the previous cache-first service worker. This does not register a
+    new one. sw.js, if a browser still has the old registration, clears caches
+    and unregisters itself. See public/sw.js.
+  -->
   <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js');
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", async () => {
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(registrations.map((registration) => registration.unregister()));
+        if ("caches" in window) {
+          const keys = await caches.keys();
+          await Promise.all(keys.map((key) => caches.delete(key)));
+        }
       });
     }
   </script>
 
-  <!-- Primary Meta Tags -->
-  <title>Siraj Nur Ihrom | System Architect & Tech Entrepreneur</title>
-  <meta name="title" content="Siraj Nur Ihrom | System Architect & Tech Entrepreneur" />
+  <title>Siraj Nur Ihrom | Founder and CEO, PT SNISHOP Network Indonesia</title>
+  <meta name="title" content="Siraj Nur Ihrom | Founder and CEO, PT SNISHOP Network Indonesia" />
   <meta name="description"
-    content="Official portfolio of Siraj Nur Ihrom, founder of SNISHOP.COM ecosystem. Expert in System Architecture, AI, and Enterprise Solutions." />
-  <meta name="keywords"
-    content="Siraj Nur Ihrom, SNISHOP, System Architect, Full Stack Developer, AI Developer, ERP Developer, Software Engineering" />
+    content="Portfolio of Siraj Nur Ihrom, founder and chief executive of PT SNISHOP Network Indonesia. Software for businesses and students, built from Bengkulu." />
   <meta name="author" content="Siraj Nur Ihrom" />
+  <link rel="canonical" href="%SITE_URL%/" />
 
-  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://sirajnurihrom.com/" />
-  <meta property="og:title" content="Siraj Nur Ihrom | System Architect & Tech Entrepreneur" />
+  <meta property="og:url" content="%SITE_URL%/" />
+  <meta property="og:title" content="Siraj Nur Ihrom | Founder and CEO, PT SNISHOP Network Indonesia" />
   <meta property="og:description"
-    content="Explore the massive ecosystem of 20+ apps built by Siraj Nur Ihrom, from AI-driven finance to Enterprise ERP systems." />
-  <meta property="og:image" content="/og-image.png" />
+    content="Portfolio of Siraj Nur Ihrom, founder and chief executive of PT SNISHOP Network Indonesia. Software for businesses and students, built from Bengkulu." />
+  <meta property="og:image" content="%SITE_URL%/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://sirajnurihrom.com/" />
-  <meta property="twitter:title" content="Siraj Nur Ihrom | System Architect & Tech Entrepreneur" />
-  <meta property="twitter:description"
-    content="Explore the massive ecosystem of 20+ apps built by Siraj Nur Ihrom, from AI-driven finance to Enterprise ERP systems." />
-  <meta property="twitter:image" content="/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="%SITE_URL%/" />
+  <meta name="twitter:title" content="Siraj Nur Ihrom | Founder and CEO, PT SNISHOP Network Indonesia" />
+  <meta name="twitter:description"
+    content="Portfolio of Siraj Nur Ihrom, founder and chief executive of PT SNISHOP Network Indonesia. Software for businesses and students, built from Bengkulu." />
+  <meta name="twitter:image" content="%SITE_URL%/og.png" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Siraj Nur Ihrom",
+      "jobTitle": "Founder and Chief Executive Officer",
+      "url": "%SITE_URL%/",
+      "email": "mailto:sirajnurihrom11@gmail.com",
+      "telephone": "+62-851-8515-1356",
+      "image": "%SITE_URL%/og.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bengkulu",
+        "addressCountry": "ID"
+      },
+      "worksFor": {
+        "@type": "Organization",
+        "name": "PT SNISHOP Network Indonesia",
+        "url": "https://snishop.com"
+      },
+      "sameAs": [
+        "https://linkedin.com/in/sirajnurihrom",
+        "https://instagram.com/sirajnurihrom",
+        "https://github.com/SIRAJcrypto11",
+        "https://snishop.com"
+      ]
+    }
+  </script>
 </head>
 
 <body>

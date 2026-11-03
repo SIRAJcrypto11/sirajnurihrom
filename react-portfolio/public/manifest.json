@@ -1,20 +1,16 @@
 {
-    "short_name": "Siraj Portfolio",
-    "name": "Siraj Nur Ihrom | System Architect",
-    "icons": [
-        {
-            "src": "/favicon.svg",
-            "type": "image/svg+xml",
-            "sizes": "192x192"
-        },
-        {
-            "src": "/favicon.svg",
-            "type": "image/svg+xml",
-            "sizes": "512x512"
-        }
-    ],
-    "start_url": ".",
-    "display": "standalone",
-    "theme_color": "#050510",
-    "background_color": "#050510"
+  "short_name": "Siraj Nur Ihrom",
+  "name": "Siraj Nur Ihrom | Founder and CEO",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f3efe6",
+  "theme_color": "#f3efe6"
 }

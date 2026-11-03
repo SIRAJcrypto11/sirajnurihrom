@@ -1,208 +1,108 @@
-import { motion } from 'framer-motion';
-import { Mail, Phone, ExternalLink, Terminal } from 'lucide-react';
-import { FaLinkedinIn, FaInstagram, FaGithub } from 'react-icons/fa';
-import { useState, useRef, useEffect } from 'react';
+import { useState } from "react";
+import { profile } from "../../data/site";
+import { Reveal } from "../Reveal";
 
-export const ContactSection = () => {
-    const [messages, setMessages] = useState([
-        { id: 1, sender: 'system', text: 'Initializing secure communication channel...' },
-        { id: 2, sender: 'system', text: 'Connection established. Handshake complete.' },
-        { id: 3, sender: 'system', text: 'Type your message below to transmit directly to my mainframe.' },
-    ]);
-    const [inputValue, setInputValue] = useState('');
-    const [isTyping, setIsTyping] = useState(false);
-    const terminalEndRef = useRef(null);
+export function ContactSection() {
+  const [notice, setNotice] = useState("");
 
-    const scrollToBottom = () => {
-        terminalEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    };
+  function onSubmit(event) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const name = String(data.get("name") || "").trim();
+    const email = String(data.get("email") || "").trim();
+    const message = String(data.get("message") || "").trim();
+    const subject = `Portfolio inquiry from ${name}`;
+    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+    const href = `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setNotice("Opening your email app with this note filled in.");
+    window.location.href = href;
+  }
 
-    useEffect(() => {
-        scrollToBottom();
-    }, [messages, isTyping]);
+  return (
+    <section id="contact" className="scroll-mt-24 bg-ink text-paper">
+      <div className="wrap py-20 md:py-28">
+        <Reveal>
+          <p className="text-xs font-semibold tracking-[0.16em] text-blush uppercase">05 — Contact</p>
+          <h2 className="mt-4 max-w-3xl font-serif text-5xl leading-[0.95] tracking-tight md:text-7xl">
+            For a platform, a consultation, or an architecture conversation.
+          </h2>
+          <p className="mt-6 max-w-xl text-lg text-paper/75">
+            Based in {profile.location} ({profile.timezone}). I am glad to hear about a
+            new build.
+          </p>
+        </Reveal>
 
-    const handleSendMessage = (e) => {
-        e.preventDefault();
-        if (!inputValue.trim()) return;
+        <div className="mt-12 grid gap-14 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <a
+              className="inline-block font-serif text-3xl leading-tight underline decoration-blush decoration-2 underline-offset-8 md:text-4xl"
+              href={`mailto:${profile.email}`}
+            >
+              {profile.email}
+            </a>
+            <p className="mt-6">
+              <a className="text-paper underline decoration-white/30 underline-offset-4" href={`tel:${profile.phoneTel}`}>
+                {profile.phoneDisplay}
+              </a>
+            </p>
+            <ul className="mt-8 flex flex-col gap-2">
+              {profile.links.map((link) => (
+                <li key={link.href}>
+                  <a
+                    className="text-paper underline decoration-white/30 underline-offset-4"
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {link.label}
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                </li>
+              ))}
+              <li>
+                <a className="text-paper underline decoration-white/30 underline-offset-4" href={profile.resume}>
+                  Resume (PDF)
+                </a>
+              </li>
+            </ul>
+          </div>
 
-        const newUserMsg = { id: Date.now(), sender: 'user', text: inputValue };
-        setMessages(prev => [...prev, newUserMsg]);
-        setInputValue('');
-        setIsTyping(true);
-
-        // Simulate system response processing
-        setTimeout(() => {
-            setIsTyping(false);
-            setMessages(prev => [
-                ...prev,
-                { id: Date.now() + 1, sender: 'system', text: `Message encrypted and routed. I will respond to your query shortly.` }
-            ]);
-        }, 1500);
-    };
-
-    return (
-        <section id="contact" className="py-24 bg-gradient-dark text-white relative overflow-hidden">
-            {/* Aurora Background for Contact */}
-            <div className="absolute top-1/2 left-0 w-96 h-96 bg-primary-DEFAULT/20 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 -translate-x-1/2" />
-            <div className="absolute top-0 right-0 w-96 h-96 bg-accent-electric/10 rounded-full blur-[100px] pointer-events-none translate-x-1/2" />
-
-            <div className="container mx-auto px-6 relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-center mb-16"
-                >
-                    <h2 className="text-4xl md:text-5xl font-black mb-4 text-white">Get In Touch</h2>
-                    <p className="text-neutral-300 text-lg max-w-2xl mx-auto">
-                        Establish a direct connection to the network core.
-                    </p>
-                </motion.div>
-
-                <div className="grid lg:grid-cols-2 gap-16 items-center">
-                    {/* Left Column: Traditional Info */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="space-y-8"
-                    >
-                        <div>
-                            <h3 className="text-3xl font-bold mb-4">Ready to Start a Project?</h3>
-                            <p className="text-neutral-300 text-lg leading-relaxed">
-                                I'm always excited to work on new projects. Whether you're looking to build a platform, need consultation, or want to discuss enterprise architecture, I'd love to hear from you.
-                            </p>
-                        </div>
-
-                        <div className="space-y-6">
-                            <div className="flex items-center gap-6 p-4 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md hover:bg-white/10 transition-colors">
-                                <div className="w-14 h-14 rounded-full bg-gradient-primary flex items-center justify-center shrink-0 shadow-glow">
-                                    <Mail size={24} />
-                                </div>
-                                <div>
-                                    <h4 className="text-lg font-bold">Email Protocol</h4>
-                                    <a href="mailto:sirajnurihrom11@gmail.com" className="text-primary-light hover:text-accent-electric transition-colors">
-                                        sirajnurihrom11@gmail.com <ExternalLink className="inline w-3 h-3 ml-1" />
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div className="flex items-center gap-6 p-4 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-md hover:bg-white/10 transition-colors">
-                                <div className="w-14 h-14 rounded-full bg-gradient-primary flex items-center justify-center shrink-0 shadow-glow">
-                                    <Phone size={24} />
-                                </div>
-                                <div>
-                                    <h4 className="text-lg font-bold">Voice Uplink</h4>
-                                    <p className="text-neutral-300">+62 851-8515-1356</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="flex gap-4 pt-4">
-                            <motion.a
-                                whileHover={{ y: -5, scale: 1.1 }}
-                                href="https://linkedin.com/in/sirajnurihrom"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary-DEFAULT transition-colors border border-white/10 cursor-pointer"
-                            >
-                                <FaLinkedinIn size={20} />
-                            </motion.a>
-                            <motion.a
-                                whileHover={{ y: -5, scale: 1.1 }}
-                                href="https://instagram.com/sirajnurihrom"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary-DEFAULT transition-colors border border-white/10 cursor-pointer"
-                            >
-                                <FaInstagram size={20} />
-                            </motion.a>
-                            <motion.a
-                                whileHover={{ y: -5, scale: 1.1 }}
-                                href="https://github.com/SIRAJcrypto11"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary-DEFAULT transition-colors border border-white/10 cursor-pointer"
-                            >
-                                <FaGithub size={20} />
-                            </motion.a>
-                        </div>
-                    </motion.div>
-
-                    {/* Right Column: Terminal Chat Interface */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="bg-[#050510]/80 border border-primary-DEFAULT/20 rounded-xl overflow-hidden backdrop-blur-2xl shadow-[0_0_50px_-15px_rgba(0,196,255,0.2)] flex flex-col h-[500px]"
-                    >
-                        {/* Terminal Header */}
-                        <div className="bg-black/80 px-4 py-3 border-b border-primary-DEFAULT/20 flex items-center justify-between">
-                            <div className="flex items-center gap-2">
-                                <Terminal size={16} className="text-primary-DEFAULT" />
-                                <span className="text-xs font-mono font-bold text-neutral-400">siraj_engine_v7.exe</span>
-                            </div>
-                            <div className="flex gap-2">
-                                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                                <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                            </div>
-                        </div>
-
-                        {/* Terminal Body */}
-                        <div className="flex-1 p-6 overflow-y-auto font-mono text-sm layout-scrollbar flex flex-col gap-4">
-                            {messages.map((msg) => (
-                                <div key={msg.id} className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}>
-                                    <div className="flex items-center gap-2 mb-1">
-                                        <span className={`text-[10px] uppercase font-bold tracking-widest ${msg.sender === 'user' ? 'text-accent-electric' : 'text-primary-DEFAULT'}`}>
-                                            {msg.sender === 'user' ? 'Guest_Client' : 'System_Core'}
-                                        </span>
-                                    </div>
-                                    <div className={`px-4 py-3 rounded-lg max-w-[85%] ${msg.sender === 'user'
-                                            ? 'bg-accent-electric/10 border border-accent-electric/20 text-white'
-                                            : 'bg-primary-DEFAULT/10 border border-primary-DEFAULT/20 text-primary-light'
-                                        }`}>
-                                        {msg.text}
-                                    </div>
-                                </div>
-                            ))}
-                            {isTyping && (
-                                <div className="flex items-start">
-                                    <div className="bg-primary-DEFAULT/10 border border-primary-DEFAULT/20 px-4 py-3 rounded-lg flex gap-1 items-center">
-                                        <span className="w-1.5 h-1.5 bg-primary-DEFAULT rounded-full animate-bounce" />
-                                        <span className="w-1.5 h-1.5 bg-primary-DEFAULT rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
-                                        <span className="w-1.5 h-1.5 bg-primary-DEFAULT rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
-                                    </div>
-                                </div>
-                            )}
-                            <div ref={terminalEndRef} />
-                        </div>
-
-                        {/* Terminal Input */}
-                        <form onSubmit={handleSendMessage} className="bg-black/60 p-4 border-t border-primary-DEFAULT/20 flex gap-4">
-                            <span className="text-primary-DEFAULT font-mono pt-2.5">{'>'}</span>
-                            <div className="flex-1 relative">
-                                <input
-                                    type="text"
-                                    value={inputValue}
-                                    onChange={(e) => setInputValue(e.target.value)}
-                                    placeholder="Enter command or message..."
-                                    className="w-full bg-transparent border-none text-white font-mono placeholder-neutral-600 focus:outline-none focus:ring-0 py-2.5"
-                                    autoComplete="off"
-                                />
-                                <div className="absolute left-0 bottom-0 w-full h-[1px] bg-gradient-to-r from-primary-DEFAULT/50 to-transparent" />
-                            </div>
-                            <button
-                                type="submit"
-                                disabled={!inputValue.trim()}
-                                className="px-4 py-2 bg-primary-DEFAULT/20 text-primary-light font-mono text-sm rounded hover:bg-primary-DEFAULT/40 transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
-                            >
-                                EXECUTE
-                            </button>
-                        </form>
-                    </motion.div>
-                </div>
+          <form className="contact-form lg:col-span-6 lg:col-start-7" onSubmit={onSubmit}>
+            <p className="text-sm text-paper/70">
+              This form does not store the message. It opens your email app with the note filled in.
+            </p>
+            <div className="mt-4">
+              <label htmlFor="contact-name" className="text-sm font-semibold">
+                Name
+              </label>
+              <input id="contact-name" name="name" type="text" autoComplete="name" required />
             </div>
-        </section>
-    );
-};
+            <div className="mt-4">
+              <label htmlFor="contact-email" className="text-sm font-semibold">
+                Email
+              </label>
+              <input id="contact-email" name="email" type="email" autoComplete="email" required />
+            </div>
+            <div className="mt-4">
+              <label htmlFor="contact-message" className="text-sm font-semibold">
+                Message
+              </label>
+              <textarea id="contact-message" name="message" required />
+            </div>
+            <button
+              type="submit"
+              className="mt-8 min-h-12 bg-paper px-6 font-semibold text-ink hover:bg-paper-deep"
+            >
+              Open in email
+            </button>
+            {notice && (
+              <p className="mt-4 text-sm text-paper/80" role="status">
+                {notice}
+              </p>
+            )}
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+}
