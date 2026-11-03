@@ -93,7 +93,7 @@ export function LocaleHead() {
             url: "https://snishop.com",
           },
           sameAs: profile.links.map((link) => link.href),
-          award: ["kmi"].map((id) => {
+          award: ["wisudawan", "kmi"].map((id) => {
             const text = achievementContent(locale.code).items[id];
             const year = achievements.find((item) => item.id === id)?.year;
             return `${text.title} (${year})`;

@@ -15,7 +15,8 @@
  * - Budgy AI, CoTrade.ID, and CryptoCurrent.id remain in the record from the
  *   previous site. On 3 Nov 2026 budgy.snishop.com, cotrade.id, and
  *   cryptocurrent.id did not resolve, so those three have no link.
- * - BMW funding is printed as stated. The initials are not expanded.
+ * - BMW is Bantuan Mahasiswa Wirausaha, as printed on snishop.com/about.
+ *   Startup for Industry 2026 and any Bank Indonesia partnership stay off this site.
  */
 
 export const siteUrl = (
@@ -34,7 +35,7 @@ export const profile = {
   phoneTel: "+6285185151356",
   resume: "/Siraj_Nur_Ihrom_Resume.pdf",
   links: [
-    { label: "LinkedIn", href: "https://linkedin.com/in/sirajnurihrom" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/sirajnurihrom" },
     { label: "Instagram", href: "https://instagram.com/sirajnurihrom" },
     { label: "GitHub", href: "https://github.com/SIRAJcrypto11" },
     { label: "SNISHOP", href: "https://snishop.com" },
