@@ -11,6 +11,7 @@ export function Shot({ entry, className = "", eager = false }) {
       height={900}
       loading={eager ? "eager" : "lazy"}
       decoding="async"
+      fetchPriority={eager ? "high" : undefined}
       className={`shot ${entry.imageMobile ? "shot-has-mobile" : ""} ${className}`}
     />
   );

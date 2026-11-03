@@ -1,72 +1,110 @@
 import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
-import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
-
-const MotionDiv = motion.div;
-import Lenis from "lenis";
 import { Footer } from "./components/layout/Footer";
 import { Header } from "./components/layout/Header";
+import { ScrollProgress } from "./components/motion/ScrollProgress";
 import { I18nProvider, LocaleHead } from "./i18n/context";
 import { findLocale, splitPath } from "./i18n/config";
 import { HomePage } from "./pages/HomePage";
 import { NotFound } from "./pages/NotFound";
 import { WorkPage } from "./pages/WorkPage";
 
+let lenisInstance = null;
+
+function scrollToHash(hash) {
+  const target = document.getElementById(hash.slice(1));
+  if (!target) return false;
+  if (lenisInstance) {
+    lenisInstance.scrollTo(target, { offset: -88, duration: 1 });
+    return true;
+  }
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  return true;
+}
+
 function ScrollManager() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    if (hash) {
-      const target = document.getElementById(hash.slice(1));
-      if (target) {
-        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
-        return;
-      }
-    }
-    window.scrollTo(0, 0);
+    if (hash && scrollToHash(hash)) return;
+    if (lenisInstance) lenisInstance.scrollTo(0, { immediate: true });
+    else window.scrollTo(0, 0);
   }, [pathname, hash]);
 
   return null;
 }
 
+/**
+ * Lenis is a progressive enhancement for desktop mouse users only. Touch,
+ * narrow screens, and reduced-motion users keep the native scroll — and never
+ * download the library, because it is imported dynamically.
+ */
 function SmoothScroll() {
-  const reduce = useReducedMotion();
-
   useEffect(() => {
-    if (reduce) return undefined;
-    const lenis = new Lenis({
-      duration: 1.05,
-      smoothWheel: true,
-      wheelMultiplier: 0.9,
-      touchMultiplier: 1,
-    });
+    if (typeof window === "undefined") return undefined;
+    const fine = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const wide = window.matchMedia("(min-width: 768px)");
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let cancelled = false;
+    let starting = false;
+    let lenis = null;
     let frame = 0;
-    const loop = (time) => {
-      lenis.raf(time);
-      frame = requestAnimationFrame(loop);
+
+    const stop = () => {
+      if (frame) cancelAnimationFrame(frame);
+      frame = 0;
+      if (lenis) {
+        if (lenisInstance === lenis) lenisInstance = null;
+        lenis.destroy();
+        lenis = null;
+      }
     };
-    frame = requestAnimationFrame(loop);
+
+    const start = async () => {
+      if (lenis || starting || cancelled) return;
+      starting = true;
+      try {
+        const { default: Lenis } = await import("lenis");
+        if (cancelled || !fine.matches || !wide.matches || reduce.matches) return;
+        lenis = new Lenis({
+          duration: 1.05,
+          smoothWheel: true,
+          wheelMultiplier: 0.9,
+          touchMultiplier: 1,
+        });
+        lenisInstance = lenis;
+        const loop = (time) => {
+          if (!lenis) return;
+          lenis.raf(time);
+          frame = requestAnimationFrame(loop);
+        };
+        frame = requestAnimationFrame(loop);
+      } finally {
+        starting = false;
+      }
+    };
+
+    const sync = () => {
+      if (fine.matches && wide.matches && !reduce.matches) start();
+      else stop();
+    };
+
+    sync();
+    fine.addEventListener("change", sync);
+    wide.addEventListener("change", sync);
+    reduce.addEventListener("change", sync);
+
     return () => {
-      cancelAnimationFrame(frame);
-      lenis.destroy();
+      cancelled = true;
+      fine.removeEventListener("change", sync);
+      wide.removeEventListener("change", sync);
+      reduce.removeEventListener("change", sync);
+      stop();
     };
-  }, [reduce]);
+  }, []);
 
   return null;
-}
-
-function ScrollProgress() {
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
-  if (reduce) return null;
-  return (
-    <MotionDiv
-      className="fixed top-0 right-0 left-0 z-[60] h-0.5 origin-left bg-blue"
-      style={{ scaleX }}
-    />
-  );
 }
 
 function Shell() {

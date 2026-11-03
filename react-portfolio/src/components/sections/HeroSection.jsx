@@ -1,27 +1,24 @@
 import { useEffect, useState } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-
-const MotionDiv = motion.div;
 import { featuredWork } from "../../data/work";
 import { useI18n } from "../../i18n/useI18n";
 import { workCopy } from "../../i18n/workCopy";
+import { MagneticButton } from "../motion/MagneticButton";
+import { Parallax } from "../motion/Parallax";
 import { Shot } from "../Shot";
 
 export function HeroSection() {
-  const reduce = useReducedMotion();
   const { m } = useI18n();
   const frames = featuredWork();
   const [index, setIndex] = useState(0);
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 600], [0, reduce ? 0 : 48]);
 
   useEffect(() => {
-    if (reduce || frames.length < 2) return undefined;
+    if (frames.length < 2) return undefined;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
     const timer = window.setInterval(() => {
       setIndex((current) => (current + 1) % frames.length);
     }, 4200);
     return () => window.clearInterval(timer);
-  }, [reduce, frames.length]);
+  }, [frames.length]);
 
   const frame = frames[index] || frames[0];
   const frameCopy = frame ? workCopy(m, frame) : null;
@@ -41,9 +38,11 @@ export function HeroSection() {
           <p className="mt-8 max-w-xl text-xl leading-snug text-ink md:text-2xl">{m.hero.role}</p>
           <p className="mt-4 max-w-lg text-muted">{m.hero.lede}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a className="bg-blue px-5 py-3 text-sm font-semibold text-white hover:bg-blue-deep" href="#work">
-              {m.hero.see}
-            </a>
+            <MagneticButton className="align-top">
+              <a className="block bg-blue px-5 py-3 text-sm font-semibold text-white hover:bg-blue-deep" href="#work">
+                {m.hero.see}
+              </a>
+            </MagneticButton>
             <a className="border border-ink px-5 py-3 text-sm font-semibold text-ink hover:border-blue hover:text-blue-deep" href="#contact">
               {m.hero.write}
             </a>
@@ -51,7 +50,7 @@ export function HeroSection() {
         </div>
 
         {frame && (
-          <MotionDiv style={{ y }} className="lg:col-span-5">
+          <Parallax distance={48} className="lg:col-span-5">
             <figure className="border border-line bg-surface shadow-[0_24px_60px_-36px_rgba(12,27,51,0.45)]">
               <Shot entry={frame} eager className="border-b border-line" />
               <figcaption className="flex items-center justify-between gap-3 px-4 py-3 text-sm">
@@ -59,7 +58,7 @@ export function HeroSection() {
                 <span className="text-muted">{String(index + 1).padStart(2, "0")} / {String(frames.length).padStart(2, "0")}</span>
               </figcaption>
             </figure>
-          </MotionDiv>
+          </Parallax>
         )}
       </div>
     </section>

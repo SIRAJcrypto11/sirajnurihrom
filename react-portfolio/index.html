@@ -24,6 +24,26 @@
   </script>
 
   <!--
+    Progressive enhancement: reveals start hidden only when motion is welcome
+    and IntersectionObserver exists. Without this class every reveal renders
+    fully visible.
+  -->
+  <script>
+    (function () {
+      try {
+        if (
+          window.matchMedia("(prefers-reduced-motion: no-preference)").matches &&
+          "IntersectionObserver" in window
+        ) {
+          document.documentElement.classList.add("motion-ok");
+        }
+      } catch (error) {
+        /* static, fully visible markup */
+      }
+    })();
+  </script>
+
+  <!--
     Retires the previous cache-first service worker. This does not register a
     new one. sw.js, if a browser still has the old registration, clears caches
     and unregisters itself. See public/sw.js.

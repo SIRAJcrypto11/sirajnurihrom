@@ -39,7 +39,7 @@ export function CaseStudy({ entry, headingLevel = "h3" }) {
         </div>
         <div className="lg:col-span-7">
           <div className="overflow-hidden border border-line bg-surface">
-            <Shot entry={entry} />
+            <Shot entry={entry} eager={headingLevel === "h1"} />
           </div>
         </div>
       </div>

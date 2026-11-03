@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { profile } from "../../data/site";
 import { useI18n } from "../../i18n/useI18n";
+import { Reveal } from "../motion/Reveal";
+import { SplitHeading } from "../motion/SplitHeading";
 
 export function ContactSection() {
   const { m } = useI18n();
@@ -22,11 +24,13 @@ export function ContactSection() {
     <section id="contact" className="scroll-mt-24 bg-navy text-[#f4f7fb]">
       <div className="wrap py-20 lg:py-28">
         <p className="text-xs font-semibold tracking-[0.18em] text-blue uppercase">{m.contact.kicker}</p>
-        <h2 className="font-display mt-4 max-w-4xl text-5xl leading-[0.92] font-bold tracking-tight md:text-7xl">
-          {m.contact.title}
-        </h2>
+        <SplitHeading
+          as="h2"
+          text={m.contact.title}
+          className="font-display mt-4 max-w-4xl text-5xl leading-[0.92] font-bold tracking-tight md:text-7xl"
+        />
         <p className="mt-5 max-w-xl text-lg text-[#f4f7fb]/75">{m.contact.based}</p>
-        <div className="mt-12 grid gap-14 lg:grid-cols-12">
+        <Reveal className="mt-12 grid gap-14 lg:grid-cols-12" y={16}>
           <div className="lg:col-span-5">
             <a className="inline-block max-w-full font-display text-xl leading-tight font-bold break-words underline decoration-blue decoration-2 underline-offset-8 md:text-3xl" href={`mailto:${profile.email}`}>
               {profile.email}
@@ -67,7 +71,7 @@ export function ContactSection() {
             </button>
             {notice && <p className="mt-4 text-sm text-[#f4f7fb]/80" role="status">{notice}</p>}
           </form>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

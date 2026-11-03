@@ -185,3 +185,248 @@ html[data-theme="dark"] .grid-field {
   min-height: 7.5rem;
   resize: vertical;
 }
+
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- Reveal primitives (transform + opacity only) ---------- */
+
+html.motion-ok [data-reveal] {
+  opacity: var(--reveal-opacity, 0);
+  transform: translate3d(var(--reveal-x, 0px), var(--reveal-y, 18px), 0);
+  transition:
+    opacity var(--reveal-duration, 0.55s) var(--ease-out) var(--reveal-delay, 0s),
+    transform var(--reveal-duration, 0.55s) var(--ease-out) var(--reveal-delay, 0s);
+  backface-visibility: hidden;
+}
+
+html.motion-ok [data-reveal].is-in {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+html.motion-ok [data-stagger-item] {
+  transition-delay: calc(var(--stagger-delay, 0s) + var(--i, 0) * var(--stagger-step, 0.06s));
+}
+
+html.motion-ok [data-slide] {
+  opacity: 0;
+  transform: translate3d(var(--slide-from, 24px), 0, 0);
+  transition:
+    opacity var(--reveal-duration, 0.55s) var(--ease-out) 0s,
+    transform var(--reveal-duration, 0.55s) var(--ease-out) 0s;
+  transition-delay: calc(var(--i, 0) * 40ms);
+}
+
+html.motion-ok [data-slide="left"] {
+  --slide-from: -24px;
+}
+
+html.motion-ok [data-slide="right"] {
+  --slide-from: 24px;
+}
+
+html.motion-ok [data-slide].is-in {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (min-width: 768px) {
+  html.motion-ok [data-slide="left"] {
+    --slide-from: -48px;
+  }
+
+  html.motion-ok [data-slide="right"] {
+    --slide-from: 48px;
+  }
+}
+
+.sn-clip-x {
+  overflow-x: clip;
+}
+
+/* ---------- Word reveal ---------- */
+
+.sn-word {
+  display: inline-block;
+}
+
+html.motion-ok [data-words] .sn-word {
+  opacity: var(--word-opacity, 0);
+  transform: translate3d(0, var(--word-y, 14px), 0);
+  transition:
+    opacity var(--word-duration, 0.45s) var(--ease-out) 0s,
+    transform var(--word-duration, 0.45s) var(--ease-out) 0s;
+  transition-delay: calc(var(--word-delay, 0s) + var(--i, 0) * var(--word-step, 0.045s));
+  backface-visibility: hidden;
+}
+
+html.motion-ok [data-words].is-in .sn-word {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* ---------- Scroll progress ---------- */
+
+.sn-progress {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 70;
+  height: 3px;
+  pointer-events: none;
+}
+
+.sn-progress-bar {
+  display: block;
+  height: 100%;
+  background: var(--color-blue);
+  transform: scaleX(var(--scroll-progress, 0));
+  transform-origin: 0 50%;
+}
+
+[dir="rtl"] .sn-progress-bar {
+  transform-origin: 100% 50%;
+}
+
+@supports (animation-timeline: scroll()) {
+  .sn-progress-bar {
+    animation: sn-progress-grow linear both;
+    animation-timeline: scroll(root block);
+  }
+
+  @keyframes sn-progress-grow {
+    from {
+      transform: scaleX(0);
+    }
+
+    to {
+      transform: scaleX(1);
+    }
+  }
+}
+
+/* ---------- Marquee ---------- */
+
+.sn-marquee {
+  overflow: hidden;
+}
+
+.sn-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: sn-marquee-scroll var(--marquee-duration, 36s) linear infinite;
+  animation-direction: var(--marquee-direction, normal);
+  will-change: transform;
+}
+
+.sn-marquee-pause:hover .sn-marquee-track,
+.sn-marquee-pause:focus-within .sn-marquee-track {
+  animation-play-state: paused;
+}
+
+.sn-marquee-group {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sn-marquee-item {
+  flex: 0 0 auto;
+  padding-inline-end: 2.25rem;
+  white-space: nowrap;
+}
+
+@keyframes sn-marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* ---------- Magnetic + parallax wrappers ---------- */
+
+.sn-magnetic {
+  display: inline-block;
+}
+
+/* ---------- Experience timeline (CSS scroll-driven) ---------- */
+
+.timeline-progress {
+  transform: scaleY(1);
+  transform-origin: top;
+}
+
+@supports (animation-timeline: view()) {
+  .timeline-progress {
+    animation: sn-timeline-grow linear both;
+    animation-timeline: view();
+    animation-range: cover 10% cover 85%;
+  }
+
+  @keyframes sn-timeline-grow {
+    from {
+      transform: scaleY(0);
+    }
+
+    to {
+      transform: scaleY(1);
+    }
+  }
+}
+
+/* ---------- Selected work: sticky stack on desktop ---------- */
+
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .sn-work-card {
+    position: sticky;
+    top: calc(6.75rem + min(var(--i, 0), 6) * 0.65rem);
+    background-color: var(--color-paper);
+  }
+}
+
+/* ---------- Reduced motion: everything lands in its final state ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html.motion-ok [data-reveal],
+  html.motion-ok [data-slide],
+  html.motion-ok [data-stagger-item],
+  html.motion-ok .sn-word {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .sn-progress {
+    display: none;
+  }
+
+  .timeline-progress {
+    animation: none;
+    transform: scaleY(1);
+  }
+
+  .sn-marquee-track {
+    width: auto;
+    flex-wrap: wrap;
+    animation: none;
+  }
+
+  .sn-marquee-group {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+  }
+
+  .sn-marquee-group[aria-hidden="true"] {
+    display: none;
+  }
+}
