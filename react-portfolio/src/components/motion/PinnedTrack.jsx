@@ -9,13 +9,15 @@ import { onScrollFrame } from "./scrollLoop";
  */
 export function PinnedTrack({ className = "", trackClassName = "", label, children, intro }) {
   const outerRef = useRef(null);
+  const viewportRef = useRef(null);
   const trackRef = useRef(null);
   const barRef = useRef(null);
 
   useLayoutEffect(() => {
     const outer = outerRef.current;
+    const viewport = viewportRef.current;
     const track = trackRef.current;
-    if (!outer || !track) return undefined;
+    if (!outer || !viewport || !track) return undefined;
     let top = 0;
     let travel = 0;
     let span = 1;
@@ -40,8 +42,6 @@ export function PinnedTrack({ className = "", trackClassName = "", label, childr
       resizeTimer = setTimeout(measure, 120);
     };
     measure();
-    const ro = new ResizeObserver(measure);
-    ro.observe(track);
     window.addEventListener("resize", onResize, { passive: true });
 
     let last = -1;
@@ -55,13 +55,14 @@ export function PinnedTrack({ className = "", trackClassName = "", label, childr
       if (barRef.current) barRef.current.style.transform = `scaleX(${p})`;
       const idx = Math.round(p * (items.length - 1));
       if (idx !== lastIdx) {
+        if (lastIdx >= 0 && lastIdx < items.length) items[lastIdx].classList.remove("is-active");
         lastIdx = idx;
-        items.forEach((el, i) => el.classList.toggle("is-active", i === idx));
+        if (idx >= 0 && idx < items.length) items[idx].classList.add("is-active");
+        viewport.classList.toggle("is-active", idx >= 0 && idx < items.length);
       }
     });
     return () => {
       off();
-      ro.disconnect();
       clearTimeout(resizeTimer);
       window.removeEventListener("resize", onResize);
       outer.style.height = "";
@@ -73,7 +74,7 @@ export function PinnedTrack({ className = "", trackClassName = "", label, childr
     <div ref={outerRef} className={`sn-pin ${className}`}>
       <div className="sn-pin-sticky">
         {intro}
-        <div className="sn-pin-viewport" role="region" aria-label={label}>
+        <div ref={viewportRef} className="sn-pin-viewport" role="region" aria-label={label}>
           <div ref={trackRef} className={`sn-pin-track ${trackClassName}`}>
             {children}
           </div>
