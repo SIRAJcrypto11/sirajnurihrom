@@ -203,7 +203,7 @@ function Featured({ featured, m, lang }) {
         <h3 className="font-display text-2xl font-bold">{m.github.featured}</h3>
         <p className="text-xs text-muted">{featured.source === "pinned" ? m.github.pinnedNote : m.github.topNote}</p>
       </div>
-      <StaggerGroup className="mt-6 grid gap-px border border-line bg-line sm:grid-cols-2" stagger={0.06}>
+      <StaggerGroup className="gh-repo-rail mt-6 grid gap-px border border-line bg-line sm:grid-cols-2" stagger={0.06}>
         {items.map((repo) => {
           const host = hostOf(repo.homepage);
           return (

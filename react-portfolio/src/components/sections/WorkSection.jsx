@@ -5,6 +5,7 @@ import { workCopy } from "../../i18n/workCopy";
 import { SplitHeading } from "../motion/SplitHeading";
 import { StaggerGroup, StaggerItem } from "../motion/StaggerGroup";
 import { Shot } from "../Shot";
+import { ActiveScroll } from "../motion/ActiveScroll";
 
 export function WorkSection() {
   const { m, href } = useI18n();
@@ -39,17 +40,19 @@ export function WorkSection() {
             {label}
             <span className="text-blue">.</span>
           </h3>
+          <ActiveScroll>
           <StaggerGroup className="mt-6" stagger={0.05}>
             {items.map((entry, index) => (
               <StaggerItem
                 as="article"
                 key={entry.slug}
-                className="sn-work-card grid items-center gap-8 border-t border-line py-10 lg:grid-cols-12 lg:py-16"
+                className="sn-work-card sn-active-scroll grid items-center gap-8 border-t border-line py-10 lg:grid-cols-12 lg:py-16"
               >
                 <ProductRow entry={entry} index={index} href={href(`/work/${entry.slug}`)} />
               </StaggerItem>
             ))}
           </StaggerGroup>
+          </ActiveScroll>
         </div>
       </div>
     );

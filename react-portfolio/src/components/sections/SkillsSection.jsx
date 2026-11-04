@@ -1,11 +1,16 @@
 import { useI18n } from "../../i18n/useI18n";
 import { Marquee } from "../motion/Marquee";
 import { SplitHeading } from "../motion/SplitHeading";
+import { PinnedTrack } from "../motion/PinnedTrack";
+import { useMediaQuery } from "../motion/useMediaQuery";
 import { StaggerGroup, StaggerItem } from "../motion/StaggerGroup";
 
 export function SkillsSection() {
   const { m } = useI18n();
   const skills = m.skillGroups.flatMap((group) => group.items);
+  // Phones and tablets: the skill groups ride a pinned sideways track instead
+  // of a long vertical list. Desktop keeps the ruled rows.
+  const pinned = useMediaQuery("(max-width: 1023px) and (prefers-reduced-motion: no-preference)");
 
   return (
     <section id="practice" className="scroll-mt-24 border-t border-line bg-paper">
@@ -31,6 +36,24 @@ export function SkillsSection() {
             )}
           />
         </div>
+        {pinned ? (
+          <PinnedTrack className="mt-6" label={m.skills.title}>
+            {m.skillGroups.map((group, index) => (
+              <article key={group.title} className="sn-pin-card">
+                <p className="text-sm font-semibold tracking-[0.16em] text-blue">
+                  {String(index + 1).padStart(2, "0")}
+                  <span className="text-muted"> / {String(m.skillGroups.length).padStart(2, "0")}</span>
+                </p>
+                <h3 className="font-display mt-4 text-3xl leading-tight font-bold">{group.title}</h3>
+                <ul className="mt-5 flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <li key={item} className="border border-line bg-paper px-3 py-1.5 text-sm text-ink">{item}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </PinnedTrack>
+        ) : (
         <StaggerGroup className="mt-2" stagger={0.06}>
           {m.skillGroups.map((group, index) => (
             <StaggerItem key={group.title} className="grid gap-4 border-b border-line py-8 md:grid-cols-12">
@@ -46,6 +69,7 @@ export function SkillsSection() {
             </StaggerItem>
           ))}
         </StaggerGroup>
+        )}
       </div>
     </section>
   );

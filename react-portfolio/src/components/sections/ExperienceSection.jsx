@@ -3,6 +3,7 @@ import { experienceLinks } from "../../data/site";
 import { useI18n } from "../../i18n/useI18n";
 import { SlideIn } from "../motion/SlideIn";
 import { SplitHeading } from "../motion/SplitHeading";
+import { ActiveScroll } from "../motion/ActiveScroll";
 
 export function ExperienceSection() {
   const { m } = useI18n();
@@ -22,7 +23,7 @@ export function ExperienceSection() {
           </div>
         </div>
 
-        <ol className="relative mt-14">
+        <ActiveScroll as="ol" className="sn-timeline relative mt-14">
           <div className="timeline-line absolute top-0 bottom-0 left-[7px] w-px bg-line" aria-hidden="true" />
           <div className="timeline-progress absolute top-0 bottom-0 left-[7px] w-px bg-blue" aria-hidden="true" />
           {m.experience.map((job, index) => {
@@ -32,7 +33,7 @@ export function ExperienceSection() {
                 as="li"
                 key={job.id}
                 index={index}
-                className="timeline-item relative grid gap-3 py-8 pl-10 md:grid-cols-12 md:gap-6"
+                className="timeline-item sn-active-scroll relative grid gap-3 py-8 pl-10 md:grid-cols-12 md:gap-6"
               >
                 <span className="timeline-dot absolute top-10 left-0 h-4 w-4 rounded-full border-2 border-surface bg-blue" aria-hidden="true" />
                 <p className="text-sm font-semibold tracking-wide text-blue-deep md:col-span-3">{job.period}</p>
@@ -52,7 +53,7 @@ export function ExperienceSection() {
               </SlideIn>
             );
           })}
-        </ol>
+        </ActiveScroll>
         <p className="mt-8 max-w-3xl border-t border-line pt-6 text-sm leading-relaxed text-muted">{m.archive}</p>
       </div>
     </section>

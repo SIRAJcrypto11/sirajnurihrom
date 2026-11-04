@@ -1,5 +1,6 @@
 import { useI18n } from "../../i18n/useI18n";
 import { SplitHeading } from "../motion/SplitHeading";
+import { ActiveScroll } from "../motion/ActiveScroll";
 import { StaggerGroup, StaggerItem } from "../motion/StaggerGroup";
 
 export function AboutSection() {
@@ -16,9 +17,10 @@ export function AboutSection() {
             className="font-display mt-4 text-4xl leading-[0.95] font-bold tracking-tight md:text-6xl"
           />
         </div>
-        <StaggerGroup as="ol" className="lg:col-span-7" stagger={0.06}>
+        <ActiveScroll className="lg:col-span-7">
+        <StaggerGroup as="ol" stagger={0.06}>
           {m.about.beats.map((beat, index) => (
-            <StaggerItem as="li" key={beat.label} className="border-t border-line py-10 first:border-t-0 first:pt-0">
+            <StaggerItem as="li" key={beat.label} className="sn-active-scroll sn-beat border-t border-line py-10 first:border-t-0 first:pt-0">
               <p className="text-xs font-semibold tracking-[0.16em] text-blue uppercase">
                 {String(index + 1).padStart(2, "0")} {beat.label}
               </p>
@@ -26,6 +28,7 @@ export function AboutSection() {
             </StaggerItem>
           ))}
         </StaggerGroup>
+        </ActiveScroll>
       </div>
     </section>
   );

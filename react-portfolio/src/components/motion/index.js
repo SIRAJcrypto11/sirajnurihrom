@@ -9,3 +9,6 @@ export { MagneticButton } from "./MagneticButton";
 export { Parallax } from "./Parallax";
 export { useMediaQuery } from "./useMediaQuery";
 export { EASE_OUT } from "./easing";
+export { PinnedTrack } from "./PinnedTrack";
+export { observeActive } from "./scrollActive";
+export { onScrollFrame } from "./scrollLoop";

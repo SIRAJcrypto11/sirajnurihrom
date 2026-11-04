@@ -23,6 +23,17 @@ export function Header() {
   const panelId = useId();
   const buttonRef = useRef(null);
   const panelRef = useRef(null);
+  const headerRef = useRef(null);
+
+  // Sticky scroll effects sit just under the header; publish its real height.
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el || typeof ResizeObserver === "undefined") return undefined;
+    const root = document.documentElement;
+    const ro = new ResizeObserver(() => root.style.setProperty("--header-h", `${el.offsetHeight}px`));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
   const [theme, setTheme] = useState(() => document.documentElement.getAttribute("data-theme") || "light");
 
   function setOpen(next) {
@@ -82,7 +93,7 @@ export function Header() {
   );
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-surface">
+    <header ref={headerRef} className="sticky top-0 z-50 border-b border-line bg-surface">
       <div className="wrap flex h-16 items-center justify-between gap-4">
         <Link to={hrefFor(locale)} className="font-display text-lg font-bold tracking-tight text-ink">
           {profile.name}

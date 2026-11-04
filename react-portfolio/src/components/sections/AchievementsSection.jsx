@@ -22,7 +22,7 @@ export function AchievementsSection() {
           />
           <p className="mt-4 text-muted">{copy.lede}</p>
         </div>
-        <ol className="lg:col-span-8">
+        <ol className="sn-stack lg:col-span-8">
           {achievements.map((item, index) => {
             const text = copy.items[item.id];
             const year = /^\d{4}$/.test(item.year) ? Number(item.year) : null;
@@ -31,7 +31,8 @@ export function AchievementsSection() {
                 as="li"
                 key={item.id}
                 index={index}
-                className="grid gap-2 border-t border-line py-7 sm:grid-cols-12 sm:gap-6"
+                className="sn-stack-item grid gap-2 border-t border-line py-7 sm:grid-cols-12 sm:gap-6"
+                style={{ "--si": index }}
               >
                 <p className="text-sm font-semibold tracking-wide text-blue-deep sm:col-span-3">
                   {year ? (
