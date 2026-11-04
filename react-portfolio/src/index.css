@@ -572,16 +572,16 @@ html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
     padding: 1.5rem;
     opacity: 0.55;
     transform: scale(0.94);
-    transition:
-      transform 0.45s var(--ease-out),
-      opacity 0.45s var(--ease-out),
-      border-color 0.45s var(--ease-out);
   }
 
   .sn-pin-card.is-active {
     opacity: 1;
     transform: scale(1);
     border-color: var(--color-blue);
+    transition:
+      transform 0.45s var(--ease-out),
+      opacity 0.45s var(--ease-out),
+      border-color 0.45s var(--ease-out);
   }
 
   /* Stacking cards (Achievements). Each card sticks a little lower than the
@@ -620,19 +620,16 @@ html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
   /* In-view active: the touch stand-in for hover. */
   .timeline-item .timeline-dot {
     position: relative;
-    transition: transform 0.4s var(--ease-out);
   }
 
   .timeline-item.is-active .timeline-dot {
     transform: scale(1.5);
-  }
-
-  .timeline-item > div {
     transition: transform 0.4s var(--ease-out);
   }
 
   .timeline-item.is-active > div {
     transform: translate3d(0.35rem, 0, 0);
+    transition: transform 0.4s var(--ease-out);
   }
 
   [dir="rtl"] .timeline-item.is-active > div {
@@ -640,24 +637,39 @@ html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
   }
 
   .sn-beat > p:last-child {
-    transition: opacity 0.45s var(--ease-out);
     opacity: 0.45;
   }
 
   .sn-beat.is-active > p:last-child {
     opacity: 1;
+    transition: opacity 0.45s var(--ease-out);
   }
 
   .sn-work-card a.group {
     position: relative;
-    transition:
-      transform 0.5s var(--ease-out),
-      border-color 0.5s var(--ease-out);
   }
 
   .sn-work-card.is-active a.group {
     transform: translate3d(0, -6px, 0);
     border-color: var(--color-blue);
+    transition:
+      transform 0.5s var(--ease-out),
+      border-color 0.5s var(--ease-out);
+  }
+
+  .sn-work-pin-card {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    max-height: calc(100svh - var(--header-h) - 5rem);
+    scrollbar-width: thin;
+  }
+
+  .sn-work-pin-built {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   /* Repos: swipe rail instead of a tall stack. */

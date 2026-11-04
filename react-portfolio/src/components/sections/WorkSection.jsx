@@ -6,11 +6,14 @@ import { SplitHeading } from "../motion/SplitHeading";
 import { StaggerGroup, StaggerItem } from "../motion/StaggerGroup";
 import { Shot } from "../Shot";
 import { ActiveScroll } from "../motion/ActiveScroll";
+import { PinnedTrack } from "../motion/PinnedTrack";
+import { useMediaQuery } from "../motion/useMediaQuery";
 
 export function WorkSection() {
   const { m, href } = useI18n();
   const products = listedWork().filter((entry) => entry.kind === "product");
   const clients = listedWork().filter((entry) => entry.kind === "client");
+  const pinned = useMediaQuery("(max-width: 1023px) and (prefers-reduced-motion: no-preference)");
 
   return (
     <section id="work" className="scroll-mt-24 border-b border-line">
@@ -33,6 +36,29 @@ export function WorkSection() {
   );
 
   function ProductGroup({ id, label, items }) {
+    const groupHref = href;
+    if (pinned && items.length > 2) {
+      return (
+        <div id={id} className="scroll-mt-28 border-t border-line bg-paper">
+          <div className="wrap py-14 lg:py-20">
+            <h3 className="font-display text-4xl leading-none font-extrabold tracking-[-0.04em] md:text-6xl">
+              {label}
+              <span className="text-blue">.</span>
+            </h3>
+            <PinnedTrack className="mt-6" label={label}>
+              {items.map((entry, index) => (
+                <WorkPinCard
+                  key={entry.slug}
+                  entry={entry}
+                  index={index}
+                  href={groupHref(`/work/${entry.slug}`)}
+                />
+              ))}
+            </PinnedTrack>
+          </div>
+        </div>
+      );
+    }
     return (
       <div id={id} className="scroll-mt-28 border-t border-line bg-paper">
         <div className="wrap py-14 lg:py-20">
@@ -48,7 +74,7 @@ export function WorkSection() {
                 key={entry.slug}
                 className="sn-work-card sn-active-scroll grid items-center gap-8 border-t border-line py-10 lg:grid-cols-12 lg:py-16"
               >
-                <ProductRow entry={entry} index={index} href={href(`/work/${entry.slug}`)} />
+                <ProductRow entry={entry} index={index} href={groupHref(`/work/${entry.slug}`)} />
               </StaggerItem>
             ))}
           </StaggerGroup>
@@ -57,6 +83,35 @@ export function WorkSection() {
       </div>
     );
   }
+}
+
+function WorkPinCard({ entry, href: caseHref }) {
+  const { m } = useI18n();
+  const copy = workCopy(m, entry);
+  return (
+    <article className="sn-pin-card sn-work-pin-card">
+      <a href={entry.url} target="_blank" rel="noreferrer" className="group block overflow-hidden border border-line bg-surface">
+        <Shot entry={entry} />
+      </a>
+      <p className="kicker mt-3">{entry.kind === "product" ? m.work.own : m.work.client}</p>
+      <h4 className="font-display mt-2 text-xl leading-tight font-bold">
+        <a href={entry.url} target="_blank" rel="noreferrer" className="hover:text-blue-deep">
+          {copy.title}
+        </a>
+      </h4>
+      <p className="mt-2 text-sm leading-snug">{copy.summary}</p>
+      {copy.built && <p className="sn-work-pin-built mt-2 text-xs text-muted">{copy.built}</p>}
+      <p className="mt-3 flex flex-wrap gap-2">
+        <a className="bg-blue px-3 py-1.5 text-xs font-semibold text-white hover:bg-blue-deep" href={entry.url} target="_blank" rel="noreferrer">
+          {m.work.visit} {displayHost(entry.url)}
+          <span className="sr-only"> (opens in a new tab)</span>
+        </a>
+        <Link className="border border-line px-3 py-1.5 text-xs font-semibold hover:border-blue" to={caseHref}>
+          {m.work.note}
+        </Link>
+      </p>
+    </article>
+  );
 }
 
 function ProductRow({ entry, index, href }) {
