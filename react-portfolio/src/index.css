@@ -491,6 +491,7 @@ html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
     position: sticky;
     top: calc(6.75rem + min(var(--i, 0), 6) * 0.65rem);
     background-color: var(--color-paper);
+    contain: layout paint;
   }
 }
 
@@ -525,39 +526,6 @@ html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
   will-change: transform;
 }
 
-.sn-pin-card {
-  position: relative;
-  flex: 0 0 min(82%, 22rem);
-  border: 1px solid var(--color-line);
-  background: var(--color-surface);
-  padding: 1.5rem;
-  opacity: 0.55;
-  transform: scale(0.94);
-  transition:
-    transform 0.45s var(--ease-out),
-    opacity 0.45s var(--ease-out);
-}
-
-.sn-pin-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  box-shadow: 0 18px 40px -22px rgb(18 57 199 / 0.55);
-  opacity: 0;
-  transition: opacity 0.45s var(--ease-out);
-  pointer-events: none;
-}
-
-.sn-pin-card.is-active {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.sn-pin-card.is-active::after {
-  opacity: 1;
-}
-
 .sn-pin-bar {
   height: 3px;
   background: var(--color-line);
@@ -576,6 +544,40 @@ html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
 }
 
 @media (max-width: 1023px) and (prefers-reduced-motion: no-preference) {
+  .sn-pin-card {
+    position: relative;
+    flex: 0 0 min(82%, 22rem);
+    border: 1px solid var(--color-line);
+    background: var(--color-surface);
+    padding: 1.5rem;
+    opacity: 0.55;
+    transform: scale(0.94);
+    transition:
+      transform 0.45s var(--ease-out),
+      opacity 0.45s var(--ease-out);
+    contain: layout paint;
+  }
+
+  .sn-pin-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 18px 40px -22px rgb(18 57 199 / 0.55);
+    opacity: 0;
+    transition: opacity 0.45s var(--ease-out);
+    pointer-events: none;
+  }
+
+  .sn-pin-card.is-active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .sn-pin-card.is-active::after {
+    opacity: 1;
+  }
+
   /* Stacking cards (Achievements). Each card sticks a little lower than the
      one before, so the pile builds up under the header. */
   .sn-stack-item {
@@ -585,6 +587,7 @@ html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
     border: 1px solid var(--color-line);
     background: var(--color-surface);
     padding: 1.25rem 1.25rem 1.5rem;
+    contain: layout paint;
   }
 
   .sn-stack-item::after {
@@ -723,14 +726,6 @@ html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
   a,
   button {
     -webkit-tap-highlight-color: transparent;
-  }
-
-  .sn-work-card a,
-  .gh-repo,
-  .sn-pin-card,
-  .contact-form button,
-  header a {
-    transition-property: transform, opacity, background-color, border-color, color;
   }
 
   .sn-work-card a:active,

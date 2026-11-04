@@ -26,11 +26,19 @@ export function Header() {
   const headerRef = useRef(null);
 
   // Sticky scroll effects sit just under the header; publish its real height.
+  // Only needed on mobile where sticky effects use --header-h.
   useEffect(() => {
     const el = headerRef.current;
-    if (!el || typeof ResizeObserver === "undefined") return undefined;
+    if (!el || typeof window.matchMedia !== "function") return undefined;
+    const mql = window.matchMedia("(max-width: 1023px)");
+    if (!mql.matches) return undefined;
     const root = document.documentElement;
-    const ro = new ResizeObserver(() => root.style.setProperty("--header-h", `${el.offsetHeight}px`));
+    const sync = () => root.style.setProperty("--header-h", `${el.offsetHeight}px`);
+    if (typeof ResizeObserver === "undefined") {
+      sync();
+      return undefined;
+    }
+    const ro = new ResizeObserver(sync);
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
