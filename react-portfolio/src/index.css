@@ -517,13 +517,30 @@ html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
   overflow: hidden;
   margin-inline: -0.25rem;
   padding: 0.75rem 0.25rem 1rem;
+  position: relative;
+}
+
+.sn-pin-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(82%, 22rem);
+  height: 70%;
+  transform: translate(-50%, -50%);
+  border-radius: 0.75rem;
+  background: radial-gradient(ellipse at center, rgb(18 57 199 / 0.18) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.45s var(--ease-out);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .sn-pin-track {
   display: flex;
   gap: 1rem;
   width: 100%;
-  will-change: transform;
+  position: relative;
+  z-index: 1;
 }
 
 .sn-pin-bar {
@@ -544,6 +561,10 @@ html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
 }
 
 @media (max-width: 1023px) and (prefers-reduced-motion: no-preference) {
+  .sn-pin-viewport.is-active .sn-pin-glow {
+    opacity: 1;
+  }
+
   .sn-pin-card {
     position: relative;
     flex: 0 0 min(82%, 22rem);
@@ -563,7 +584,6 @@ html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
     opacity: 1;
     transform: scale(1);
     border-color: var(--color-blue);
-    box-shadow: 0 0 0 1px var(--color-blue);
   }
 
   /* Stacking cards (Achievements). Each card sticks a little lower than the

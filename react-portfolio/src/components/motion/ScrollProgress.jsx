@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 function supportsScrollTimeline() {
   return typeof CSS !== "undefined" && typeof CSS.supports === "function" && CSS.supports("animation-timeline: scroll()");
@@ -7,21 +7,26 @@ function supportsScrollTimeline() {
 /**
  * Thin cobalt bar. Modern browsers animate it with a CSS scroll-driven
  * timeline; the rest get one passive, rAF-throttled scroll listener.
+ * Perf: writes transform directly on the bar element, NOT a custom property
+ * on documentElement (which would invalidate every descendant's style).
  */
 export function ScrollProgress() {
+  const barRef = useRef(null);
+
   useEffect(() => {
     if (typeof window === "undefined") return undefined;
     if (supportsScrollTimeline()) return undefined;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
 
-    const root = document.documentElement;
+    const bar = barRef.current;
+    if (!bar) return undefined;
     let frame = 0;
 
     const update = () => {
       frame = 0;
-      const max = root.scrollHeight - window.innerHeight;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
       const value = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
-      root.style.setProperty("--scroll-progress", value.toFixed(4));
+      bar.style.transform = `scaleX(${value})`;
     };
 
     const onScroll = () => {
@@ -36,13 +41,13 @@ export function ScrollProgress() {
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
-      root.style.removeProperty("--scroll-progress");
+      bar.style.transform = "";
     };
   }, []);
 
   return (
     <div className="sn-progress" aria-hidden="true">
-      <span className="sn-progress-bar" />
+      <span ref={barRef} className="sn-progress-bar" />
     </div>
   );
 }

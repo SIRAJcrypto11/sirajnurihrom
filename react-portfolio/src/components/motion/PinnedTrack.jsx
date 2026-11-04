@@ -6,12 +6,17 @@ import { onScrollFrame } from "./scrollLoop";
  * as the track is wide, the inner block sticks under the header, and the track
  * slides sideways (towards the reading end, so RTL slides the other way).
  * Only transform is written per frame; geometry is measured on resize.
+ *
+ * Perf: rAF loop is gated by IntersectionObserver — subscribers only run while
+ * the viewport is visible. will-change is added on enter, removed on exit.
+ * One transform write per frame; class toggle on old+new active element only.
  */
 export function PinnedTrack({ className = "", trackClassName = "", label, children, intro }) {
   const outerRef = useRef(null);
   const viewportRef = useRef(null);
   const trackRef = useRef(null);
   const barRef = useRef(null);
+  const glowRef = useRef(null);
 
   useLayoutEffect(() => {
     const outer = outerRef.current;
@@ -46,7 +51,9 @@ export function PinnedTrack({ className = "", trackClassName = "", label, childr
 
     let last = -1;
     let lastIdx = -1;
-    const off = onScrollFrame((y) => {
+    let off = null;
+
+    const tick = (y) => {
       const p = Math.min(1, Math.max(0, (y - top) / span));
       if (p === last) return;
       last = p;
@@ -58,15 +65,36 @@ export function PinnedTrack({ className = "", trackClassName = "", label, childr
         if (lastIdx >= 0 && lastIdx < items.length) items[lastIdx].classList.remove("is-active");
         lastIdx = idx;
         if (idx >= 0 && idx < items.length) items[idx].classList.add("is-active");
-        viewport.classList.toggle("is-active", idx >= 0 && idx < items.length);
       }
-    });
+    };
+
+    const activate = () => {
+      if (off) return;
+      track.style.willChange = "transform";
+      viewport.classList.add("is-active");
+      off = onScrollFrame(tick);
+    };
+    const deactivate = () => {
+      if (off) { off(); off = null; }
+      track.style.willChange = "";
+      viewport.classList.remove("is-active");
+      last = -1;
+    };
+
+    const io = new IntersectionObserver(
+      ([entry]) => { entry.isIntersecting ? activate() : deactivate(); },
+      { threshold: 0 },
+    );
+    io.observe(viewport);
+
     return () => {
-      off();
+      deactivate();
+      io.disconnect();
       clearTimeout(resizeTimer);
       window.removeEventListener("resize", onResize);
       outer.style.height = "";
       track.style.transform = "";
+      track.style.willChange = "";
     };
   }, []);
 
@@ -75,6 +103,7 @@ export function PinnedTrack({ className = "", trackClassName = "", label, childr
       <div className="sn-pin-sticky">
         {intro}
         <div ref={viewportRef} className="sn-pin-viewport" role="region" aria-label={label}>
+          <div ref={glowRef} className="sn-pin-glow" aria-hidden="true" />
           <div ref={trackRef} className={`sn-pin-track ${trackClassName}`}>
             {children}
           </div>
