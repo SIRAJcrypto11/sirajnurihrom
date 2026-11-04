@@ -188,6 +188,21 @@ html[data-theme="dark"] .grid-field {
 
 :root {
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --gh-0: #e7edf6;
+  --gh-1: #c6d2ff;
+  --gh-2: #8ba3ff;
+  --gh-3: #3b5bff;
+  --gh-4: #1239c7;
+  --gh-other: #9aa8bf;
+}
+
+html[data-theme="dark"] {
+  --gh-0: #13223d;
+  --gh-1: #1f3570;
+  --gh-2: #3553c9;
+  --gh-3: #6d8bff;
+  --gh-4: #c5d2ff;
+  --gh-other: #3a4d70;
 }
 
 /* ---------- Reveal primitives (transform + opacity only) ---------- */
@@ -383,6 +398,99 @@ html.motion-ok [data-words].is-in .sn-word {
   }
 }
 
+/* ---------- GitHub section ---------- */
+
+.gh-cell,
+.gh-swatch {
+  display: block;
+  border-radius: 2px;
+  background: var(--gh-0);
+}
+
+.gh-swatch {
+  width: 11px;
+  height: 11px;
+}
+
+.gh-cell[data-level="none"] {
+  background: transparent;
+}
+
+.gh-cell[data-level="1"], .gh-swatch[data-level="1"] { background: var(--gh-1); }
+.gh-cell[data-level="2"], .gh-swatch[data-level="2"] { background: var(--gh-2); }
+.gh-cell[data-level="3"], .gh-swatch[data-level="3"] { background: var(--gh-3); }
+.gh-cell[data-level="4"], .gh-swatch[data-level="4"] { background: var(--gh-4); }
+
+.gh-cell:not([data-level="none"]) {
+  cursor: pointer;
+}
+
+.gh-cell[data-active] {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 1px;
+}
+
+.gh-tip {
+  opacity: 0;
+  transition: opacity 0.15s var(--ease-out);
+}
+
+.gh-tip.is-on {
+  opacity: 1;
+}
+
+html.motion-ok .gh-grid[data-wave] .gh-cell {
+  opacity: 0;
+  transform: scale(0.2);
+  transition:
+    opacity 0.42s var(--ease-out),
+    transform 0.42s var(--ease-out);
+  transition-delay: var(--d, 0ms);
+}
+
+html.motion-ok .gh-grid[data-wave].is-in .gh-cell {
+  opacity: 1;
+  transform: none;
+}
+
+/* After the wave, hover feedback should be instant. */
+html.motion-ok .gh-grid[data-wave].is-done .gh-cell {
+  transition: none;
+}
+
+.gh-lang-seg {
+  height: 100%;
+}
+
+html.motion-ok .gh-lang-bar .gh-lang-seg {
+  transform: scaleX(0);
+  transition: transform 0.7s var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 90ms + 120ms);
+}
+
+html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
+  transform: scaleX(1);
+}
+
+.gh-repo:hover .gh-repo-arrow {
+  transform: translate(2px, -2px);
+}
+
+.gh-repo-arrow {
+  transition: transform 0.25s var(--ease-out);
+}
+
+.gh-skel {
+  background: var(--color-line);
+  animation: gh-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes gh-pulse {
+  50% {
+    opacity: 0.55;
+  }
+}
+
 /* ---------- Selected work: sticky stack on desktop ---------- */
 
 @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
@@ -428,5 +536,20 @@ html.motion-ok [data-words].is-in .sn-word {
 
   .sn-marquee-group[aria-hidden="true"] {
     display: none;
+  }
+
+  .gh-grid[data-wave] .gh-cell {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .gh-lang-bar .gh-lang-seg {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .gh-skel {
+    animation: none;
   }
 }

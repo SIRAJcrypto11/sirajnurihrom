@@ -206,7 +206,7 @@ function pack(code, ui) {
 
 export const MESSAGES = {
   id: pack("id", {
-    nav: { practice: "Praktik", record: "Jejak", prestasi: "Prestasi", work: "Karya", contact: "Kontak", write: "Tulis", menu: "Menu", close: "Tutup" },
+    nav: { practice: "Praktik", record: "Jejak", prestasi: "Prestasi", work: "Karya", code: "Kode", contact: "Kontak", write: "Tulis", menu: "Menu", close: "Tutup" },
     themeDark: "Gelap", themeLight: "Terang",
     hero: { see: "Lihat karya", write: "Tulis", role: "Pendiri dan direktur utama PT SNISHOP Network Indonesia.", lede: "Perangkat lunak untuk usaha dan pelajar. Platform, fintech, dan produk di bawah SNISHOP, dari Bengkulu sejak 2018." },
     about: { kicker: "01 — Praktik", title: "Berkomitmen memberdayakan UMKM dan pelajar melalui solusi digital.", beats: [
@@ -217,14 +217,15 @@ export const MESSAGES = {
     record: { kicker: "02 — Jejak", title: "Perusahaan yang dipimpin sejak 2018.", lede: "Dari SNISHOP ke luar. Peran, dan untuk apa masing-masing perusahaan." },
     work: { kicker: "04 — Karya", title: "Produk yang benar-benar tayang.", lede: "Perangkat lunak milik SNISHOP, dan situs yang dibangun untuk klien.", own: "Produk sendiri", client: "Karya klien", note: "Catatan", visit: "Kunjungi" },
     skills: { kicker: "05 — Kemampuan", title: "Yang dipakai dalam pekerjaan ini." },
-    contact: { kicker: "06 — Kontak", title: "Untuk platform, konsultasi, atau percakapan arsitektur.", based: "Berbasis di Bengkulu, Indonesia (WIB, UTC+7).", form: "Formulir ini tidak menyimpan pesan. Formulir membuka aplikasi surel dengan catatan yang sudah terisi.", name: "Nama", email: "Surel", message: "Pesan", submit: "Buka di surel", opening: "Membuka aplikasi surel dengan catatan ini.", resume: "Riwayat hidup (PDF)" },
+    contact: { kicker: "07 — Kontak", title: "Untuk platform, konsultasi, atau percakapan arsitektur.", based: "Berbasis di Bengkulu, Indonesia (WIB, UTC+7).", form: "Formulir ini tidak menyimpan pesan. Formulir membuka aplikasi surel dengan catatan yang sudah terisi.", name: "Nama", email: "Surel", message: "Pesan", submit: "Buka di surel", opening: "Membuka aplikasi surel dengan catatan ini.", resume: "Riwayat hidup (PDF)" },
+    github: { kicker: "Kode", title: "Jejak kode, diperbarui setiap hari.", lede: "Kontribusi di GitHub selama setahun terakhir, ditarik otomatis dari profil @SIRAJcrypto11 setiap hari.", totalLabel: "kontribusi dalam setahun terakhir", longest: "Beruntun terpanjang", current: "Beruntun saat ini", days: "hari", repos: "Repositori publik", since: "Di GitHub sejak", calendarLabel: "Kalender kontribusi GitHub setahun terakhir", less: "Sedikit", more: "Banyak", none: "Tidak ada kontribusi", countOne: "{n} kontribusi", countOther: "{n} kontribusi", updated: "Diperbarui {time}", profile: "Buka profil GitHub", languages: "Bahasa yang paling sering dipakai", bytesNote: "Dihitung dari ukuran kode di repositori publik.", reposNote: "Dihitung dari bahasa utama tiap repositori publik.", other: "Lainnya", activity: "Commit terbaru", activityEmpty: "Belum ada push publik dalam 90 hari terakhir.", featured: "Repositori pilihan", pinnedNote: "Yang disematkan di profil GitHub.", topNote: "Repositori publik dengan bintang terbanyak dan pembaruan terakhir.", noDescription: "Belum ada deskripsi.", empty: "Data GitHub sedang tidak bisa dimuat. Profil lengkapnya tetap bisa dibuka langsung.", loading: "Memuat data GitHub", scrollHint: "Geser untuk melihat bulan sebelumnya", keyHint: "Gunakan tombol panah untuk berpindah hari.", stars: "Bintang", forks: "Fork" },
     footer: { top: "Kembali ke atas", resume: "Riwayat hidup" },
     notFound: { kicker: "404", title: "Halaman ini tidak ada di portofolio.", body: "Alamat ini tidak cocok dengan bagian atau catatan karya.", home: "Kembali ke beranda" },
     meta: { title: "Siraj Nur Ihrom | Pendiri dan Direktur Utama, PT SNISHOP Network Indonesia", description: "Portofolio Siraj Nur Ihrom, pendiri dan direktur utama PT SNISHOP Network Indonesia. Perangkat lunak untuk usaha dan pelajar, dibangun dari Bengkulu.", jobTitle: "Pendiri dan Direktur Utama" },
     langLabel: "Bahasa",
   }),
   en: pack("en", {
-    nav: { practice: "Practice", record: "Record", prestasi: "Achievements", work: "Work", contact: "Contact", write: "Write", menu: "Menu", close: "Close" },
+    nav: { practice: "Practice", record: "Record", prestasi: "Achievements", work: "Work", code: "Code", contact: "Contact", write: "Write", menu: "Menu", close: "Close" },
     themeDark: "Dark", themeLight: "Light",
     hero: { see: "See the work", write: "Write", role: "Founder and chief executive of PT SNISHOP Network Indonesia.", lede: "Software for businesses and students. Platforms, fintech, and the products under SNISHOP, from Bengkulu since 2018." },
     about: { kicker: "01 — Practice", title: "Committed to empowering SMEs and students through digital solutions.", beats: [
@@ -235,14 +236,15 @@ export const MESSAGES = {
     record: { kicker: "02 — Record", title: "Companies led since 2018.", lede: "From SNISHOP outward. Roles, and what each company is for." },
     work: { kicker: "04 — Work", title: "Live products, shown as they ship.", lede: "Own software under SNISHOP, and sites built for clients.", own: "Own products", client: "Client work", note: "Case note", visit: "Visit" },
     skills: { kicker: "05 — Capabilities", title: "What the work draws on." },
-    contact: { kicker: "06 — Contact", title: "For a platform, a consultation, or an architecture conversation.", based: "Based in Bengkulu, Indonesia (WIB, UTC+7).", form: "This form does not store the message. It opens your email app with the note filled in.", name: "Name", email: "Email", message: "Message", submit: "Open in email", opening: "Opening your email app with this note filled in.", resume: "Resume (PDF)" },
+    contact: { kicker: "07 — Contact", title: "For a platform, a consultation, or an architecture conversation.", based: "Based in Bengkulu, Indonesia (WIB, UTC+7).", form: "This form does not store the message. It opens your email app with the note filled in.", name: "Name", email: "Email", message: "Message", submit: "Open in email", opening: "Opening your email app with this note filled in.", resume: "Resume (PDF)" },
+    github: { kicker: "Code", title: "A record of the code, refreshed every day.", lede: "GitHub contributions over the past year, pulled automatically from the @SIRAJcrypto11 profile every day.", totalLabel: "contributions in the last year", longest: "Longest streak", current: "Current streak", days: "days", repos: "Public repositories", since: "On GitHub since", calendarLabel: "GitHub contribution calendar for the last year", less: "Less", more: "More", none: "No contributions", countOne: "{n} contribution", countOther: "{n} contributions", updated: "Updated {time}", profile: "Open GitHub profile", languages: "Languages used most", bytesNote: "Measured by code size across public repositories.", reposNote: "Counted by each public repository's main language.", other: "Other", activity: "Latest commits", activityEmpty: "No public pushes in the last 90 days.", featured: "Selected repositories", pinnedNote: "Pinned on the GitHub profile.", topNote: "Public repositories ranked by stars and recent updates.", noDescription: "No description yet.", empty: "GitHub data could not be loaded right now. The full profile is still one click away.", loading: "Loading GitHub data", scrollHint: "Swipe to see earlier months", keyHint: "Use the arrow keys to move between days.", stars: "Stars", forks: "Forks" },
     footer: { top: "Back to top", resume: "Resume" },
     notFound: { kicker: "404", title: "This page is not in the portfolio.", body: "The address does not match a section or a case note.", home: "Return home" },
     meta: { title: "Siraj Nur Ihrom | Founder and CEO, PT SNISHOP Network Indonesia", description: "Portfolio of Siraj Nur Ihrom, founder and chief executive of PT SNISHOP Network Indonesia. Software for businesses and students, built from Bengkulu.", jobTitle: "Founder and Chief Executive Officer" },
     langLabel: "Language",
   }),
   ar: pack("ar", {
-    nav: { practice: "الممارسة", record: "السجل", prestasi: "الإنجازات", work: "الأعمال", contact: "تواصل", write: "اكتب", menu: "القائمة", close: "إغلاق" },
+    nav: { practice: "الممارسة", record: "السجل", prestasi: "الإنجازات", work: "الأعمال", code: "الكود", contact: "تواصل", write: "اكتب", menu: "القائمة", close: "إغلاق" },
     themeDark: "داكن", themeLight: "فاتح",
     hero: { see: "شاهد الأعمال", write: "اكتب", role: "المؤسس والرئيس التنفيذي لشركة PT SNISHOP Network Indonesia.", lede: "برمجيات للأعمال والطلاب. منصات وتقنية مالية ومنتجات تحت SNISHOP، من بنغكولو منذ 2018." },
     about: { kicker: "01 — الممارسة", title: "ملتزم بتمكين المنشآت الصغيرة والطلاب عبر حلول رقمية.", beats: [
@@ -253,14 +255,15 @@ export const MESSAGES = {
     record: { kicker: "02 — السجل", title: "شركات قُدت منذ 2018.", lede: "من SNISHOP إلى ما بعدها. الأدوار، والغرض من كل شركة." },
     work: { kicker: "04 — الأعمال", title: "منتجات تعمل كما تُشحن.", lede: "برمجيات SNISHOP الخاصة، ومواقع بُنيت للعملاء.", own: "منتجات خاصة", client: "أعمال العملاء", note: "ملاحظة", visit: "زيارة" },
     skills: { kicker: "05 — القدرات", title: "ما يعتمد عليه العمل." },
-    contact: { kicker: "06 — تواصل", title: "لمنصة، أو استشارة، أو حديث عن البنية.", based: "المقر في بنغكولو، إندونيسيا (WIB، UTC+7).", form: "هذا النموذج لا يخزن الرسالة. يفتح تطبيق البريد والنص مكتوب فيه.", name: "الاسم", email: "البريد", message: "الرسالة", submit: "افتح في البريد", opening: "يتم فتح تطبيق البريد مع هذه الملاحظة.", resume: "السيرة (PDF)" },
+    contact: { kicker: "07 — تواصل", title: "لمنصة، أو استشارة، أو حديث عن البنية.", based: "المقر في بنغكولو، إندونيسيا (WIB، UTC+7).", form: "هذا النموذج لا يخزن الرسالة. يفتح تطبيق البريد والنص مكتوب فيه.", name: "الاسم", email: "البريد", message: "الرسالة", submit: "افتح في البريد", opening: "يتم فتح تطبيق البريد مع هذه الملاحظة.", resume: "السيرة (PDF)" },
+    github: { kicker: "الكود", title: "سجل الكود، يتجدد كل يوم.", lede: "مساهمات GitHub خلال العام الماضي، تُجلب تلقائيًا من حساب @SIRAJcrypto11 كل يوم.", totalLabel: "مساهمة خلال العام الماضي", longest: "أطول سلسلة", current: "السلسلة الحالية", days: "يوم", repos: "المستودعات العامة", since: "على GitHub منذ", calendarLabel: "تقويم مساهمات GitHub للعام الماضي", less: "أقل", more: "أكثر", none: "لا مساهمات", countOne: "{n} مساهمة", countOther: "{n} مساهمة", updated: "آخر تحديث {time}", profile: "افتح ملف GitHub", languages: "اللغات الأكثر استخدامًا", bytesNote: "محسوبة من حجم الكود في المستودعات العامة.", reposNote: "محسوبة من اللغة الرئيسية لكل مستودع عام.", other: "أخرى", activity: "أحدث الإيداعات", activityEmpty: "لا توجد عمليات دفع عامة خلال آخر 90 يومًا.", featured: "مستودعات مختارة", pinnedNote: "مثبتة في ملف GitHub.", topNote: "مستودعات عامة مرتبة حسب النجوم وآخر تحديث.", noDescription: "لا يوجد وصف بعد.", empty: "تعذر تحميل بيانات GitHub الآن. يمكن فتح الملف الكامل مباشرة.", loading: "جارٍ تحميل بيانات GitHub", scrollHint: "اسحب لرؤية الأشهر السابقة", keyHint: "استخدم مفاتيح الأسهم للتنقل بين الأيام.", stars: "النجوم", forks: "التفرعات" },
     footer: { top: "إلى الأعلى", resume: "السيرة" },
     notFound: { kicker: "404", title: "هذه الصفحة ليست في الملف.", body: "العنوان لا يطابق قسمًا ولا ملاحظة عمل.", home: "العودة إلى البداية" },
     meta: { title: "سيراج نور إحرام | المؤسس والرئيس التنفيذي، PT SNISHOP Network Indonesia", description: "ملف سيراج نور إحرام، المؤسس والرئيس التنفيذي لشركة PT SNISHOP Network Indonesia. برمجيات للأعمال والطلاب، من بنغكولو.", jobTitle: "المؤسس والرئيس التنفيذي" },
     langLabel: "اللغة",
   }),
   zh: pack("zh", {
-    nav: { practice: "实践", record: "经历", prestasi: "成就", work: "作品", contact: "联系", write: "写信", menu: "菜单", close: "关闭" },
+    nav: { practice: "实践", record: "经历", prestasi: "成就", work: "作品", code: "代码", contact: "联系", write: "写信", menu: "菜单", close: "关闭" },
     themeDark: "深色", themeLight: "浅色",
     hero: { see: "看作品", write: "写信", role: "PT SNISHOP Network Indonesia 创始人兼首席执行官。", lede: "为企业和学生做的软件。平台、金融科技，以及 SNISHOP 旗下的产品，自 2018 年起在明古鲁。" },
     about: { kicker: "01 — 实践", title: "致力于用数字方案帮助中小微企业和学生。", beats: [
@@ -271,14 +274,15 @@ export const MESSAGES = {
     record: { kicker: "02 — 经历", title: "自 2018 年起带领的公司。", lede: "从 SNISHOP 向外。角色，以及每家公司做什么。" },
     work: { kicker: "04 — 作品", title: "正在运行的产品，按上线的样子呈现。", lede: "SNISHOP 自己的软件，以及为客户建的站点。", own: "自有产品", client: "客户作品", note: "说明", visit: "访问" },
     skills: { kicker: "05 — 能力", title: "这些工作用到的东西。" },
-    contact: { kicker: "06 — 联系", title: "做平台、做咨询，或谈架构。", based: "常驻印度尼西亚明古鲁（WIB，UTC+7）。", form: "这个表单不保存内容。它会打开你的邮件应用，并把说明填好。", name: "姓名", email: "邮箱", message: "内容", submit: "在邮件中打开", opening: "正在打开邮件应用，并填入这段说明。", resume: "简历（PDF）" },
+    contact: { kicker: "07 — 联系", title: "做平台、做咨询，或谈架构。", based: "常驻印度尼西亚明古鲁（WIB，UTC+7）。", form: "这个表单不保存内容。它会打开你的邮件应用，并把说明填好。", name: "姓名", email: "邮箱", message: "内容", submit: "在邮件中打开", opening: "正在打开邮件应用，并填入这段说明。", resume: "简历（PDF）" },
+    github: { kicker: "代码", title: "代码记录，每天更新。", lede: "过去一年的 GitHub 贡献，每天自动从 @SIRAJcrypto11 的主页获取。", totalLabel: "过去一年的贡献", longest: "最长连续", current: "当前连续", days: "天", repos: "公开仓库", since: "加入 GitHub", calendarLabel: "过去一年的 GitHub 贡献日历", less: "少", more: "多", none: "无贡献", countOne: "{n} 次贡献", countOther: "{n} 次贡献", updated: "更新于 {time}", profile: "打开 GitHub 主页", languages: "最常用的语言", bytesNote: "按公开仓库的代码量计算。", reposNote: "按每个公开仓库的主要语言计算。", other: "其他", activity: "最新提交", activityEmpty: "过去 90 天没有公开推送。", featured: "精选仓库", pinnedNote: "在 GitHub 主页置顶。", topNote: "按星标数和最近更新排序的公开仓库。", noDescription: "暂无描述。", empty: "暂时无法加载 GitHub 数据，可以直接打开完整主页。", loading: "正在加载 GitHub 数据", scrollHint: "滑动查看更早的月份", keyHint: "使用方向键在日期之间移动。", stars: "星标", forks: "复刻" },
     footer: { top: "回到顶部", resume: "简历" },
     notFound: { kicker: "404", title: "这个页面不在作品集里。", body: "这个地址对不上任何章节或项目说明。", home: "回到首页" },
     meta: { title: "Siraj Nur Ihrom | 创始人兼首席执行官，PT SNISHOP Network Indonesia", description: "Siraj Nur Ihrom 的作品集。他是 PT SNISHOP Network Indonesia 的创始人兼首席执行官。软件为企业和学生而做，从明古鲁出发。", jobTitle: "创始人兼首席执行官" },
     langLabel: "语言",
   }),
   ja: pack("ja", {
-    nav: { practice: "実践", record: "記録", prestasi: "実績", work: "仕事", contact: "連絡", write: "書く", menu: "メニュー", close: "閉じる" },
+    nav: { practice: "実践", record: "記録", prestasi: "実績", work: "仕事", code: "コード", contact: "連絡", write: "書く", menu: "メニュー", close: "閉じる" },
     themeDark: "ダーク", themeLight: "ライト",
     hero: { see: "仕事を見る", write: "書く", role: "PT SNISHOP Network Indonesia の創業者であり最高経営責任者。", lede: "事業者と学生のためのソフトウェア。プラットフォーム、フィンテック、そして SNISHOP の製品。2018 年からブンクルで。" },
     about: { kicker: "01 — 実践", title: "中小事業者と学生を、デジタルな手段で後押しすることに取り組んでいる。", beats: [
@@ -289,14 +293,15 @@ export const MESSAGES = {
     record: { kicker: "02 — 記録", title: "2018 年から率いてきた会社。", lede: "SNISHOP から外へ。役割と、それぞれの会社が何のためにあるか。" },
     work: { kicker: "04 — 仕事", title: "公開されているプロダクトを、出荷された姿のまま。", lede: "SNISHOP 自身のソフトウェアと、クライアントのために建てたサイト。", own: "自社プロダクト", client: "クライアントの仕事", note: "ノート", visit: "開く" },
     skills: { kicker: "05 — 能力", title: "仕事がよりどころにしているもの。" },
-    contact: { kicker: "06 — 連絡", title: "プラットフォーム、相談、またはアーキテクチャの会話のために。", based: "インドネシア、ブンクル（WIB、UTC+7）。", form: "このフォームはメッセージを保存しません。メールアプリを開き、文面を入れた状態にします。", name: "名前", email: "メール", message: "メッセージ", submit: "メールで開く", opening: "この文面を入れてメールアプリを開いています。", resume: "履歴書（PDF）" },
+    contact: { kicker: "07 — 連絡", title: "プラットフォーム、相談、またはアーキテクチャの会話のために。", based: "インドネシア、ブンクル（WIB、UTC+7）。", form: "このフォームはメッセージを保存しません。メールアプリを開き、文面を入れた状態にします。", name: "名前", email: "メール", message: "メッセージ", submit: "メールで開く", opening: "この文面を入れてメールアプリを開いています。", resume: "履歴書（PDF）" },
+    github: { kicker: "コード", title: "コードの記録。毎日更新。", lede: "過去1年の GitHub コントリビューション。@SIRAJcrypto11 のプロフィールから毎日自動で取得しています。", totalLabel: "過去1年のコントリビューション", longest: "最長連続", current: "現在の連続", days: "日", repos: "公開リポジトリ", since: "GitHub 登録", calendarLabel: "過去1年の GitHub コントリビューションカレンダー", less: "少", more: "多", none: "コントリビューションなし", countOne: "{n} 件のコントリビューション", countOther: "{n} 件のコントリビューション", updated: "{time}に更新", profile: "GitHub プロフィールを開く", languages: "よく使う言語", bytesNote: "公開リポジトリのコード量で算出。", reposNote: "各公開リポジトリの主要言語で算出。", other: "その他", activity: "最近のコミット", activityEmpty: "過去90日間に公開プッシュはありません。", featured: "注目のリポジトリ", pinnedNote: "GitHub プロフィールでピン留め。", topNote: "スター数と最近の更新順の公開リポジトリ。", noDescription: "説明はまだありません。", empty: "GitHub のデータを読み込めませんでした。プロフィールは直接開けます。", loading: "GitHub のデータを読み込み中", scrollHint: "スワイプで前の月を表示", keyHint: "矢印キーで日付を移動できます。", stars: "スター", forks: "フォーク" },
     footer: { top: "先頭へ", resume: "履歴書" },
     notFound: { kicker: "404", title: "このページはポートフォリオにありません。", body: "このアドレスは、節にも仕事のノートにも当たりません。", home: "ホームへ戻る" },
     meta: { title: "Siraj Nur Ihrom | 創業者・最高経営責任者、PT SNISHOP Network Indonesia", description: "Siraj Nur Ihrom のポートフォリオ。PT SNISHOP Network Indonesia の創業者であり最高経営責任者。事業者と学生のためのソフトウェアを、ブンクルから。", jobTitle: "創業者・最高経営責任者" },
     langLabel: "言語",
   }),
   ms: pack("ms", {
-    nav: { practice: "Amalan", record: "Rekod", prestasi: "Prestasi", work: "Kerja", contact: "Hubungi", write: "Tulis", menu: "Menu", close: "Tutup" },
+    nav: { practice: "Amalan", record: "Rekod", prestasi: "Prestasi", work: "Kerja", code: "Kod", contact: "Hubungi", write: "Tulis", menu: "Menu", close: "Tutup" },
     themeDark: "Gelap", themeLight: "Cerah",
     hero: { see: "Lihat kerja", write: "Tulis", role: "Pengasas dan ketua eksekutif PT SNISHOP Network Indonesia.", lede: "Perisian untuk perniagaan dan pelajar. Platform, fintech, dan produk di bawah SNISHOP, dari Bengkulu sejak 2018." },
     about: { kicker: "01 — Amalan", title: "Komited memperkasa PKS dan pelajar melalui penyelesaian digital.", beats: [
@@ -307,7 +312,8 @@ export const MESSAGES = {
     record: { kicker: "02 — Rekod", title: "Syarikat yang dipimpin sejak 2018.", lede: "Dari SNISHOP ke luar. Peranan, dan untuk apa setiap syarikat." },
     work: { kicker: "04 — Kerja", title: "Produk yang benar-benar tayang.", lede: "Perisian milik SNISHOP, dan laman yang dibina untuk klien.", own: "Produk sendiri", client: "Kerja klien", note: "Nota", visit: "Lawati" },
     skills: { kicker: "05 — Keupayaan", title: "Yang digunakan dalam kerja ini." },
-    contact: { kicker: "06 — Hubungi", title: "Untuk platform, perundingan, atau perbualan seni bina.", based: "Berpangkalan di Bengkulu, Indonesia (WIB, UTC+7).", form: "Borang ini tidak menyimpan mesej. Ia membuka aplikasi e-mel dengan nota yang sudah diisi.", name: "Nama", email: "E-mel", message: "Mesej", submit: "Buka dalam e-mel", opening: "Membuka aplikasi e-mel dengan nota ini.", resume: "Resume (PDF)" },
+    contact: { kicker: "07 — Hubungi", title: "Untuk platform, perundingan, atau perbualan seni bina.", based: "Berpangkalan di Bengkulu, Indonesia (WIB, UTC+7).", form: "Borang ini tidak menyimpan mesej. Ia membuka aplikasi e-mel dengan nota yang sudah diisi.", name: "Nama", email: "E-mel", message: "Mesej", submit: "Buka dalam e-mel", opening: "Membuka aplikasi e-mel dengan nota ini.", resume: "Resume (PDF)" },
+    github: { kicker: "Kod", title: "Jejak kod, dikemas kini setiap hari.", lede: "Sumbangan GitHub sepanjang setahun lalu, ditarik secara automatik daripada profil @SIRAJcrypto11 setiap hari.", totalLabel: "sumbangan dalam setahun lalu", longest: "Rentetan terpanjang", current: "Rentetan semasa", days: "hari", repos: "Repositori awam", since: "Di GitHub sejak", calendarLabel: "Kalendar sumbangan GitHub setahun lalu", less: "Sedikit", more: "Banyak", none: "Tiada sumbangan", countOne: "{n} sumbangan", countOther: "{n} sumbangan", updated: "Dikemas kini {time}", profile: "Buka profil GitHub", languages: "Bahasa paling kerap digunakan", bytesNote: "Dikira daripada saiz kod dalam repositori awam.", reposNote: "Dikira daripada bahasa utama setiap repositori awam.", other: "Lain-lain", activity: "Commit terkini", activityEmpty: "Tiada push awam dalam 90 hari lalu.", featured: "Repositori pilihan", pinnedNote: "Disematkan pada profil GitHub.", topNote: "Repositori awam mengikut bintang terbanyak dan kemas kini terbaru.", noDescription: "Belum ada penerangan.", empty: "Data GitHub tidak dapat dimuatkan sekarang. Profil penuh masih boleh dibuka terus.", loading: "Memuatkan data GitHub", scrollHint: "Leret untuk melihat bulan sebelumnya", keyHint: "Gunakan kekunci anak panah untuk beralih hari.", stars: "Bintang", forks: "Fork" },
     footer: { top: "Kembali ke atas", resume: "Resume" },
     notFound: { kicker: "404", title: "Halaman ini tiada dalam portfolio.", body: "Alamat ini tidak sepadan dengan bahagian atau nota kerja.", home: "Kembali ke laman utama" },
     meta: { title: "Siraj Nur Ihrom | Pengasas dan Ketua Eksekutif, PT SNISHOP Network Indonesia", description: "Portfolio Siraj Nur Ihrom, pengasas dan ketua eksekutif PT SNISHOP Network Indonesia. Perisian untuk perniagaan dan pelajar, dibina dari Bengkulu.", jobTitle: "Pengasas dan Ketua Eksekutif" },

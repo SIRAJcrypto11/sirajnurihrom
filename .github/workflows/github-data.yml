@@ -1,0 +1,68 @@
+name: GitHub data
+
+on:
+  schedule:
+    - cron: "17 23 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main, feat/github-activity]
+    paths:
+      - ".github/workflows/github-data.yml"
+      - "react-portfolio/scripts/fetch-github.mjs"
+      - "react-portfolio/src/lib/github.js"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: github-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Fetch GitHub data
+        run: node react-portfolio/scripts/fetch-github.mjs --out "$RUNNER_TEMP/github.json"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to github-data branch
+        run: |
+          if git ls-remote --exit-code --heads origin github-data; then
+            git fetch origin github-data
+            git worktree add "$RUNNER_TEMP/data" FETCH_HEAD
+            cd "$RUNNER_TEMP/data"
+            git checkout -B github-data
+          else
+            git worktree add --orphan -b github-data "$RUNNER_TEMP/data"
+            cd "$RUNNER_TEMP/data"
+          fi
+
+          cp "$RUNNER_TEMP/github.json" ./github.json
+
+          cat > vercel.json <<'VEOF'
+          {"git":{"deploymentEnabled":false}}
+          VEOF
+
+          cat > README.md <<'REOF'
+          Data otomatis untuk section GitHub di sirajnurihrom.snishop.com, jangan diedit manual.
+          REOF
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+
+          if ! git diff --cached --quiet; then
+            git commit -m "data: refresh GitHub stats"
+          fi
+
+          git push origin HEAD:github-data

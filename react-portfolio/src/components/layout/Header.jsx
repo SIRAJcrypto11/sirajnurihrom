@@ -9,6 +9,7 @@ const sections = [
   { hash: "#record", key: "record" },
   { hash: "#prestasi", key: "prestasi" },
   { hash: "#work", key: "work" },
+  { hash: "#github", key: "code" },
   { hash: "#contact", key: "contact" },
 ];
 

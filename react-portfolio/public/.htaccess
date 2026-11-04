@@ -34,6 +34,9 @@
   <FilesMatch "\.(svg|png|jpg|jpeg|webp|gif|ico|pdf)$">
     Header set Cache-Control "public, max-age=604800"
   </FilesMatch>
+  <FilesMatch "\.(json)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
   <Files "sw.js">
     Header set Cache-Control "no-cache"
   </Files>
