@@ -26,18 +26,26 @@ export function PinnedTrack({ className = "", trackClassName = "", label, childr
       const vh = window.innerHeight;
       const header = parseFloat(getComputedStyle(outer.firstElementChild).top) || 0;
       rtl = getComputedStyle(track).direction === "rtl";
-      travel = Math.max(0, track.scrollWidth - track.clientWidth);
+      const tw = track.scrollWidth;
+      const tc = track.clientWidth;
+      travel = Math.max(0, tw - tc);
       const stickyH = vh - header;
       outer.style.height = `${stickyH + travel}px`;
       top = outer.getBoundingClientRect().top + window.scrollY - header;
       span = Math.max(1, travel);
     };
+    let resizeTimer;
+    const onResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(measure, 120);
+    };
     measure();
     const ro = new ResizeObserver(measure);
     ro.observe(track);
-    ro.observe(document.documentElement);
+    window.addEventListener("resize", onResize, { passive: true });
 
     let last = -1;
+    let lastIdx = -1;
     const off = onScrollFrame((y) => {
       const p = Math.min(1, Math.max(0, (y - top) / span));
       if (p === last) return;
@@ -45,13 +53,17 @@ export function PinnedTrack({ className = "", trackClassName = "", label, childr
       const x = (rtl ? 1 : -1) * p * travel;
       track.style.transform = `translate3d(${x}px,0,0)`;
       if (barRef.current) barRef.current.style.transform = `scaleX(${p})`;
-      // Centre card gets the "active" state, the touch stand-in for hover.
       const idx = Math.round(p * (items.length - 1));
-      items.forEach((el, i) => el.classList.toggle("is-active", i === idx));
+      if (idx !== lastIdx) {
+        lastIdx = idx;
+        items.forEach((el, i) => el.classList.toggle("is-active", i === idx));
+      }
     });
     return () => {
       off();
       ro.disconnect();
+      clearTimeout(resizeTimer);
+      window.removeEventListener("resize", onResize);
       outer.style.height = "";
       track.style.transform = "";
     };

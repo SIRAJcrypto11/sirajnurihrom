@@ -526,6 +526,7 @@ html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
 }
 
 .sn-pin-card {
+  position: relative;
   flex: 0 0 min(82%, 22rem);
   border: 1px solid var(--color-line);
   background: var(--color-surface);
@@ -534,14 +535,27 @@ html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
   transform: scale(0.94);
   transition:
     transform 0.45s var(--ease-out),
-    opacity 0.45s var(--ease-out),
-    box-shadow 0.45s var(--ease-out);
+    opacity 0.45s var(--ease-out);
+}
+
+.sn-pin-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 18px 40px -22px rgb(18 57 199 / 0.55);
+  opacity: 0;
+  transition: opacity 0.45s var(--ease-out);
+  pointer-events: none;
 }
 
 .sn-pin-card.is-active {
   opacity: 1;
   transform: scale(1);
-  box-shadow: 0 18px 40px -22px rgb(18 57 199 / 0.55);
+}
+
+.sn-pin-card.is-active::after {
+  opacity: 1;
 }
 
 .sn-pin-bar {
@@ -571,7 +585,15 @@ html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
     border: 1px solid var(--color-line);
     background: var(--color-surface);
     padding: 1.25rem 1.25rem 1.5rem;
+  }
+
+  .sn-stack-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
     box-shadow: 0 -10px 30px -24px rgb(11 27 56 / 0.5);
+    pointer-events: none;
   }
 
   /* Opaque while it slides, so a card never shows the one beneath it. */
@@ -598,12 +620,27 @@ html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
 
   /* In-view active: the touch stand-in for hover. */
   .timeline-item .timeline-dot {
-    transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+    position: relative;
+    transition: transform 0.4s var(--ease-out);
+  }
+
+  .timeline-item .timeline-dot::after {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 6px rgb(59 91 255 / 0.18);
+    opacity: 0;
+    transition: opacity 0.4s var(--ease-out);
+    pointer-events: none;
   }
 
   .timeline-item.is-active .timeline-dot {
     transform: scale(1.5);
-    box-shadow: 0 0 0 6px rgb(59 91 255 / 0.18);
+  }
+
+  .timeline-item.is-active .timeline-dot::after {
+    opacity: 1;
   }
 
   .timeline-item > div {
@@ -628,16 +665,30 @@ html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
   }
 
   .sn-work-card a.group {
+    position: relative;
     transition:
       transform 0.5s var(--ease-out),
-      box-shadow 0.5s var(--ease-out),
       border-color 0.5s var(--ease-out);
+  }
+
+  .sn-work-card a.group::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 24px 48px -28px rgb(18 57 199 / 0.6);
+    opacity: 0;
+    transition: opacity 0.5s var(--ease-out);
+    pointer-events: none;
   }
 
   .sn-work-card.is-active a.group {
     transform: translate3d(0, -6px, 0);
     border-color: var(--color-blue);
-    box-shadow: 0 24px 48px -28px rgb(18 57 199 / 0.6);
+  }
+
+  .sn-work-card.is-active a.group::after {
+    opacity: 1;
   }
 
   /* Repos: swipe rail instead of a tall stack. */
@@ -679,7 +730,7 @@ html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
   .sn-pin-card,
   .contact-form button,
   header a {
-    transition-property: transform, opacity, background-color, border-color, color, box-shadow;
+    transition-property: transform, opacity, background-color, border-color, color;
   }
 
   .sn-work-card a:active,
