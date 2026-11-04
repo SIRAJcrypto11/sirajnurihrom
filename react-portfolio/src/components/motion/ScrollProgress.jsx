@@ -17,14 +17,21 @@ export function ScrollProgress() {
     if (typeof window === "undefined") return undefined;
     if (supportsScrollTimeline()) return undefined;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
+    const mobileMq = window.matchMedia("(max-width: 1023px)");
+    if (!mobileMq.matches) return undefined;
 
     const bar = barRef.current;
     if (!bar) return undefined;
     let frame = 0;
+    let max = 0;
+
+    const updateMax = () => {
+      max = document.documentElement.scrollHeight - window.innerHeight;
+    };
+    updateMax();
 
     const update = () => {
       frame = 0;
-      const max = document.documentElement.scrollHeight - window.innerHeight;
       const value = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
       bar.style.transform = `scaleX(${value})`;
     };
@@ -35,7 +42,10 @@ export function ScrollProgress() {
 
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
+    window.addEventListener("resize", () => {
+      updateMax();
+      onScroll();
+    }, { passive: true });
 
     return () => {
       cancelAnimationFrame(frame);

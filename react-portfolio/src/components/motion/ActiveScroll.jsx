@@ -3,10 +3,10 @@ import { observeActive } from "./scrollActive";
 
 /**
  * Wrapper that hands every `.sn-active-scroll` descendant to the shared
- * centre-band observer. Only runs on touch/narrow screens with motion allowed;
+ * centre-band observer. Only runs on narrow screens with motion allowed;
  * desktop keeps real hover.
  */
-const QUERY = "(max-width: 1023px), (hover: none)";
+const QUERY = "(max-width: 1023px)";
 
 export function ActiveScroll({ as = "div", className = "", children, ...rest }) {
   const ref = useRef(null);

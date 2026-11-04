@@ -23,6 +23,9 @@ export function PinnedTrack({ className = "", trackClassName = "", label, childr
     const viewport = viewportRef.current;
     const track = trackRef.current;
     if (!outer || !viewport || !track) return undefined;
+    if (typeof window.matchMedia === "function" && !window.matchMedia("(max-width: 1023px)").matches) {
+      return undefined;
+    }
     let top = 0;
     let travel = 0;
     let span = 1;

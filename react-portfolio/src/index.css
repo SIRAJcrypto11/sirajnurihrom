@@ -491,7 +491,6 @@ html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
     position: sticky;
     top: calc(6.75rem + min(var(--i, 0), 6) * 0.65rem);
     background-color: var(--color-paper);
-    contain: layout paint;
   }
 }
 
@@ -502,67 +501,67 @@ html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
   --header-h: 6.75rem;
 }
 
-/* Pinned sideways track (Skills on phones/tablets). */
-.sn-pin-sticky {
-  position: sticky;
-  top: var(--header-h);
-  display: flex;
-  min-height: calc(100svh - var(--header-h));
-  flex-direction: column;
-  justify-content: center;
-  gap: 1.25rem;
-}
-
-.sn-pin-viewport {
-  overflow: hidden;
-  margin-inline: -0.25rem;
-  padding: 0.75rem 0.25rem 1rem;
-  position: relative;
-}
-
-.sn-pin-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: min(82%, 22rem);
-  height: 70%;
-  transform: translate(-50%, -50%);
-  border-radius: 0.75rem;
-  background: radial-gradient(ellipse at center, rgb(18 57 199 / 0.18) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.45s var(--ease-out);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.sn-pin-track {
-  display: flex;
-  gap: 1rem;
-  width: 100%;
-  position: relative;
-  z-index: 1;
-}
-
-.sn-pin-bar {
-  height: 3px;
-  background: var(--color-line);
-}
-
-.sn-pin-bar > span {
-  display: block;
-  height: 100%;
-  background: var(--color-blue);
-  transform: scaleX(0);
-  transform-origin: left;
-}
-
-[dir="rtl"] .sn-pin-bar > span {
-  transform-origin: right;
-}
-
 @media (max-width: 1023px) and (prefers-reduced-motion: no-preference) {
+  /* Pinned sideways track (Skills on phones/tablets). */
+  .sn-pin-sticky {
+    position: sticky;
+    top: var(--header-h);
+    display: flex;
+    min-height: calc(100svh - var(--header-h));
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.25rem;
+  }
+
+  .sn-pin-viewport {
+    overflow: hidden;
+    margin-inline: -0.25rem;
+    padding: 0.75rem 0.25rem 1rem;
+    position: relative;
+  }
+
+  .sn-pin-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(82%, 22rem);
+    height: 70%;
+    transform: translate(-50%, -50%);
+    border-radius: 0.75rem;
+    background: radial-gradient(ellipse at center, rgb(18 57 199 / 0.18) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.45s var(--ease-out);
+    pointer-events: none;
+    z-index: 0;
+  }
+
   .sn-pin-viewport.is-active .sn-pin-glow {
     opacity: 1;
+  }
+
+  .sn-pin-track {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .sn-pin-bar {
+    height: 3px;
+    background: var(--color-line);
+  }
+
+  .sn-pin-bar > span {
+    display: block;
+    height: 100%;
+    background: var(--color-blue);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  [dir="rtl"] .sn-pin-bar > span {
+    transform-origin: right;
   }
 
   .sn-pin-card {
@@ -577,7 +576,6 @@ html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
       transform 0.45s var(--ease-out),
       opacity 0.45s var(--ease-out),
       border-color 0.45s var(--ease-out);
-    contain: layout paint;
   }
 
   .sn-pin-card.is-active {
@@ -595,7 +593,6 @@ html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
     border: 1px solid var(--color-line);
     background: var(--color-surface);
     padding: 1.25rem 1.25rem 1.5rem;
-    contain: layout paint;
   }
 
   /* Opaque while it slides, so a card never shows the one beneath it. */
