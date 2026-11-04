@@ -64,6 +64,8 @@ export function ContributionHeatmap({ days, generatedAt }) {
   const measureRef = useRef(null);
   const scrollRef = useRef(null);
   const gridRef = useRef(null);
+  // Observe the unclipped wrapper: a clip-path on the SVG itself hides it from IntersectionObserver.
+  const waveRef = useRef(null);
   const activeRef = useRef(null);
   const tipRef = useRef(null);
   const atEndRef = useRef(true);
@@ -113,7 +115,7 @@ export function ContributionHeatmap({ days, generatedAt }) {
     if (el && atEndRef.current) el.scrollLeft = el.scrollWidth;
   }, [cell, weekCount]);
 
-  useLayoutEffect(() => observeInView(gridRef.current), [weekCount]);
+  useLayoutEffect(() => observeInView(waveRef.current), [weekCount]);
 
   // Keep the tooltip inside the card, whatever the language makes its width.
   useLayoutEffect(() => {
@@ -124,16 +126,6 @@ export function ContributionHeatmap({ days, generatedAt }) {
     const x = Math.max(half + 4, Math.min(card.clientWidth - half - 4, tip.x));
     el.style.left = `${x}px`;
   }, [tip]);
-
-  useEffect(() => {
-    const grid = gridRef.current;
-    if (!grid) return undefined;
-    const onEnd = (event) => {
-      if (event.target.dataset?.w === "0" && event.target.dataset?.d === "6") grid.classList.add("is-done");
-    };
-    grid.addEventListener("transitionend", onEnd);
-    return () => grid.removeEventListener("transitionend", onEnd);
-  }, [weekCount]);
 
   const describe = useCallback(
     (entry) => {
@@ -244,22 +236,30 @@ export function ContributionHeatmap({ days, generatedAt }) {
 
   const gridWidth = weekCount * cell + (weekCount - 1) * GAP;
 
+  // One SVG with plain rects: no per-cell layout boxes, no per-cell animation.
   const cells = useMemo(
     () =>
       weeks.map((week, w) =>
-        week.map((entry, d) => (
-          <span
-            key={entry.date}
-            className="gh-cell"
-            data-w={w}
-            data-d={d}
-            data-level={entry.level === -1 ? "none" : Math.min(entry.level, 4)}
-            style={{ "--d": `${(weekCount - 1 - w) * 14 + d * 12}ms` }}
-          />
-        )),
+        week.map((entry, d) =>
+          entry.level === -1 ? null : (
+            <rect
+              key={entry.date}
+              className="gh-cell"
+              data-w={w}
+              data-d={d}
+              data-level={Math.min(entry.level, 4)}
+              x={w * (cell + GAP)}
+              y={d * (cell + GAP)}
+              width={cell}
+              height={cell}
+              rx={2}
+            />
+          ),
+        ),
       ),
-    [weeks, weekCount],
+    [weeks, cell],
   );
+  const gridHeight = 7 * cell + 6 * GAP;
 
   const updated = useMemo(() => {
     const at = new Date(generatedAt).getTime();
@@ -301,7 +301,7 @@ export function ContributionHeatmap({ days, generatedAt }) {
               atEndRef.current = el.scrollLeft >= el.scrollWidth - el.clientWidth - 4;
             }}
           >
-            <div style={{ width: gridWidth }}>
+            <div ref={waveRef} className="gh-wave" style={{ width: gridWidth }}>
               <div className="relative text-[10px] leading-none text-muted" style={{ height: MONTH_ROW }} aria-hidden="true">
                 {labels.map((label) => (
                   <span key={label.week} className="absolute top-0 whitespace-nowrap" style={{ left: label.week * (cell + GAP) }}>
@@ -309,24 +309,20 @@ export function ContributionHeatmap({ days, generatedAt }) {
                   </span>
                 ))}
               </div>
-              <div
+              <svg
                 ref={gridRef}
-                className="gh-grid"
+                className="gh-grid block"
                 data-wave=""
                 aria-hidden="true"
-                style={{
-                  display: "grid",
-                  gridAutoFlow: "column",
-                  gridTemplateRows: `repeat(7, ${cell}px)`,
-                  gridAutoColumns: `${cell}px`,
-                  gap: GAP,
-                }}
+                width={gridWidth}
+                height={gridHeight}
+                viewBox={`0 0 ${gridWidth} ${gridHeight}`}
                 onPointerOver={onPointerOver}
                 onPointerLeave={(event) => event.pointerType !== "touch" && hide()}
                 onPointerUp={onPointerUp}
               >
                 {cells}
-              </div>
+              </svg>
             </div>
           </div>
         </div>

@@ -53,15 +53,27 @@ export function CountUp({
         if (!entries.some((entry) => entry.isIntersecting)) return;
         io.disconnect();
         const started = performance.now();
+        // Cached formatter and direct text-node writes: no React render per frame.
+        let nf = null;
+        try {
+          nf = new Intl.NumberFormat(locale, { minimumFractionDigits: decimals, maximumFractionDigits: decimals, useGrouping: grouping });
+        } catch {
+          nf = null;
+        }
+        const node = element.firstChild;
+        const write = (t) => {
+          if (node && node.nodeType === 3) node.nodeValue = t;
+          else element.textContent = t;
+        };
         const tick = (now) => {
           const progress = Math.min(1, (now - started) / (duration * 1000));
           const eased = 1 - (1 - progress) ** 3;
           const current = from + (value - from) * eased;
-          setText(`${prefix}${formatNumber(current, decimals, locale, grouping)}${suffix}`);
+          write(`${prefix}${nf ? nf.format(current) : current.toFixed(decimals)}${suffix}`);
           if (progress < 1) {
             frameRef.current = requestAnimationFrame(tick);
           } else {
-            setText(finalText);
+            write(finalText);
           }
         };
         frameRef.current = requestAnimationFrame(tick);

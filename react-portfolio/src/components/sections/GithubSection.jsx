@@ -292,7 +292,7 @@ export function GithubSection() {
               <ContributionHeatmap days={data.contributions.days} generatedAt={data.generatedAt} />
             </div>
 
-            <div className="mt-16 grid gap-14 lg:grid-cols-12 lg:gap-12">
+            <div className="gh-below mt-16 grid gap-14 lg:grid-cols-12 lg:gap-12">
               <div className="space-y-14 lg:col-span-5">
                 <Languages languages={data.languages} m={m} lang={lang} />
                 <Activity activity={data.activity} m={m} lang={lang} />

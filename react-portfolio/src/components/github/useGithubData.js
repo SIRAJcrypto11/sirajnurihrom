@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { startTransition, useEffect, useRef, useState } from "react";
 import {
   REMOTE_DATA_URL,
   fetchLive,
@@ -44,7 +44,7 @@ export function useGithubData(ref) {
           }
         }
       },
-      { rootMargin: "800px 0px" },
+      { rootMargin: "1600px 0px" },
     );
 
     io.observe(element);
@@ -73,8 +73,10 @@ export function useGithubData(ref) {
 
       if (newest && isFresh(newest)) {
         if (mountedRef.current) {
-          setData(newest);
-          setStatus("ready");
+          startTransition(() => {
+            setData(newest);
+            setStatus("ready");
+          });
         }
         return;
       }
@@ -95,8 +97,10 @@ export function useGithubData(ref) {
 
       if (newest) {
         if (mountedRef.current) {
-          setData(newest);
-          setStatus("ready");
+          startTransition(() => {
+            setData(newest);
+            setStatus("ready");
+          });
         }
         return;
       }

@@ -400,34 +400,27 @@ html.motion-ok [data-words].is-in .sn-word {
 
 /* ---------- GitHub section ---------- */
 
-.gh-cell,
 .gh-swatch {
   display: block;
   border-radius: 2px;
   background: var(--gh-0);
-}
-
-.gh-swatch {
   width: 11px;
   height: 11px;
 }
 
-.gh-cell[data-level="none"] {
-  background: transparent;
-}
-
-.gh-cell[data-level="1"], .gh-swatch[data-level="1"] { background: var(--gh-1); }
-.gh-cell[data-level="2"], .gh-swatch[data-level="2"] { background: var(--gh-2); }
-.gh-cell[data-level="3"], .gh-swatch[data-level="3"] { background: var(--gh-3); }
-.gh-cell[data-level="4"], .gh-swatch[data-level="4"] { background: var(--gh-4); }
-
-.gh-cell:not([data-level="none"]) {
-  cursor: pointer;
-}
+.gh-cell { fill: var(--gh-0); cursor: pointer; }
+.gh-cell[data-level="1"] { fill: var(--gh-1); }
+.gh-cell[data-level="2"] { fill: var(--gh-2); }
+.gh-cell[data-level="3"] { fill: var(--gh-3); }
+.gh-cell[data-level="4"] { fill: var(--gh-4); }
+.gh-swatch[data-level="1"] { background: var(--gh-1); }
+.gh-swatch[data-level="2"] { background: var(--gh-2); }
+.gh-swatch[data-level="3"] { background: var(--gh-3); }
+.gh-swatch[data-level="4"] { background: var(--gh-4); }
 
 .gh-cell[data-active] {
-  outline: 2px solid var(--color-ink);
-  outline-offset: 1px;
+  stroke: var(--color-ink);
+  stroke-width: 2px;
 }
 
 .gh-tip {
@@ -439,23 +432,23 @@ html.motion-ok [data-words].is-in .sn-word {
   opacity: 1;
 }
 
-html.motion-ok .gh-grid[data-wave] .gh-cell {
+/* One element animates: the whole calendar sweeps in from the latest week. */
+html.motion-ok .gh-grid[data-wave] {
   opacity: 0;
-  transform: scale(0.2);
+  clip-path: inset(0 0 0 100%);
   transition:
-    opacity 0.42s var(--ease-out),
-    transform 0.42s var(--ease-out);
-  transition-delay: var(--d, 0ms);
+    opacity 0.35s var(--ease-out),
+    clip-path 0.7s var(--ease-out);
 }
 
-html.motion-ok .gh-grid[data-wave].is-in .gh-cell {
+html.motion-ok .gh-wave.is-in .gh-grid[data-wave] {
   opacity: 1;
-  transform: none;
+  clip-path: inset(0 0 0 0);
 }
 
-/* After the wave, hover feedback should be instant. */
-html.motion-ok .gh-grid[data-wave].is-done .gh-cell {
-  transition: none;
+.gh-below {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
 }
 
 .gh-lang-seg {
@@ -538,7 +531,8 @@ html.motion-ok .gh-lang-bar.is-in .gh-lang-seg {
     display: none;
   }
 
-  .gh-grid[data-wave] .gh-cell {
+  .gh-grid[data-wave] {
+    clip-path: none !important;
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
