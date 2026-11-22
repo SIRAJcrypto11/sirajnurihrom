@@ -77,6 +77,18 @@ export const work = [
       "An all-in-one ERP for productivity and digital business management, for companies and individuals.",
   }),
   entry({
+    slug: "sewain",
+    title: "Sewain",
+    url: "https://sewain.snishop.com",
+    kind: "product",
+    image: "/work/sewain.webp",
+    imageMobile: "/work/sewain-mobile.webp",
+    summary:
+      "An online storefront for small rental businesses: motorbikes, cameras, camping gear, and costumes.",
+    built:
+      "Sewain by SNISHOP gives each business its own store link. Customers book and pay by bank transfer or QRIS straight to the owner's account; Sewain never holds the funds. Units are locked in the database, renter IDs are stored encrypted and shown masked, and each invoice has a unique payment code. Monthly plans: Gratis Rp0, Starter Rp149.000, Pro Rp349.000, Bisnis Rp799.000, and a custom Enterprise plan. A public demo is at sewain.snishop.com/demo.",
+  }),
+  entry({
     slug: "todoit",
     title: "TODOIT",
     url: "https://todoit.snishop.com",
